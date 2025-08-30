@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Pricing Table</title>
+    <meta name="description" content="Flexible pricing plans with responsive design and accessibility features">
+    <link rel="stylesheet" href="../css/pricing-table.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="pricing-container" role="main">
+        <header class="pricing-header">
+            <h1 class="pricing-title">Choose Your Plan</h1>
+            <p class="pricing-subtitle">Select the perfect plan for your needs. Upgrade or downgrade at any time.</p>
+        </header>
+
+        <div class="pricing-toggle" role="group" aria-labelledby="billing-toggle-label">
+            <span id="billing-toggle-label" class="toggle-label">Billing Period</span>
+            <div class="toggle-wrapper">
+                <label class="toggle-option">
+                    <input type="radio" name="billing" value="monthly" checked aria-describedby="monthly-desc">
+                    <span class="toggle-text">Monthly</span>
+                    <span id="monthly-desc" class="sr-only">Pay monthly with no commitment</span>
+                </label>
+                <label class="toggle-option">
+                    <input type="radio" name="billing" value="yearly" aria-describedby="yearly-desc">
+                    <span class="toggle-text">Yearly</span>
+                    <span class="discount-badge" aria-label="20% discount">Save 20%</span>
+                    <span id="yearly-desc" class="sr-only">Pay yearly and save 20%</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="pricing-grid" role="list">
+            <!-- Basic Plan -->
+            <article class="pricing-card" role="listitem" data-plan="basic">
+                <header class="card-header">
+                    <h2 class="plan-name">Basic</h2>
+                    <p class="plan-description">Perfect for individuals and small projects</p>
+                </header>
+                
+                <div class="price-section" aria-live="polite">
+                    <div class="price-display">
+                        <span class="currency">$</span>
+                        <span class="price-amount" data-monthly="9" data-yearly="7.20">9</span>
+                        <span class="billing-period">/month</span>
+                    </div>
+                    <div class="price-note">
+                        <span class="yearly-price" aria-hidden="true">$86.40 billed annually</span>
+                    </div>
+                </div>
+
+                <ul class="features-list" role="list" aria-label="Basic plan features">
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Up to 5 projects</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>10GB storage</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Email support</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Basic analytics</span>
+                    </li>
+                </ul>
+
+                <button class="cta-button" type="button" aria-describedby="basic-plan-desc">
+                    Start Basic Plan
+                </button>
+                <p id="basic-plan-desc" class="sr-only">Start your basic plan subscription</p>
+            </article>
+
+            <!-- Professional Plan (Popular) -->
+            <article class="pricing-card popular" role="listitem" data-plan="professional">
+                <div class="popular-badge" aria-label="Most popular plan">Most Popular</div>
+                <header class="card-header">
+                    <h2 class="plan-name">Professional</h2>
+                    <p class="plan-description">Best for growing teams and businesses</p>
+                </header>
+                
+                <div class="price-section" aria-live="polite">
+                    <div class="price-display">
+                        <span class="currency">$</span>
+                        <span class="price-amount" data-monthly="29" data-yearly="23.20">29</span>
+                        <span class="billing-period">/month</span>
+                    </div>
+                    <div class="price-note">
+                        <span class="yearly-price" aria-hidden="true">$278.40 billed annually</span>
+                    </div>
+                </div>
+
+                <ul class="features-list" role="list" aria-label="Professional plan features">
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Unlimited projects</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>100GB storage</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Priority support</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Advanced analytics</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Team collaboration</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>API access</span>
+                    </li>
+                </ul>
+
+                <button class="cta-button primary" type="button" aria-describedby="pro-plan-desc">
+                    Start Professional Plan
+                </button>
+                <p id="pro-plan-desc" class="sr-only">Start your professional plan subscription</p>
+            </article>
+
+            <!-- Enterprise Plan -->
+            <article class="pricing-card" role="listitem" data-plan="enterprise">
+                <header class="card-header">
+                    <h2 class="plan-name">Enterprise</h2>
+                    <p class="plan-description">For large organizations with advanced needs</p>
+                </header>
+                
+                <div class="price-section" aria-live="polite">
+                    <div class="price-display">
+                        <span class="currency">$</span>
+                        <span class="price-amount" data-monthly="99" data-yearly="79.20">99</span>
+                        <span class="billing-period">/month</span>
+                    </div>
+                    <div class="price-note">
+                        <span class="yearly-price" aria-hidden="true">$950.40 billed annually</span>
+                    </div>
+                </div>
+
+                <ul class="features-list" role="list" aria-label="Enterprise plan features">
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Everything in Professional</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Unlimited storage</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>24/7 phone support</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Custom integrations</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Advanced security</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Dedicated account manager</span>
+                    </li>
+                </ul>
+
+                <button class="cta-button" type="button" aria-describedby="enterprise-plan-desc">
+                    Contact Sales
+                </button>
+                <p id="enterprise-plan-desc" class="sr-only">Contact our sales team for enterprise pricing</p>
+            </article>
+        </div>
+
+        <!-- Mobile Comparison -->
+        <div class="mobile-comparison" role="region" aria-labelledby="mobile-comparison-title">
+            <h2 id="mobile-comparison-title" class="comparison-title">Compare Plans</h2>
+            <button class="comparison-toggle" type="button" aria-expanded="false" aria-controls="comparison-content">
+                <span class="toggle-text">Show Feature Comparison</span>
+                <svg class="toggle-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill="currentColor"/>
+                </svg>
+            </button>
+            
+            <div id="comparison-content" class="comparison-content" aria-hidden="true">
+                <div class="comparison-table">
+                    <div class="feature-row">
+                        <span class="feature-name">Projects</span>
+                        <div class="feature-values">
+                            <span class="basic-value">5</span>
+                            <span class="pro-value">Unlimited</span>
+                            <span class="enterprise-value">Unlimited</span>
+                        </div>
+                    </div>
+                    <div class="feature-row">
+                        <span class="feature-name">Storage</span>
+                        <div class="feature-values">
+                            <span class="basic-value">10GB</span>
+                            <span class="pro-value">100GB</span>
+                            <span class="enterprise-value">Unlimited</span>
+                        </div>
+                    </div>
+                    <div class="feature-row">
+                        <span class="feature-name">Support</span>
+                        <div class="feature-values">
+                            <span class="basic-value">Email</span>
+                            <span class="pro-value">Priority</span>
+                            <span class="enterprise-value">24/7 Phone</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/pricing-table.js"></script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CSS-only Dark/Light Mode Toggle System - Production-ready theme switching with accessibility support">
+  <title>CSS Theme Toggle - Dark/Light Mode System</title>
+  
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="theme.css">
+  
+  <!-- Preload theme script to prevent flash -->
+  <script>
+    // Inline critical theme detection to prevent flash
+    (function() {
+      const theme = localStorage.getItem('theme-preference');
+      if (theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <!-- Skip link for keyboard navigation -->
+  <a href="#main-content" class="sr-only">Skip to main content</a>
+  
+  <!-- Header with theme toggle -->
+  <header class="header" role="banner">
+    <div class="header__content">
+      <h1 class="header__title">CSS Theme System</h1>
+      
+      <!-- Main theme toggle switch -->
+      <div class="theme-toggle" role="group" aria-labelledby="theme-toggle-label">
+        <span id="theme-toggle-label" class="theme-toggle__label">
+          <span class="sr-only">Toggle theme:</span>
+          <span aria-hidden="true">Light</span>
+        </span>
+        
+        <label class="theme-toggle__switch" for="theme-toggle-main">
+          <input 
+            type="checkbox" 
+            id="theme-toggle-main"
+            class="theme-toggle__input"
+            data-theme-toggle
+            aria-describedby="theme-toggle-description"
+          >
+          
+          <span class="theme-toggle__thumb">
+            <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀️</span>
+            <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">🌙</span>
+          </span>
+          
+          <span class="sr-only" id="theme-toggle-description">
+            Switch between light and dark theme. Currently using light theme.
+            Keyboard shortcut: Ctrl+Shift+L
+          </span>
+        </label>
+        
+        <span class="theme-toggle__label">
+          <span aria-hidden="true">Dark</span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main id="main-content" class="container" role="main">
+    
+    <!-- Introduction section -->
+    <section class="mb-6">
+      <h2>CSS-Only Dark/Light Mode Toggle System</h2>
+      <p class="text-muted mb-4">
+        A production-ready theme switching system built with modern CSS custom properties,
+        minimal JavaScript for persistence, and full WCAG 2.1 AA accessibility compliance.
+      </p>
+      
+      <div class="grid grid--2 mb-6">
+        <div class="card">
+          <h3 class="card__title">🎨 Features</h3>
+          <div class="card__content">
+            <ul>
+              <li>CSS custom properties for theme variables</li>
+              <li>Smooth animations and transitions</li>
+              <li>System preference detection</li>
+              <li>localStorage persistence</li>
+              <li>WCAG 2.1 AA compliant</li>
+              <li>Cross-browser compatible</li>
+              <li>Reduced motion support</li>
+              <li>High contrast mode support</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h3 class="card__title">⚡ Performance</h3>
+          <div class="card__content">
+            <ul>
+              <li>Zero layout shift (CLS)</li>
+              <li>Minimal JavaScript (~3KB)</li>
+              <li>CSS-only animations</li>
+              <li>Hardware acceleration</li>
+              <li>Optimized paint operations</li>
+              <li>Efficient custom properties</li>
+              <li>Print-friendly styles</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive demo section -->
+    <section class="mb-6">
+      <h2>Interactive Demo</h2>
+      <p class="text-muted mb-4">Try different components to see how they adapt to theme changes:</p>
+      
+      <!-- Button examples -->
+      <div class="mb-4">
+        <h3>Buttons</h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+          <button class="button">Primary Button</button>
+          <button class="button button--secondary">Secondary Button</button>
+          <button class="button" disabled>Disabled Button</button>
+        </div>
+      </div>
+      
+      <!-- Card grid -->
+      <div class="mb-4">
+        <h3>Card Components</h3>
+        <div class="grid grid--3">
+          <div class="card">
+            <h4 class="card__title">Example Card 1</h4>
+            <div class="card__content">
+              This is a sample card component that demonstrates how content adapts
+              to different themes. Notice the smooth transitions.
+            </div>
+          </div>
+          
+          <div class="card">
+            <h4 class="card__title">Example Card 2</h4>
+            <div class="card__content">
+              Cards maintain proper contrast ratios and readability in both
+              light and dark modes, following WCAG guidelines.
+            </div>
+          </div>
+          
+          <div class="card">
+            <h4 class="card__title">Example Card 3</h4>
+            <div class="card__content">
+              Hover effects and shadows are automatically adjusted for each
+              theme to provide consistent visual feedback.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Form elements -->
+      <div class="mb-4">
+        <h3>Form Elements</h3>
+        <div class="card">
+          <form class="demo-form">
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label for="demo-input" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">
+                Sample Input Field
+              </label>
+              <input 
+                type="text" 
+                id="demo-input" 
+                placeholder="Enter some text..."
+                style="
+                  width: 100%; 
+                  padding: 0.75rem; 
+                  border: 1px solid var(--border-primary);
+                  border-radius: 0.375rem;
+                  background: var(--bg-primary);
+                  color: var(--text-primary);
+                  font-size: 1rem;
+                  transition: all var(--transition-fast);
+                "
+              >
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label for="demo-select" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">
+                Sample Select
+              </label>
+              <select 
+                id="demo-select"
+                style="
+                  width: 100%; 
+                  padding: 0.75rem; 
+                  border: 1px solid var(--border-primary);
+                  border-radius: 0.375rem;
+                  background: var(--bg-primary);
+                  color: var(--text-primary);
+                  font-size: 1rem;
+                "
+              >
+                <option value="">Choose an option...</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                <input 
+                  type="checkbox" 
+                  style="
+                    width: 1rem; 
+                    height: 1rem;
+                    accent-color: var(--color-primary);
+                  "
+                >
+                <span>I agree to the terms and conditions</span>
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessibility section -->
+    <section class="mb-6">
+      <h2>Accessibility Features</h2>
+      <div class="grid grid--2">
+        <div class="card">
+          <h3 class="card__title">🔍 WCAG 2.1 AA Compliance</h3>
+          <div class="card__content">
+            <ul>
+              <li><strong>Color Contrast:</strong> Meets 4.5:1 ratio minimum</li>
+              <li><strong>Keyboard Navigation:</strong> Full keyboard support</li>
+              <li><strong>Screen Readers:</strong> Proper ARIA labels and announcements</li>
+              <li><strong>Focus Management:</strong> Clear focus indicators</li>
+              <li><strong>Reduced Motion:</strong> Respects user preferences</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h3 class="card__title">⌨️ Keyboard Shortcuts</h3>
+          <div class="card__content">
+            <ul>
+              <li><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd>: Toggle theme</li>
+              <li><kbd>Tab</kbd>: Navigate to theme toggle</li>
+              <li><kbd>Space</kbd> or <kbd>Enter</kbd>: Activate toggle</li>
+              <li><kbd>Esc</kbd>: Return focus to main content</li>
+            </ul>
+            <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-muted);">
+              Try using <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd> to toggle the theme!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical details -->
+    <section class="mb-6">
+      <h2>Technical Implementation</h2>
+      <div class="card">
+        <h3 class="card__title">🛠️ Architecture</h3>
+        <div class="card__content">
+          <p>The system uses CSS custom properties (CSS variables) for theme values, allowing for efficient theme switching with minimal DOM manipulation.</p>
+          
+          <h4 style="margin: 1.5rem 0 0.75rem 0;">Core Components:</h4>
+          <ul>
+            <li><strong>theme.css:</strong> Complete theme system with CSS custom properties</li>
+            <li><strong>theme-toggle.js:</strong> Minimal JavaScript for persistence and system detection</li>
+            <li><strong>demo.html:</strong> Comprehensive demonstration of all features</li>
+          </ul>
+          
+          <h4 style="margin: 1.5rem 0 0.75rem 0;">Browser Support:</h4>
+          <ul>
+            <li>Chrome 49+, Firefox 31+, Safari 9.1+, Edge 16+</li>
+            <li>Graceful fallbacks for older browsers</li>
+            <li>Progressive enhancement approach</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Theme selector alternative -->
+    <section class="mb-6">
+      <h2>Alternative Theme Controls</h2>
+      <div class="card">
+        <h3 class="card__title">Advanced Theme Selector</h3>
+        <div class="card__content">
+          <p>Alternative implementation using radio buttons for more theme options:</p>
+          
+          <fieldset style="border: 1px solid var(--border-primary); padding: 1rem; border-radius: 0.5rem; margin-top: 1rem;">
+            <legend style="padding: 0 0.5rem; font-weight: 500;">Choose Theme:</legend>
+            
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                <input type="radio" name="theme-selector" value="light" data-theme-selector>
+                <span>☀️ Light</span>
+              </label>
+              
+              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                <input type="radio" name="theme-selector" value="dark" data-theme-selector>
+                <span>🌙 Dark</span>
+              </label>
+              
+              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                <input type="radio" name="theme-selector" value="auto" data-theme-selector>
+                <span>🔄 System</span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-8 text-center text-muted" role="contentinfo">
+      <p>
+        CSS-Only Dark/Light Mode Toggle System &copy; 2024
+        <br>
+        <small>Production-ready • WCAG 2.1 AA Compliant • Cross-browser Compatible</small>
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- Theme toggle script -->
+  <script src="theme-toggle.js"></script>
+  
+  <!-- Additional demo enhancements -->
+  <script>
+    // Update theme toggle description dynamically
+    document.addEventListener('themechange', function(e) {
+      const description = document.getElementById('theme-toggle-description');
+      const label = document.querySelector('.theme-toggle__label span[aria-hidden]');
+      
+      if (description) {
+        description.textContent = `Switch between light and dark theme. Currently using ${e.detail.theme} theme. Keyboard shortcut: Ctrl+Shift+L`;
+      }
+    });
+    
+    // Demo form interactions
+    const demoInput = document.getElementById('demo-input');
+    if (demoInput) {
+      demoInput.addEventListener('focus', function() {
+        this.style.borderColor = 'var(--color-primary)';
+        this.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+      });
+      
+      demoInput.addEventListener('blur', function() {
+        this.style.borderColor = 'var(--border-primary)';
+        this.style.boxShadow = 'none';
+      });
+    }
+    
+    // Performance monitoring
+    if ('performance' in window) {
+      window.addEventListener('load', function() {
+        setTimeout(() => {
+          const perfData = performance.getEntriesByType('navigation')[0];
+          if (perfData && perfData.domContentLoadedEventEnd) {
+            console.log('🚀 Theme system loaded in', Math.round(perfData.domContentLoadedEventEnd), 'ms');
+          }
+        }, 0);
+      });
+    }
+  </script>
+</body>
+</html>

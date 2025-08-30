@@ -1,0 +1,20 @@
+/**
+ * Main CSS Bundle - Import all theme system styles
+ * Use this file to import the complete theme system
+ */
+
+/* Core theme system */
+@import url('../css/theme-variables.css');
+@import url('../css/theme-base.css');
+@import url('../css/theme-toggle.css');
+
+/* Optional: Add your custom styles here */
+/* Custom application styles can be added below */
+
+/**
+ * Usage in HTML:
+ * <link rel="stylesheet" href="src/styles/main.css">
+ * 
+ * Or import in your CSS bundler:
+ * @import 'src/styles/main.css';
+ */

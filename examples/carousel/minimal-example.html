@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal CSS Carousel Example</title>
+    <style>
+        /* Minimal CSS-only carousel - Essential styles only */
+        body {
+            font-family: system-ui, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f0f2f5;
+        }
+        
+        .carousel {
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .carousel-nav {
+            position: relative;
+        }
+        
+        .carousel-input {
+            display: none;
+        }
+        
+        .carousel-slides {
+            display: flex;
+            width: 300%; /* 3 slides */
+            transition: transform 0.5s ease;
+        }
+        
+        .slide {
+            width: 33.333%;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Navigation Logic */
+        #slide-1:checked ~ .carousel-slides { transform: translateX(0%); }
+        #slide-2:checked ~ .carousel-slides { transform: translateX(-33.333%); }
+        #slide-3:checked ~ .carousel-slides { transform: translateX(-66.666%); }
+        
+        /* Controls */
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px;
+            background: white;
+        }
+        
+        .carousel-control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .carousel-control:hover,
+        .carousel-control:focus {
+            background: #007bff;
+        }
+        
+        /* Active states */
+        #slide-1:checked ~ .carousel-controls label[for="slide-1"],
+        #slide-2:checked ~ .carousel-controls label[for="slide-2"],
+        #slide-3:checked ~ .carousel-controls label[for="slide-3"] {
+            background: #007bff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Minimal CSS-Only Carousel</h1>
+    <p>This is the simplest version of the CSS-only carousel with just the essential features.</p>
+    
+    <div class="carousel">
+        <div class="carousel-nav">
+            <input type="radio" name="minimal-carousel" id="slide-1" class="carousel-input" checked>
+            <input type="radio" name="minimal-carousel" id="slide-2" class="carousel-input">
+            <input type="radio" name="minimal-carousel" id="slide-3" class="carousel-input">
+            
+            <div class="carousel-slides">
+                <div class="slide">
+                    <img src="https://picsum.photos/600/250?random=1" alt="Slide 1">
+                </div>
+                <div class="slide">
+                    <img src="https://picsum.photos/600/250?random=2" alt="Slide 2">
+                </div>
+                <div class="slide">
+                    <img src="https://picsum.photos/600/250?random=3" alt="Slide 3">
+                </div>
+            </div>
+            
+            <div class="carousel-controls">
+                <label for="slide-1" class="carousel-control" aria-label="Go to slide 1"></label>
+                <label for="slide-2" class="carousel-control" aria-label="Go to slide 2"></label>
+                <label for="slide-3" class="carousel-control" aria-label="Go to slide 3"></label>
+            </div>
+        </div>
+    </div>
+    
+    <div style="max-width: 600px; margin: 2rem auto; padding: 1rem; background: white; border-radius: 8px;">
+        <h3>How It Works</h3>
+        <ul>
+            <li><strong>HTML:</strong> Radio buttons control slide visibility</li>
+            <li><strong>CSS:</strong> Transform property slides the container</li>
+            <li><strong>Navigation:</strong> Labels trigger radio button changes</li>
+            <li><strong>Keyboard:</strong> Tab to navigate, Space/Enter to select</li>
+        </ul>
+        
+        <h3>Browser Support</h3>
+        <p>Works in all modern browsers including IE11+</p>
+        
+        <h3>File Size</h3>
+        <p>This minimal version is under 2KB of CSS!</p>
+    </div>
+</body>
+</html>

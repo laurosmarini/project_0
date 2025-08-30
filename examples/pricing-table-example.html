@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Responsive Pricing Table - Test Example</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* Pricing table container */
+        .pricing-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Individual pricing cards */
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card:hover,
+        .pricing-card:focus {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #007bff;
+        }
+
+        .pricing-card.featured {
+            border-color: #007bff;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: "Most Popular";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #007bff;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* Card header */
+        .card-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #007bff;
+            margin-bottom: 0.25rem;
+        }
+
+        .price-period {
+            color: #6c757d;
+            font-size: 0.875rem;
+        }
+
+        /* Feature list */
+        .feature-list {
+            flex-grow: 1;
+            margin-bottom: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .feature::before {
+            content: "✓";
+            background: #28a745;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-height: 48px;
+            min-width: 48px;
+        }
+
+        .cta-button:hover,
+        .cta-button:focus {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        .featured .cta-button {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+        }
+
+        /* Billing toggle */
+        .billing-controls {
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 300px;
+        }
+
+        .billing-switch {
+            display: inline-flex;
+            align-items: center;
+            background: #e9ecef;
+            border-radius: 25px;
+            padding: 0.25rem;
+            position: relative;
+        }
+
+        .billing-option {
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .billing-option.active {
+            background: #007bff;
+            color: white;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .pricing-table {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 1rem auto;
+            }
+
+            .pricing-card {
+                padding: 1.5rem;
+                min-height: auto;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+                order: -1;
+            }
+
+            .price {
+                font-size: 2.5rem;
+            }
+
+            .plan-name {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pricing-card {
+                padding: 1rem;
+                margin: 0 0.5rem;
+            }
+
+            .price {
+                font-size: 2rem;
+            }
+
+            .cta-button {
+                padding: 0.875rem 1.5rem;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1a1a1a;
+                color: #e9ecef;
+            }
+
+            .pricing-card {
+                background: #2d3748;
+                border-color: #4a5568;
+            }
+
+            .plan-name {
+                color: #e9ecef;
+            }
+
+            .billing-switch {
+                background: #4a5568;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .pricing-card,
+            .cta-button {
+                transition: none;
+            }
+
+            .pricing-card:hover {
+                transform: none;
+            }
+
+            .cta-button:hover {
+                transform: none;
+            }
+        }
+
+        /* High contrast mode */
+        @media (prefers-contrast: high) {
+            .pricing-card {
+                border-width: 3px;
+                border-style: solid;
+                border-color: currentColor;
+            }
+
+            .cta-button {
+                border: 2px solid currentColor;
+            }
+        }
+
+        /* Loading state */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .loading .cta-button {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .loading .cta-button::after {
+            content: "";
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 0.5rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <main role="main">
+        <h1 style="text-align: center; margin: 2rem 0; color: #2c3e50;">
+            Choose Your Plan
+        </h1>
+
+        <!-- Billing period toggle -->
+        <div class="billing-controls">
+            <div class="billing-switch" data-testid="billing-toggle">
+                <div class="billing-option active" data-period="monthly">Monthly</div>
+                <div class="billing-option" data-period="yearly">Yearly</div>
+            </div>
+        </div>
+
+        <!-- Pricing table -->
+        <div class="pricing-table" role="region" aria-label="Pricing plans">
+            <!-- Basic Plan -->
+            <div class="pricing-card" tabindex="0" role="article" aria-labelledby="basic-title">
+                <header class="card-header">
+                    <h2 id="basic-title" class="plan-name">Basic</h2>
+                    <div class="price" data-monthly="$9" data-yearly="$99">$9</div>
+                    <div class="price-period">per month</div>
+                </header>
+
+                <ul class="feature-list" role="list">
+                    <li class="feature" role="listitem">Up to 5 projects</li>
+                    <li class="feature" role="listitem">10GB storage</li>
+                    <li class="feature" role="listitem">Email support</li>
+                    <li class="feature" role="listitem">Basic analytics</li>
+                    <li class="feature" role="listitem">SSL certificate</li>
+                </ul>
+
+                <button class="cta-button" data-testid="cta-basic" aria-describedby="basic-title">
+                    Get Started
+                </button>
+            </div>
+
+            <!-- Pro Plan (Featured) -->
+            <div class="pricing-card featured" tabindex="0" role="article" aria-labelledby="pro-title">
+                <header class="card-header">
+                    <h2 id="pro-title" class="plan-name">Pro</h2>
+                    <div class="price" data-monthly="$19" data-yearly="$199">$19</div>
+                    <div class="price-period">per month</div>
+                </header>
+
+                <ul class="feature-list" role="list">
+                    <li class="feature" role="listitem">Unlimited projects</li>
+                    <li class="feature" role="listitem">100GB storage</li>
+                    <li class="feature" role="listitem">Priority support</li>
+                    <li class="feature" role="listitem">Advanced analytics</li>
+                    <li class="feature" role="listitem">Custom domains</li>
+                    <li class="feature" role="listitem">Team collaboration</li>
+                    <li class="feature" role="listitem">API access</li>
+                </ul>
+
+                <button class="cta-button" data-testid="cta-pro" aria-describedby="pro-title">
+                    Start Pro Trial
+                </button>
+            </div>
+
+            <!-- Enterprise Plan -->
+            <div class="pricing-card" tabindex="0" role="article" aria-labelledby="enterprise-title">
+                <header class="card-header">
+                    <h2 id="enterprise-title" class="plan-name">Enterprise</h2>
+                    <div class="price" data-monthly="$49" data-yearly="$499">$49</div>
+                    <div class="price-period">per month</div>
+                </header>
+
+                <ul class="feature-list" role="list">
+                    <li class="feature" role="listitem">Everything in Pro</li>
+                    <li class="feature" role="listitem">Unlimited storage</li>
+                    <li class="feature" role="listitem">24/7 phone support</li>
+                    <li class="feature" role="listitem">Custom integrations</li>
+                    <li class="feature" role="listitem">Advanced security</li>
+                    <li class="feature" role="listitem">Dedicated manager</li>
+                    <li class="feature" role="listitem">SLA guarantee</li>
+                </ul>
+
+                <button class="cta-button" data-testid="cta-enterprise" aria-describedby="enterprise-title">
+                    Contact Sales
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Screen reader announcements -->
+    <div aria-live="polite" aria-atomic="true" class="sr-only" id="announcements"></div>
+
+    <script>
+        // Pricing table JavaScript functionality
+        (function() {
+            'use strict';
+
+            // Elements
+            const billingToggle = document.querySelector('[data-testid="billing-toggle"]');
+            const billingOptions = document.querySelectorAll('.billing-option');
+            const prices = document.querySelectorAll('.price');
+            const pricePeriods = document.querySelectorAll('.price-period');
+            const announcements = document.getElementById('announcements');
+            const ctaButtons = document.querySelectorAll('.cta-button');
+
+            // State
+            let currentPeriod = 'monthly';
+
+            // Initialize
+            init();
+
+            function init() {
+                if (billingToggle) {
+                    billingToggle.addEventListener('click', handleBillingToggle);
+                    billingToggle.addEventListener('keydown', handleBillingKeydown);
+                }
+
+                ctaButtons.forEach(button => {
+                    button.addEventListener('click', handleCTAClick);
+                });
+
+                // Handle reduced motion
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    document.body.classList.add('reduced-motion');
+                }
+            }
+
+            function handleBillingToggle(event) {
+                const target = event.target;
+                if (target.classList.contains('billing-option')) {
+                    const newPeriod = target.dataset.period;
+                    if (newPeriod !== currentPeriod) {
+                        updateBillingPeriod(newPeriod);
+                    }
+                }
+            }
+
+            function handleBillingKeydown(event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    handleBillingToggle(event);
+                }
+            }
+
+            function updateBillingPeriod(period) {
+                currentPeriod = period;
+
+                // Update active state
+                billingOptions.forEach(option => {
+                    option.classList.toggle('active', option.dataset.period === period);
+                });
+
+                // Update prices
+                prices.forEach(priceElement => {
+                    const newPrice = priceElement.dataset[period];
+                    if (newPrice) {
+                        priceElement.textContent = newPrice;
+                    }
+                });
+
+                // Update period text
+                pricePeriods.forEach(periodElement => {
+                    periodElement.textContent = period === 'yearly' ? 'per year' : 'per month';
+                });
+
+                // Announce change to screen readers
+                announce(`Pricing updated to ${period} billing`);
+            }
+
+            function handleCTAClick(event) {
+                const button = event.currentTarget;
+                const card = button.closest('.pricing-card');
+                const planName = card.querySelector('.plan-name').textContent;
+
+                // Add loading state
+                button.classList.add('loading');
+                button.disabled = true;
+                button.textContent = 'Loading...';
+
+                // Simulate API call
+                setTimeout(() => {
+                    button.classList.remove('loading');
+                    button.disabled = false;
+                    button.textContent = button.dataset.originalText || 'Get Started';
+                    
+                    announce(`${planName} plan selected. Redirecting to checkout.`);
+                    
+                    // In real app, would redirect to checkout
+                    console.log(`Selected ${planName} plan with ${currentPeriod} billing`);
+                }, 1500);
+
+                // Store original text for restoration
+                if (!button.dataset.originalText) {
+                    button.dataset.originalText = button.textContent;
+                }
+            }
+
+            function announce(message) {
+                if (announcements) {
+                    announcements.textContent = message;
+                }
+            }
+
+            // Handle viewport changes for responsive behavior
+            function handleViewportChange() {
+                const isMobile = window.innerWidth <= 768;
+                
+                // Adjust focus behavior for mobile
+                if (isMobile) {
+                    document.querySelectorAll('.pricing-card').forEach(card => {
+                        card.setAttribute('tabindex', '-1');
+                    });
+                } else {
+                    document.querySelectorAll('.pricing-card').forEach(card => {
+                        card.setAttribute('tabindex', '0');
+                    });
+                }
+            }
+
+            window.addEventListener('resize', handleViewportChange);
+            handleViewportChange(); // Initial call
+
+        })();
+    </script>
+
+    <!-- Accessibility helper for screen readers -->
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</body>
+</html>

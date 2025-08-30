@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Theme Toggle Example</title>
+    <style>
+        /* Inline minimal theme system for standalone use */
+        :root {
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Light theme */
+            --bg: hsl(0, 0%, 100%);
+            --surface: hsl(220, 13%, 97%);
+            --text: hsl(220, 13%, 18%);
+            --primary: hsl(220, 90%, 56%);
+            --border: hsl(220, 13%, 91%);
+        }
+        
+        [data-theme="dark"] {
+            --bg: hsl(220, 13%, 9%);
+            --surface: hsl(220, 13%, 12%);
+            --text: hsl(0, 0%, 95%);
+            --primary: hsl(220, 90%, 66%);
+            --border: hsl(220, 13%, 21%);
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg: hsl(220, 13%, 9%);
+                --surface: hsl(220, 13%, 12%);
+                --text: hsl(0, 0%, 95%);
+                --primary: hsl(220, 90%, 66%);
+                --border: hsl(220, 13%, 21%);
+            }
+        }
+        
+        * { transition: background-color var(--transition), color var(--transition), border-color var(--transition); }
+        
+        body {
+            font-family: system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 2rem;
+            margin: 0;
+        }
+        
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Minimal toggle */
+        .toggle-input { position: absolute; opacity: 0; }
+        .toggle-btn {
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+            background: var(--border);
+            border-radius: 13px;
+            position: relative;
+            cursor: pointer;
+            transition: background var(--transition);
+        }
+        .toggle-btn::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: transform var(--transition);
+        }
+        .toggle-input:checked + .toggle-btn { background: var(--primary); }
+        .toggle-input:checked + .toggle-btn::before { transform: translateX(24px); }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Minimal Theme Toggle</h1>
+        <p>A lightweight CSS-only theme toggle with localStorage persistence.</p>
+        
+        <label>
+            <input type="checkbox" class="toggle-input" id="theme-toggle">
+            <span class="toggle-btn"></span>
+            Toggle dark mode
+        </label>
+        
+        <p>Current theme: <span id="theme-display">light</span></p>
+    </div>
+    
+    <div class="card">
+        <h2>Features</h2>
+        <ul>
+            <li>Pure CSS styling</li>
+            <li>System preference detection</li>
+            <li>localStorage persistence</li>
+            <li>Smooth transitions</li>
+            <li>Minimal JavaScript (< 1KB)</li>
+        </ul>
+    </div>
+
+    <script>
+        // Minimal theme controller (< 1KB minified)
+        const toggle = document.getElementById('theme-toggle');
+        const display = document.getElementById('theme-display');
+        const key = 'theme';
+        
+        function getTheme() {
+            return localStorage.getItem(key) || 
+                   (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        }
+        
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem(key, theme);
+            toggle.checked = theme === 'dark';
+            display.textContent = theme;
+        }
+        
+        toggle.addEventListener('change', () => {
+            setTheme(toggle.checked ? 'dark' : 'light');
+        });
+        
+        // Initialize
+        setTheme(getTheme());
+        
+        // System preference changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            if (!localStorage.getItem(key)) setTheme(getTheme());
+        });
+    </script>
+</body>
+</html>

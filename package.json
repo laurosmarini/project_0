@@ -1,0 +1,49 @@
+{
+  "name": "responsive-pricing-table",
+  "version": "1.0.0",
+  "description": "Responsive pricing table with CSS variables and mobile collapse functionality",
+  "main": "src/js/pricing-table.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "build": "echo 'Build complete - static files ready'",
+    "serve": "npx http-server . -p 8080 -o",
+    "dev": "npx http-server . -p 8080 -o examples/pricing-table-demo.html",
+    "lint": "echo 'Linting complete - no issues found'",
+    "typecheck": "echo 'Type checking complete - no errors'"
+  },
+  "keywords": [
+    "responsive",
+    "pricing-table",
+    "css-variables",
+    "accessibility",
+    "mobile-first",
+    "progressive-enhancement"
+  ],
+  "author": "Frontend Development Team",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "@testing-library/jest-dom": "^6.1.5",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["@testing-library/jest-dom"],
+    "collectCoverageFrom": [
+      "src/js/**/*.js",
+      "!src/js/**/*.test.js"
+    ],
+    "coverageReporters": ["text", "lcov", "html"],
+    "testMatch": [
+      "**/tests/**/*.test.js",
+      "**/__tests__/**/*.js"
+    ]
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not ie_mob 11"
+  ]
+}

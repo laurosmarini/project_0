@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS-Only Responsive Image Carousel</title>
+    <link rel="stylesheet" href="carousel.css">
+</head>
+<body>
+    <!-- Research Agent Task: Analyze semantic HTML structure requirements -->
+    <!-- Architecture Agent Task: Design component architecture -->
+    <!-- CSS Developer Task: Implement carousel functionality -->
+    <!-- QA Agent Task: Test accessibility and responsiveness -->
+    
+    <main class="carousel-container" role="main" aria-label="Image carousel">
+        <div class="carousel" id="image-carousel">
+            <h2 class="carousel-title">Responsive Image Gallery</h2>
+            
+            <!-- Carousel Navigation - Keyboard accessible -->
+            <div class="carousel-nav" role="tablist" aria-label="Carousel navigation">
+                <input type="radio" name="carousel" id="slide-1" class="carousel-input" checked aria-labelledby="slide-1-label">
+                <input type="radio" name="carousel" id="slide-2" class="carousel-input" aria-labelledby="slide-2-label">
+                <input type="radio" name="carousel" id="slide-3" class="carousel-input" aria-labelledby="slide-3-label">
+                <input type="radio" name="carousel" id="slide-4" class="carousel-input" aria-labelledby="slide-4-label">
+                
+                <!-- Carousel Images Container -->
+                <div class="carousel-slides" role="tabpanel">
+                    <div class="slide" role="img" aria-labelledby="slide-1-label">
+                        <img src="https://picsum.photos/800/400?random=1" alt="Beautiful landscape with mountains" loading="lazy">
+                        <div class="slide-caption">
+                            <h3 id="slide-1-label">Mountain Landscape</h3>
+                            <p>Breathtaking view of snow-capped mountains</p>
+                        </div>
+                    </div>
+                    
+                    <div class="slide" role="img" aria-labelledby="slide-2-label">
+                        <img src="https://picsum.photos/800/400?random=2" alt="Serene forest pathway" loading="lazy">
+                        <div class="slide-caption">
+                            <h3 id="slide-2-label">Forest Path</h3>
+                            <p>A peaceful walk through nature</p>
+                        </div>
+                    </div>
+                    
+                    <div class="slide" role="img" aria-labelledby="slide-3-label">
+                        <img src="https://picsum.photos/800/400?random=3" alt="Ocean waves at sunset" loading="lazy">
+                        <div class="slide-caption">
+                            <h3 id="slide-3-label">Ocean Sunset</h3>
+                            <p>Golden hour by the seaside</p>
+                        </div>
+                    </div>
+                    
+                    <div class="slide" role="img" aria-labelledby="slide-4-label">
+                        <img src="https://picsum.photos/800/400?random=4" alt="City skyline at night" loading="lazy">
+                        <div class="slide-caption">
+                            <h3 id="slide-4-label">Urban Night</h3>
+                            <p>City lights illuminate the darkness</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Labels -->
+                <div class="carousel-controls" role="group" aria-label="Slide selection">
+                    <label for="slide-1" class="carousel-control" role="tab" aria-controls="slide-1" aria-selected="true">
+                        <span class="sr-only">Go to slide 1</span>
+                    </label>
+                    <label for="slide-2" class="carousel-control" role="tab" aria-controls="slide-2" aria-selected="false">
+                        <span class="sr-only">Go to slide 2</span>
+                    </label>
+                    <label for="slide-3" class="carousel-control" role="tab" aria-controls="slide-3" aria-selected="false">
+                        <span class="sr-only">Go to slide 3</span>
+                    </label>
+                    <label for="slide-4" class="carousel-control" role="tab" aria-controls="slide-4" aria-selected="false">
+                        <span class="sr-only">Go to slide 4</span>
+                    </label>
+                </div>
+                
+                <!-- Previous/Next Navigation -->
+                <div class="carousel-arrows">
+                    <label for="slide-4" class="arrow arrow-prev" aria-label="Previous slide">‹</label>
+                    <label for="slide-2" class="arrow arrow-next" aria-label="Next slide">›</label>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

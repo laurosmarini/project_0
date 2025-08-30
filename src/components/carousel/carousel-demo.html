@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS-Only Image Carousel - Complete Demo</title>
+  <link rel="stylesheet" href="image-carousel.css">
+  <link rel="stylesheet" href="carousel-variations.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem 1rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    
+    .demo-section {
+      margin-bottom: 4rem;
+    }
+    
+    .demo-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 3rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .demo-subtitle {
+      text-align: center;
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    
+    .variation-title {
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 1rem;
+      padding-left: 1rem;
+      border-left: 4px solid rgba(255,255,255,0.5);
+    }
+    
+    .variation-description {
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 2rem;
+      padding-left: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="demo-title">CSS-Only Image Carousel</h1>
+    <p class="demo-subtitle">Responsive, Accessible, No JavaScript Required</p>
+  </header>
+
+  <!-- Standard Carousel -->
+  <section class="demo-section">
+    <h2 class="variation-title">1. Standard Feature-Rich Carousel</h2>
+    <p class="variation-description">Complete carousel with captions, navigation arrows, and dot indicators. Fully accessible with keyboard navigation.</p>
+    
+    <section class="carousel" role="region" aria-labelledby="standard-carousel-heading" data-carousel="standard">
+      <header class="carousel__header">
+        <h2 id="standard-carousel-heading" class="carousel__title">Nature Photography</h2>
+        <p class="carousel__subtitle">Beautiful landscapes from around the world</p>
+      </header>
+
+      <div class="carousel__container">
+        <div class="carousel__track" role="group" aria-label="Nature photography gallery">
+          <article class="carousel__slide" id="std-slide-1" tabindex="0" role="img" aria-labelledby="std-slide-1-title">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop&crop=center" 
+                 alt="Majestic mountain range reflected in pristine alpine lake during golden hour"
+                 class="carousel__image" 
+                 loading="lazy">
+            <div class="carousel__caption">
+              <h3 id="std-slide-1-title" class="carousel__slide-title">Alpine Reflection</h3>
+              <p class="carousel__slide-description">Snow-capped peaks mirror perfectly in the still mountain lake</p>
+            </div>
+          </article>
+
+          <article class="carousel__slide" id="std-slide-2" tabindex="0" role="img" aria-labelledby="std-slide-2-title">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=800&fit=crop&crop=center" 
+                 alt="Rolling green hills covered in wildflowers with mountains in the distance"
+                 class="carousel__image" 
+                 loading="lazy">
+            <div class="carousel__caption">
+              <h3 id="std-slide-2-title" class="carousel__slide-title">Wildflower Valley</h3>
+              <p class="carousel__slide-description">Spring blooms create a colorful carpet across the meadow</p>
+            </div>
+          </article>
+
+          <article class="carousel__slide" id="std-slide-3" tabindex="0" role="img" aria-labelledby="std-slide-3-title">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&h=800&fit=crop&crop=center" 
+                 alt="Dense evergreen forest with shafts of sunlight filtering through morning mist"
+                 class="carousel__image" 
+                 loading="lazy">
+            <div class="carousel__caption">
+              <h3 id="std-slide-3-title" class="carousel__slide-title">Enchanted Forest</h3>
+              <p class="carousel__slide-description">Sunbeams pierce the misty canopy of ancient pines</p>
+            </div>
+          </article>
+        </div>
+
+        <nav class="carousel__navigation" role="tablist" aria-label="Standard carousel navigation">
+          <a href="#std-slide-1" class="carousel__indicator" role="tab" aria-selected="true" 
+             aria-label="Go to slide 1: Alpine Reflection" tabindex="0">
+            <span class="carousel__indicator-label">1</span>
+          </a>
+          <a href="#std-slide-2" class="carousel__indicator" role="tab" aria-selected="false" 
+             aria-label="Go to slide 2: Wildflower Valley" tabindex="-1">
+            <span class="carousel__indicator-label">2</span>
+          </a>
+          <a href="#std-slide-3" class="carousel__indicator" role="tab" aria-selected="false" 
+             aria-label="Go to slide 3: Enchanted Forest" tabindex="-1">
+            <span class="carousel__indicator-label">3</span>
+          </a>
+        </nav>
+
+        <div class="carousel__arrows">
+          <a href="#std-slide-3" class="carousel__arrow carousel__arrow--prev" 
+             aria-label="Previous slide: Enchanted Forest">
+            <svg class="carousel__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15,18 9,12 15,6"></polyline>
+            </svg>
+          </a>
+          <a href="#std-slide-2" class="carousel__arrow carousel__arrow--next" 
+             aria-label="Next slide: Wildflower Valley">
+            <svg class="carousel__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9,18 15,12 9,6"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- Minimal Carousel -->
+  <section class="demo-section">
+    <h2 class="variation-title">2. Minimal Carousel</h2>
+    <p class="variation-description">Clean, simple design without captions. Perfect for product galleries or simple image showcases.</p>
+    
+    <section class="carousel carousel--minimal" role="region" aria-labelledby="minimal-carousel-heading">
+      <header class="carousel__header">
+        <h2 id="minimal-carousel-heading" class="carousel__title">Product Gallery</h2>
+      </header>
+
+      <div class="carousel__container">
+        <div class="carousel__track" role="group" aria-label="Product gallery">
+          <article class="carousel__slide" id="min-slide-1" tabindex="0" role="img" aria-label="Product view 1">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&h=600&fit=crop" 
+                 alt="Red running shoes on white background"
+                 class="carousel__image" 
+                 loading="lazy">
+          </article>
+          <article class="carousel__slide" id="min-slide-2" tabindex="0" role="img" aria-label="Product view 2">
+            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&h=600&fit=crop" 
+                 alt="White sneakers from side angle"
+                 class="carousel__image" 
+                 loading="lazy">
+          </article>
+          <article class="carousel__slide" id="min-slide-3" tabindex="0" role="img" aria-label="Product view 3">
+            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&h=600&fit=crop" 
+                 alt="Black athletic shoes with colorful soles"
+                 class="carousel__image" 
+                 loading="lazy">
+          </article>
+        </div>
+
+        <nav class="carousel__navigation" role="tablist" aria-label="Minimal carousel navigation">
+          <a href="#min-slide-1" class="carousel__indicator" role="tab" aria-selected="true" 
+             aria-label="View product image 1" tabindex="0">
+            <span class="carousel__indicator-label">1</span>
+          </a>
+          <a href="#min-slide-2" class="carousel__indicator" role="tab" aria-selected="false" 
+             aria-label="View product image 2" tabindex="-1">
+            <span class="carousel__indicator-label">2</span>
+          </a>
+          <a href="#min-slide-3" class="carousel__indicator" role="tab" aria-selected="false" 
+             aria-label="View product image 3" tabindex="-1">
+            <span class="carousel__indicator-label">3</span>
+          </a>
+        </nav>
+      </div>
+    </section>
+  </section>
+
+  <!-- Thumbnail Carousel -->
+  <section class="demo-section">
+    <h2 class="variation-title">3. Thumbnail Navigation</h2>
+    <p class="variation-description">Visual thumbnail indicators instead of dots. Great for galleries where users want to preview images.</p>
+    
+    <section class="carousel carousel--thumbnail" role="region" aria-labelledby="thumb-carousel-heading">
+      <header class="carousel__header">
+        <h2 id="thumb-carousel-heading" class="carousel__title">Architecture Gallery</h2>
+      </header>
+
+      <div class="carousel__container">
+        <div class="carousel__track" role="group" aria-label="Architecture gallery">
+          <article class="carousel__slide" id="thumb-slide-1" tabindex="0" role="img" aria-labelledby="thumb-slide-1-title">
+            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop" 
+                 alt="Modern glass office building with geometric patterns"
+                 class="carousel__image" 
+                 loading="lazy">
+            <div class="carousel__caption">
+              <h3 id="thumb-slide-1-title" class="carousel__slide-title">Modern Office Complex</h3>
+              <p class="carousel__slide-description">Contemporary glass architecture with geometric patterns</p>
+            </div>
+          </article>
+          <article class="carousel__slide" id="thumb-slide-2" tabindex="0" role="img" aria-labelledby="thumb-slide-2-title">
+            <img src="https://images.unsplash.com/photo-1486718448742-163732cd1544?w=800&h=600&fit=crop" 
+                 alt="Classical cathedral with ornate stone architecture"
+                 class="carousel__image" 
+                 loading="lazy">
+            <div class="carousel__caption">
+              <h3 id="thumb-slide-2-title" class="carousel__slide-title">Historic Cathedral</h3>
+              <p class="carousel__slide-description">Gothic architecture with intricate stone carvings</p>
+            </div>
+          </article>
+          <article class="carousel__slide" id="thumb-slide-3" tabindex="0" role="img" aria-labelledby="thumb-slide-3-title">
+            <img src="https://images.unsplash.com/photo-1511452885600-a3d2c9148a31?w=800&h=600&fit=crop" 
+                 alt="Futuristic bridge with cable-stay design at sunset"
+                 class="carousel__image" 
+                 loading="lazy">
+            <div class="carousel__caption">
+              <h3 id="thumb-slide-3-title" class="carousel__slide-title">Cable-Stay Bridge</h3>
+              <p class="carousel__slide-description">Engineering marvel connecting city skylines</p>
+            </div>
+          </article>
+        </div>
+
+        <nav class="carousel__navigation" role="tablist" aria-label="Thumbnail carousel navigation">
+          <a href="#thumb-slide-1" class="carousel__indicator" role="tab" aria-selected="true" 
+             aria-label="Go to slide 1: Modern Office Complex" tabindex="0">
+          </a>
+          <a href="#thumb-slide-2" class="carousel__indicator" role="tab" aria-selected="false" 
+             aria-label="Go to slide 2: Historic Cathedral" tabindex="-1">
+          </a>
+          <a href="#thumb-slide-3" class="carousel__indicator" role="tab" aria-selected="false" 
+             aria-label="Go to slide 3: Cable-Stay Bridge" tabindex="-1">
+          </a>
+        </nav>
+      </div>
+    </section>
+  </section>
+
+  <!-- Auto-Playing Carousel -->
+  <section class="demo-section">
+    <h2 class="variation-title">4. Auto-Playing Carousel</h2>
+    <p class="variation-description">Automatically cycles through slides. Pauses on hover or focus for accessibility. Uses only CSS animations.</p>
+    
+    <section class="carousel carousel--autoplay" role="region" aria-labelledby="auto-carousel-heading">
+      <header class="carousel__header">
+        <h2 id="auto-carousel-heading" class="carousel__title">Featured Destinations</h2>
+        <p class="carousel__subtitle">Hover or focus to pause auto-play</p>
+      </header>
+
+      <div class="carousel__container">
+        <div class="carousel__track" role="group" aria-label="Featured destinations slideshow">
+          <article class="carousel__slide" id="auto-slide-1" tabindex="0" role="img" aria-labelledby="auto-slide-1-title">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=800&fit=crop" 
+                 alt="Tropical paradise beach with crystal clear turquoise water and white sand"
+                 class="carousel__image" 
+                 loading="lazy">
+            <div class="carousel__caption">
+              <h3 id="auto-slide-1-title" class="carousel__slide-title">Maldives Paradise</h3>
+              <p class="carousel__slide-description">Pristine beaches and crystal-clear waters await</p>
+            </div>
+          </article>
+          <article class="carousel__slide" id="auto-slide-2" tabindex="0" role="img" aria-labelledby="auto-slide-2-title">
+            <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=1200&h=800&fit=crop" 
+                 alt="Northern lights dancing over snow-covered mountain landscape"
+                 class="carousel__image" 
+                 loading="lazy">
+            <div class="carousel__caption">
+              <h3 id="auto-slide-2-title" class="carousel__slide-title">Aurora Borealis</h3>
+              <p class="carousel__slide-description">Witness nature's most spectacular light show</p>
+            </div>
+          </article>
+          <article class="carousel__slide" id="auto-slide-3" tabindex="0" role="img" aria-labelledby="auto-slide-3-title">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop" 
+                 alt="Japanese temple garden with cherry blossoms in full bloom"
+                 class="carousel__image" 
+                 loading="lazy">
+            <div class="carousel__caption">
+              <h3 id="auto-slide-3-title" class="carousel__slide-title">Kyoto Gardens</h3>
+              <p class="carousel__slide-description">Serene temples surrounded by cherry blossoms</p>
+            </div>
+          </article>
+        </div>
+
+        <nav class="carousel__navigation" role="tablist" aria-label="Auto-play carousel navigation">
+          <a href="#auto-slide-1" class="carousel__indicator" role="tab" aria-selected="true" 
+             aria-label="Go to slide 1: Maldives Paradise" tabindex="0">
+            <span class="carousel__indicator-label">1</span>
+          </a>
+          <a href="#auto-slide-2" class="carousel__indicator" role="tab" aria-selected="false" 
+             aria-label="Go to slide 2: Aurora Borealis" tabindex="-1">
+            <span class="carousel__indicator-label">2</span>
+          </a>
+          <a href="#auto-slide-3" class="carousel__indicator" role="tab" aria-selected="false" 
+             aria-label="Go to slide 3: Kyoto Gardens" tabindex="-1">
+            <span class="carousel__indicator-label">3</span>
+          </a>
+        </nav>
+      </div>
+    </section>
+  </section>
+
+  <!-- Instructions -->
+  <section class="demo-section">
+    <aside class="carousel__instructions" aria-labelledby="demo-instructions-heading">
+      <h3 id="demo-instructions-heading">How to Use These Carousels</h3>
+      <ul>
+        <li><strong>Mouse Users:</strong> Click on dot indicators or arrow buttons to navigate</li>
+        <li><strong>Keyboard Users:</strong> Tab to focus on indicators, then press Enter or Space to activate</li>
+        <li><strong>Touch Devices:</strong> Tap indicators or swipe on supporting devices</li>
+        <li><strong>Screen Readers:</strong> Navigate by landmarks and use the tab navigation pattern</li>
+        <li><strong>Auto-play Carousel:</strong> Hover or focus any element to pause automatic advancement</li>
+      </ul>
+      
+      <h4>Accessibility Features</h4>
+      <ul>
+        <li>WCAG 2.1 AA compliant color contrast ratios</li>
+        <li>Complete keyboard navigation support</li>
+        <li>Proper ARIA roles and labels for screen readers</li>
+        <li>Respects reduced motion preferences</li>
+        <li>Focus management and visible focus indicators</li>
+      </ul>
+    </aside>
+  </section>
+</body>
+</html>

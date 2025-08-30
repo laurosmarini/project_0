@@ -1,0 +1,359 @@
+/* ==================================================
+   Carousel Variations & Alternative Layouts
+   Additional styles for different carousel use cases
+   ================================================== */
+
+/* ==================================================
+   Variation 1: Minimal Carousel (No Captions)
+   ================================================== */
+
+.carousel--minimal {
+  --carousel-space-4: 1rem;
+}
+
+.carousel--minimal .carousel__caption {
+  display: none;
+}
+
+.carousel--minimal .carousel__slide {
+  aspect-ratio: 16/9;
+}
+
+.carousel--minimal .carousel__navigation {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.carousel--minimal .carousel__indicator {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.carousel--minimal .carousel__indicator:hover,
+.carousel--minimal .carousel__indicator:focus {
+  background: var(--carousel-black);
+}
+
+/* ==================================================
+   Variation 2: Full-Width Hero Carousel
+   ================================================== */
+
+.carousel--hero {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.carousel--hero .carousel__container {
+  border-radius: 0;
+  min-height: 70vh;
+}
+
+.carousel--hero .carousel__slide {
+  min-height: 70vh;
+  aspect-ratio: auto;
+}
+
+.carousel--hero .carousel__header {
+  position: absolute;
+  top: var(--carousel-space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--carousel-z-caption);
+  color: var(--carousel-white);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: var(--carousel-space-6);
+  border-radius: var(--carousel-border-radius);
+  backdrop-filter: blur(8px);
+}
+
+.carousel--hero .carousel__title {
+  color: var(--carousel-white);
+  font-size: clamp(var(--carousel-font-size-xl), 4vw, 3rem);
+}
+
+.carousel--hero .carousel__subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.carousel--hero .carousel__caption {
+  transform: translateY(0);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    transparent 100%
+  );
+  padding: var(--carousel-space-12) var(--carousel-space-6) var(--carousel-space-6);
+}
+
+/* ==================================================
+   Variation 3: Compact Thumbnail Carousel
+   ================================================== */
+
+.carousel--thumbnail {
+  max-width: 800px;
+}
+
+.carousel--thumbnail .carousel__slide {
+  aspect-ratio: 4/3;
+  min-height: 200px;
+}
+
+.carousel--thumbnail .carousel__navigation {
+  position: static;
+  margin-top: var(--carousel-space-4);
+  background: transparent;
+  justify-content: center;
+  backdrop-filter: none;
+}
+
+.carousel--thumbnail .carousel__indicator {
+  width: 60px;
+  height: 40px;
+  border-radius: var(--carousel-border-radius);
+  background-size: cover;
+  background-position: center;
+  background-color: var(--carousel-gray-200);
+  border: 2px solid var(--carousel-white);
+  box-shadow: var(--carousel-shadow-sm);
+  overflow: hidden;
+}
+
+.carousel--thumbnail .carousel__indicator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  transition: opacity var(--carousel-transition-fast);
+}
+
+.carousel--thumbnail .carousel__indicator:hover::before {
+  opacity: 0.2;
+}
+
+#slide-1:target ~ .carousel__navigation .carousel__indicator[href="#slide-1"]::before,
+#slide-2:target ~ .carousel__navigation .carousel__indicator[href="#slide-2"]::before,
+#slide-3:target ~ .carousel__navigation .carousel__indicator[href="#slide-3"]::before,
+#slide-4:target ~ .carousel__navigation .carousel__indicator[href="#slide-4"]::before,
+#slide-5:target ~ .carousel__navigation .carousel__indicator[href="#slide-5"]::before {
+  opacity: 0;
+}
+
+/* Thumbnail background images (would typically be set via inline styles or data attributes) */
+.carousel--thumbnail .carousel__indicator[href="#slide-1"] {
+  background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=120&h=80&fit=crop');
+}
+
+.carousel--thumbnail .carousel__indicator[href="#slide-2"] {
+  background-image: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=120&h=80&fit=crop');
+}
+
+.carousel--thumbnail .carousel__indicator[href="#slide-3"] {
+  background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=120&h=80&fit=crop');
+}
+
+.carousel--thumbnail .carousel__indicator[href="#slide-4"] {
+  background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=120&h=80&fit=crop');
+}
+
+.carousel--thumbnail .carousel__indicator[href="#slide-5"] {
+  background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=120&h=80&fit=crop');
+}
+
+/* ==================================================
+   Variation 4: Auto-Playing Carousel (CSS Animation)
+   ================================================== */
+
+.carousel--autoplay .carousel__track {
+  animation: autoSlide 20s infinite;
+  animation-play-state: running;
+}
+
+.carousel--autoplay:hover .carousel__track {
+  animation-play-state: paused;
+}
+
+.carousel--autoplay:focus-within .carousel__track {
+  animation-play-state: paused;
+}
+
+/* Disable autoplay if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .carousel--autoplay .carousel__track {
+    animation: none;
+  }
+}
+
+@keyframes autoSlide {
+  0%, 18% { transform: translateX(0%); }
+  20%, 38% { transform: translateX(-100%); }
+  40%, 58% { transform: translateX(-200%); }
+  60%, 78% { transform: translateX(-300%); }
+  80%, 98% { transform: translateX(-400%); }
+  100% { transform: translateX(0%); }
+}
+
+/* ==================================================
+   Variation 5: Vertical Carousel
+   ================================================== */
+
+.carousel--vertical .carousel__track {
+  flex-direction: column;
+  height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+}
+
+.carousel--vertical .carousel__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  scroll-snap-align: start;
+}
+
+.carousel--vertical .carousel__navigation {
+  right: var(--carousel-space-4);
+  left: auto;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  flex-direction: column;
+}
+
+.carousel--vertical .carousel__arrows {
+  flex-direction: column;
+  top: var(--carousel-space-4);
+  bottom: var(--carousel-space-4);
+  left: auto;
+  right: var(--carousel-space-4);
+  transform: none;
+  justify-content: flex-end;
+  gap: var(--carousel-space-2);
+}
+
+.carousel--vertical .carousel__arrow--prev .carousel__arrow-icon {
+  transform: rotate(-90deg);
+}
+
+.carousel--vertical .carousel__arrow--next .carousel__arrow-icon {
+  transform: rotate(90deg);
+}
+
+/* Vertical slide transitions */
+#slide-1:target ~ .carousel--vertical .carousel__track { transform: translateY(0%); }
+#slide-2:target ~ .carousel--vertical .carousel__track { transform: translateY(-100%); }
+#slide-3:target ~ .carousel--vertical .carousel__track { transform: translateY(-200%); }
+#slide-4:target ~ .carousel--vertical .carousel__track { transform: translateY(-300%); }
+#slide-5:target ~ .carousel--vertical .carousel__track { transform: translateY(-400%); }
+
+/* ==================================================
+   Variation 6: Card-Style Carousel
+   ================================================== */
+
+.carousel--cards {
+  background: transparent;
+  box-shadow: none;
+}
+
+.carousel--cards .carousel__container {
+  background: transparent;
+  overflow: visible;
+  box-shadow: none;
+}
+
+.carousel--cards .carousel__track {
+  gap: var(--carousel-space-4);
+  padding: var(--carousel-space-4);
+  overflow: visible;
+}
+
+.carousel--cards .carousel__slide {
+  border-radius: var(--carousel-border-radius-lg);
+  box-shadow: var(--carousel-shadow-lg);
+  transform-origin: center;
+  transition: transform var(--carousel-transition-normal), box-shadow var(--carousel-transition-normal);
+}
+
+.carousel--cards .carousel__slide:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+.carousel--cards .carousel__slide:focus {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+/* ==================================================
+   Responsive Adjustments for Variations
+   ================================================== */
+
+@media (max-width: 767px) {
+  .carousel--hero .carousel__header {
+    position: static;
+    transform: none;
+    margin-bottom: var(--carousel-space-6);
+    background: var(--carousel-gray-900);
+    backdrop-filter: none;
+  }
+  
+  .carousel--hero .carousel__container {
+    min-height: 50vh;
+  }
+  
+  .carousel--hero .carousel__slide {
+    min-height: 50vh;
+  }
+  
+  .carousel--thumbnail .carousel__indicator {
+    width: 40px;
+    height: 30px;
+  }
+  
+  .carousel--vertical {
+    height: 400px;
+  }
+  
+  .carousel--cards .carousel__track {
+    gap: var(--carousel-space-2);
+    padding: var(--carousel-space-2);
+  }
+}
+
+/* ==================================================
+   Utility Classes for Customization
+   ================================================== */
+
+.carousel--no-shadows {
+  box-shadow: none;
+}
+
+.carousel--no-shadows .carousel__container,
+.carousel--no-shadows .carousel__slide {
+  box-shadow: none;
+}
+
+.carousel--rounded-none {
+  border-radius: 0;
+}
+
+.carousel--rounded-none .carousel__container,
+.carousel--rounded-none .carousel__slide {
+  border-radius: 0;
+}
+
+.carousel--compact {
+  --carousel-space-4: 0.75rem;
+  --carousel-space-6: 1rem;
+  --carousel-space-8: 1.25rem;
+}
+
+.carousel--spacious {
+  --carousel-space-4: 1.5rem;
+  --carousel-space-6: 2rem;
+  --carousel-space-8: 3rem;
+}

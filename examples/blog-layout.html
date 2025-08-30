@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modern multi-column blog layout using CSS Grid">
+    <title>Modern Blog Layout - CSS Grid Demo</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../src/styles/grid-layout.css">
+    <link rel="stylesheet" href="../src/styles/sidebar.css">
+    <link rel="stylesheet" href="../src/styles/print.css">
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📰</text></svg>">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Modern Blog Layout - CSS Grid Demo">
+    <meta property="og:description" content="Responsive multi-column blog layout built with CSS Grid">
+    <meta property="og:type" content="website">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Modern Blog Layout Demo",
+      "description": "A demonstration of modern CSS Grid blog layout",
+      "url": "https://example.com"
+    }
+    </script>
+</head>
+<body>
+    <div class="blog-container">
+        <!-- Header -->
+        <header class="blog-header">
+            <h1>Modern Blog</h1>
+            <nav class="blog-nav" role="navigation" aria-label="Main navigation">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#categories">Categories</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="blog-sidebar" role="complementary" aria-label="Primary sidebar">
+            <!-- Search Widget -->
+            <div class="widget search-widget">
+                <h3 class="widget-title">Search</h3>
+                <form class="search-form" role="search">
+                    <input type="search" class="search-input" placeholder="Search articles..." aria-label="Search articles">
+                    <button type="submit" class="search-button" aria-label="Submit search">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="21 21l-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <div class="search-suggestions">
+                        <div class="search-suggestion">CSS Grid Tutorial</div>
+                        <div class="search-suggestion">Responsive Design</div>
+                        <div class="search-suggestion">Web Accessibility</div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Navigation Widget -->
+            <nav class="widget navigation-widget" role="navigation" aria-label="Categories navigation">
+                <h3 class="widget-title">Categories</h3>
+                <ul>
+                    <li><a href="#web-development" class="active">Web Development</a></li>
+                    <li><a href="#css-tutorials">CSS Tutorials</a></li>
+                    <li><a href="#javascript">JavaScript</a></li>
+                    <li><a href="#responsive-design">Responsive Design</a></li>
+                    <li><a href="#accessibility">Accessibility</a></li>
+                    <li><a href="#performance">Performance</a></li>
+                </ul>
+            </nav>
+
+            <!-- Recent Posts Widget -->
+            <div class="widget recent-posts-widget">
+                <h3 class="widget-title">Recent Posts</h3>
+                <ul class="recent-posts-list">
+                    <li class="recent-post-item">
+                        <a href="#post1" class="recent-post-link">Advanced CSS Grid Techniques</a>
+                        <time class="recent-post-date" datetime="2024-01-15">January 15, 2024</time>
+                    </li>
+                    <li class="recent-post-item">
+                        <a href="#post2" class="recent-post-link">Building Responsive Layouts</a>
+                        <time class="recent-post-date" datetime="2024-01-12">January 12, 2024</time>
+                    </li>
+                    <li class="recent-post-item">
+                        <a href="#post3" class="recent-post-link">Modern CSS Selectors</a>
+                        <time class="recent-post-date" datetime="2024-01-10">January 10, 2024</time>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="blog-main" role="main">
+            <div class="articles-grid">
+                <!-- Featured Article -->
+                <article class="article-card featured" itemscope itemtype="https://schema.org/BlogPosting">
+                    <header class="article-header">
+                        <h2 class="article-title" itemprop="headline">
+                            <a href="#featured-post">Mastering CSS Grid: A Complete Guide to Modern Layout Design</a>
+                        </h2>
+                        <div class="article-meta">
+                            <time datetime="2024-01-20" itemprop="datePublished">January 20, 2024</time>
+                            <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                <span itemprop="name">Sarah Johnson</span>
+                            </span>
+                            <span>8 min read</span>
+                        </div>
+                    </header>
+                    <div class="article-excerpt" itemprop="description">
+                        CSS Grid has revolutionized how we approach web layout design. This comprehensive guide covers everything from basic grid concepts to advanced techniques, helping you create responsive, flexible layouts that work across all devices. Learn about grid containers, grid items, track sizing, and powerful features like subgrid and container queries.
+                    </div>
+                    <div class="article-tags">
+                        <a href="#css" class="tag">CSS</a>
+                        <a href="#grid" class="tag">Grid</a>
+                        <a href="#layout" class="tag">Layout</a>
+                        <a href="#responsive" class="tag">Responsive</a>
+                    </div>
+                </article>
+
+                <!-- Regular Articles -->
+                <article class="article-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <header class="article-header">
+                        <h2 class="article-title" itemprop="headline">
+                            <a href="#flexbox-vs-grid">Flexbox vs Grid: When to Use Each Layout Method</a>
+                        </h2>
+                        <div class="article-meta">
+                            <time datetime="2024-01-18" itemprop="datePublished">January 18, 2024</time>
+                            <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                <span itemprop="name">Mike Chen</span>
+                            </span>
+                            <span>5 min read</span>
+                        </div>
+                    </header>
+                    <div class="article-excerpt" itemprop="description">
+                        Understanding the differences between Flexbox and CSS Grid is crucial for modern web development. This article breaks down the strengths of each layout method and provides practical examples of when to use one over the other.
+                    </div>
+                    <div class="article-tags">
+                        <a href="#flexbox" class="tag">Flexbox</a>
+                        <a href="#grid" class="tag">Grid</a>
+                        <a href="#comparison" class="tag">Comparison</a>
+                    </div>
+                </article>
+
+                <article class="article-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <header class="article-header">
+                        <h2 class="article-title" itemprop="headline">
+                            <a href="#responsive-typography">Responsive Typography with CSS Clamp and Fluid Scales</a>
+                        </h2>
+                        <div class="article-meta">
+                            <time datetime="2024-01-16" itemprop="datePublished">January 16, 2024</time>
+                            <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                <span itemprop="name">Emily Rodriguez</span>
+                            </span>
+                            <span>6 min read</span>
+                        </div>
+                    </header>
+                    <div class="article-excerpt" itemprop="description">
+                        Modern typography requires fluid scaling across devices. Learn how to use CSS clamp(), custom properties, and mathematical functions to create typography that adapts beautifully to any screen size.
+                    </div>
+                    <div class="article-tags">
+                        <a href="#typography" class="tag">Typography</a>
+                        <a href="#clamp" class="tag">Clamp</a>
+                        <a href="#responsive" class="tag">Responsive</a>
+                    </div>
+                </article>
+
+                <article class="article-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <header class="article-header">
+                        <h2 class="article-title" itemprop="headline">
+                            <a href="#css-custom-properties">Advanced CSS Custom Properties Techniques</a>
+                        </h2>
+                        <div class="article-meta">
+                            <time datetime="2024-01-14" itemprop="datePublished">January 14, 2024</time>
+                            <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                <span itemprop="name">David Park</span>
+                            </span>
+                            <span>7 min read</span>
+                        </div>
+                    </header>
+                    <div class="article-excerpt" itemprop="description">
+                        CSS Custom Properties (CSS Variables) offer powerful ways to create maintainable, dynamic styles. Explore advanced techniques including scoped variables, dynamic theme switching, and creative use cases.
+                    </div>
+                    <div class="article-tags">
+                        <a href="#css-variables" class="tag">CSS Variables</a>
+                        <a href="#theming" class="tag">Theming</a>
+                        <a href="#advanced" class="tag">Advanced</a>
+                    </div>
+                </article>
+
+                <article class="article-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <header class="article-header">
+                        <h2 class="article-title" itemprop="headline">
+                            <a href="#container-queries">Container Queries: The Future of Responsive Design</a>
+                        </h2>
+                        <div class="article-meta">
+                            <time datetime="2024-01-12" itemprop="datePublished">January 12, 2024</time>
+                            <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                <span itemprop="name">Lisa Wong</span>
+                            </span>
+                            <span>9 min read</span>
+                        </div>
+                    </header>
+                    <div class="article-excerpt" itemprop="description">
+                        Container queries represent a paradigm shift in responsive design. Learn how to create components that respond to their container size rather than the viewport, enabling truly modular design systems.
+                    </div>
+                    <div class="article-tags">
+                        <a href="#container-queries" class="tag">Container Queries</a>
+                        <a href="#responsive" class="tag">Responsive</a>
+                        <a href="#future" class="tag">Future CSS</a>
+                    </div>
+                </article>
+
+                <article class="article-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <header class="article-header">
+                        <h2 class="article-title" itemprop="headline">
+                            <a href="#web-accessibility">Building Accessible Web Components</a>
+                        </h2>
+                        <div class="article-meta">
+                            <time datetime="2024-01-10" itemprop="datePublished">January 10, 2024</time>
+                            <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                <span itemprop="name">James Miller</span>
+                            </span>
+                            <span>10 min read</span>
+                        </div>
+                    </header>
+                    <div class="article-excerpt" itemprop="description">
+                        Accessibility should be built into components from the ground up. This guide covers ARIA attributes, keyboard navigation, screen reader support, and testing strategies for creating inclusive web experiences.
+                    </div>
+                    <div class="article-tags">
+                        <a href="#accessibility" class="tag">Accessibility</a>
+                        <a href="#aria" class="tag">ARIA</a>
+                        <a href="#inclusive-design" class="tag">Inclusive Design</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <nav class="pagination" role="navigation" aria-label="Pagination navigation">
+                <a href="#prev" aria-label="Previous page">&laquo; Previous</a>
+                <a href="#page1" aria-current="page" class="current">1</a>
+                <a href="#page2">2</a>
+                <a href="#page3">3</a>
+                <span>...</span>
+                <a href="#page10">10</a>
+                <a href="#next" aria-label="Next page">Next &raquo;</a>
+            </nav>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="blog-aside" role="complementary" aria-label="Secondary sidebar">
+            <!-- Categories Widget -->
+            <div class="widget categories-widget">
+                <h3 class="widget-title">Categories</h3>
+                <ul class="categories-list">
+                    <li class="category-item">
+                        <a href="#web-dev" class="category-link">Web Development</a>
+                        <span class="category-count">24</span>
+                    </li>
+                    <li class="category-item">
+                        <a href="#css" class="category-link">CSS</a>
+                        <span class="category-count">18</span>
+                    </li>
+                    <li class="category-item">
+                        <a href="#javascript" class="category-link">JavaScript</a>
+                        <span class="category-count">15</span>
+                    </li>
+                    <li class="category-item">
+                        <a href="#design" class="category-link">Design</a>
+                        <span class="category-count">12</span>
+                    </li>
+                    <li class="category-item">
+                        <a href="#accessibility" class="category-link">Accessibility</a>
+                        <span class="category-count">8</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Tags Cloud Widget -->
+            <div class="widget tags-widget">
+                <h3 class="widget-title">Popular Tags</h3>
+                <div class="tags-cloud">
+                    <a href="#css-grid" class="tag-cloud-item popular">CSS Grid</a>
+                    <a href="#responsive" class="tag-cloud-item popular">Responsive</a>
+                    <a href="#flexbox" class="tag-cloud-item">Flexbox</a>
+                    <a href="#typography" class="tag-cloud-item">Typography</a>
+                    <a href="#accessibility" class="tag-cloud-item popular">Accessibility</a>
+                    <a href="#performance" class="tag-cloud-item">Performance</a>
+                    <a href="#modern-css" class="tag-cloud-item">Modern CSS</a>
+                    <a href="#layout" class="tag-cloud-item popular">Layout</a>
+                    <a href="#variables" class="tag-cloud-item">Variables</a>
+                    <a href="#animations" class="tag-cloud-item">Animations</a>
+                </div>
+            </div>
+
+            <!-- Social Links Widget -->
+            <div class="widget social-widget">
+                <h3 class="widget-title">Follow Us</h3>
+                <div class="social-links">
+                    <a href="#twitter" class="social-link" aria-label="Follow on Twitter">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#github" class="social-link" aria-label="Follow on GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+                        </svg>
+                    </a>
+                    <a href="#codepen" class="social-link" aria-label="Follow on CodePen">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L22 8.5V15.5L12 22L2 15.5V8.5L12 2ZM12 4.15L4 9.25V14.75L12 19.85L20 14.75V9.25L12 4.15ZM12 8L16 10.5V13.5L12 16L8 13.5V10.5L12 8Z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Newsletter Widget -->
+            <div class="widget newsletter-widget">
+                <h3 class="widget-title">Newsletter</h3>
+                <p class="newsletter-description">Subscribe to get the latest articles and tutorials delivered to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required aria-label="Email address for newsletter">
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Archive Widget -->
+            <div class="widget archive-widget">
+                <h3 class="widget-title">Archive</h3>
+                <ul class="archive-list">
+                    <li class="archive-item">
+                        <a href="#jan2024" class="archive-link">January 2024</a>
+                        <span class="archive-count">6</span>
+                    </li>
+                    <li class="archive-item">
+                        <a href="#dec2023" class="archive-link">December 2023</a>
+                        <span class="archive-count">8</span>
+                    </li>
+                    <li class="archive-item">
+                        <a href="#nov2023" class="archive-link">November 2023</a>
+                        <span class="archive-count">5</span>
+                    </li>
+                    <li class="archive-item">
+                        <a href="#oct2023" class="archive-link">October 2023</a>
+                        <span class="archive-count">7</span>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Footer -->
+        <footer class="blog-footer" role="contentinfo">
+            <p>&copy; 2024 Modern Blog. Built with CSS Grid and modern web standards.</p>
+            <p class="print-date">This layout demonstrates responsive design principles and accessibility best practices.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Search suggestions functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.search-input');
+            const searchSuggestions = document.querySelector('.search-suggestions');
+            
+            searchInput.addEventListener('focus', function() {
+                searchSuggestions.classList.add('active');
+            });
+            
+            searchInput.addEventListener('blur', function() {
+                setTimeout(() => {
+                    searchSuggestions.classList.remove('active');
+                }, 200);
+            });
+            
+            // Mobile widget collapsing
+            const widgets = document.querySelectorAll('.widget');
+            
+            function makeWidgetCollapsible(widget) {
+                if (window.innerWidth <= 600) {
+                    widget.classList.add('widget-collapsible');
+                    const title = widget.querySelector('.widget-title');
+                    const content = widget.querySelector('.widget-content') || 
+                                  widget.querySelector('ul, .tags-cloud, .social-links, form');
+                    
+                    if (title && content) {
+                        content.classList.add('widget-content');
+                        title.addEventListener('click', function() {
+                            widget.classList.toggle('collapsed');
+                        });
+                    }
+                }
+            }
+            
+            widgets.forEach(makeWidgetCollapsible);
+            
+            // Responsive behavior
+            window.addEventListener('resize', function() {
+                widgets.forEach(widget => {
+                    if (window.innerWidth > 600) {
+                        widget.classList.remove('widget-collapsible', 'collapsed');
+                    } else {
+                        makeWidgetCollapsible(widget);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

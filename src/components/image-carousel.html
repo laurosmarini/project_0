@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS-Only Image Carousel</title>
+    <link rel="stylesheet" href="image-carousel.css">
+</head>
+<body>
+    <div class="carousel-container" role="region" aria-label="Image carousel with 5 images">
+        <div class="carousel-wrapper">
+            <!-- Radio buttons for navigation (hidden) -->
+            <input type="radio" name="carousel" id="slide-1" class="carousel-input" checked aria-describedby="slide-1-desc">
+            <input type="radio" name="carousel" id="slide-2" class="carousel-input" aria-describedby="slide-2-desc">
+            <input type="radio" name="carousel" id="slide-3" class="carousel-input" aria-describedby="slide-3-desc">
+            <input type="radio" name="carousel" id="slide-4" class="carousel-input" aria-describedby="slide-4-desc">
+            <input type="radio" name="carousel" id="slide-5" class="carousel-input" aria-describedby="slide-5-desc">
+
+            <!-- Carousel slides -->
+            <div class="carousel-slides" aria-live="polite">
+                <div class="carousel-slide" data-slide="1">
+                    <img src="https://picsum.photos/800/400?random=1" alt="Random landscape image 1" loading="lazy">
+                    <div class="carousel-slide-content">
+                        <h3>Slide 1 Title</h3>
+                        <p id="slide-1-desc">Beautiful landscape photography showcasing natural scenery</p>
+                    </div>
+                </div>
+                <div class="carousel-slide" data-slide="2">
+                    <img src="https://picsum.photos/800/400?random=2" alt="Random landscape image 2" loading="lazy">
+                    <div class="carousel-slide-content">
+                        <h3>Slide 2 Title</h3>
+                        <p id="slide-2-desc">Stunning architectural photography of modern buildings</p>
+                    </div>
+                </div>
+                <div class="carousel-slide" data-slide="3">
+                    <img src="https://picsum.photos/800/400?random=3" alt="Random landscape image 3" loading="lazy">
+                    <div class="carousel-slide-content">
+                        <h3>Slide 3 Title</h3>
+                        <p id="slide-3-desc">Abstract art photography with vibrant colors</p>
+                    </div>
+                </div>
+                <div class="carousel-slide" data-slide="4">
+                    <img src="https://picsum.photos/800/400?random=4" alt="Random landscape image 4" loading="lazy">
+                    <div class="carousel-slide-content">
+                        <h3>Slide 4 Title</h3>
+                        <p id="slide-4-desc">Urban street photography capturing city life</p>
+                    </div>
+                </div>
+                <div class="carousel-slide" data-slide="5">
+                    <img src="https://picsum.photos/800/400?random=5" alt="Random landscape image 5" loading="lazy">
+                    <div class="carousel-slide-content">
+                        <h3>Slide 5 Title</h3>
+                        <p id="slide-5-desc">Nature photography featuring wildlife and plants</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation dots -->
+            <div class="carousel-nav" role="tablist" aria-label="Carousel navigation">
+                <label for="slide-1" class="carousel-nav-dot" role="tab" aria-controls="slide-1" aria-label="Go to slide 1" tabindex="0">
+                    <span class="sr-only">Slide 1</span>
+                </label>
+                <label for="slide-2" class="carousel-nav-dot" role="tab" aria-controls="slide-2" aria-label="Go to slide 2" tabindex="0">
+                    <span class="sr-only">Slide 2</span>
+                </label>
+                <label for="slide-3" class="carousel-nav-dot" role="tab" aria-controls="slide-3" aria-label="Go to slide 3" tabindex="0">
+                    <span class="sr-only">Slide 3</span>
+                </label>
+                <label for="slide-4" class="carousel-nav-dot" role="tab" aria-controls="slide-4" aria-label="Go to slide 4" tabindex="0">
+                    <span class="sr-only">Slide 4</span>
+                </label>
+                <label for="slide-5" class="carousel-nav-dot" role="tab" aria-controls="slide-5" aria-label="Go to slide 5" tabindex="0">
+                    <span class="sr-only">Slide 5</span>
+                </label>
+            </div>
+
+            <!-- Previous/Next arrows -->
+            <div class="carousel-arrows">
+                <label for="slide-5" class="carousel-arrow carousel-arrow--prev" aria-label="Previous slide" tabindex="0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="15,18 9,12 15,6"></polyline>
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                </label>
+                <label for="slide-2" class="carousel-arrow carousel-arrow--next" aria-label="Next slide" tabindex="0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                    <span class="sr-only">Next</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Minimal JavaScript for enhanced accessibility and keyboard navigation
+        (function() {
+            const carousel = document.querySelector('.carousel-container');
+            const inputs = carousel.querySelectorAll('.carousel-input');
+            const dots = carousel.querySelectorAll('.carousel-nav-dot');
+            const arrows = carousel.querySelectorAll('.carousel-arrow');
+            let currentSlide = 0;
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.target.closest('.carousel-container')) {
+                    switch(e.key) {
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            navigateSlide('prev');
+                            break;
+                        case 'ArrowRight':
+                            e.preventDefault();
+                            navigateSlide('next');
+                            break;
+                        case 'Home':
+                            e.preventDefault();
+                            goToSlide(0);
+                            break;
+                        case 'End':
+                            e.preventDefault();
+                            goToSlide(inputs.length - 1);
+                            break;
+                    }
+                }
+            });
+            
+            // Enhanced dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        goToSlide(index);
+                    }
+                });
+            });
+            
+            function navigateSlide(direction) {
+                if (direction === 'next') {
+                    currentSlide = (currentSlide + 1) % inputs.length;
+                } else {
+                    currentSlide = currentSlide === 0 ? inputs.length - 1 : currentSlide - 1;
+                }
+                goToSlide(currentSlide);
+            }
+            
+            function goToSlide(index) {
+                currentSlide = index;
+                inputs[index].checked = true;
+                updateArrowLabels();
+                announceSlideChange(index);
+            }
+            
+            function updateArrowLabels() {
+                const prevSlide = currentSlide === 0 ? inputs.length - 1 : currentSlide - 1;
+                const nextSlide = (currentSlide + 1) % inputs.length;
+                
+                const prevArrow = carousel.querySelector('.carousel-arrow--prev');
+                const nextArrow = carousel.querySelector('.carousel-arrow--next');
+                
+                prevArrow.setAttribute('for', `slide-${prevSlide + 1}`);
+                nextArrow.setAttribute('for', `slide-${nextSlide + 1}`);
+            }
+            
+            function announceSlideChange(index) {
+                const slideContent = carousel.querySelector(`[data-slide="${index + 1}"] .carousel-slide-content p`);
+                if (slideContent) {
+                    const announcement = document.createElement('div');
+                    announcement.setAttribute('aria-live', 'polite');
+                    announcement.setAttribute('aria-atomic', 'true');
+                    announcement.className = 'sr-only';
+                    announcement.textContent = `Slide ${index + 1} of ${inputs.length}: ${slideContent.textContent}`;
+                    document.body.appendChild(announcement);
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(announcement);
+                    }, 1000);
+                }
+            }
+            
+            // Auto-update arrows on radio button change
+            inputs.forEach((input, index) => {
+                input.addEventListener('change', function() {
+                    if (this.checked) {
+                        currentSlide = index;
+                        updateArrowLabels();
+                    }
+                });
+            });
+            
+            // Initialize
+            updateArrowLabels();
+        })();
+    </script>
+</body>
+</html>

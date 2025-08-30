@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Login Form - WCAG 2.1 AA Compliant</title>
+    <link rel="stylesheet" href="../styles/login-form.css">
+</head>
+<body>
+    <main id="main-content" role="main">
+        <div class="login-container">
+            <header>
+                <h1 id="login-heading">Sign In</h1>
+                <p class="login-description">Please enter your credentials to access your account</p>
+            </header>
+
+            <!-- Live region for dynamic announcements -->
+            <div id="form-status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+            <div id="form-errors" aria-live="assertive" aria-atomic="true" class="sr-only"></div>
+
+            <form id="login-form" 
+                  class="login-form" 
+                  novalidate 
+                  aria-labelledby="login-heading"
+                  aria-describedby="form-instructions">
+                
+                <p id="form-instructions" class="form-instructions">
+                    All fields marked with an asterisk (*) are required. 
+                    Password must be at least 8 characters long.
+                </p>
+
+                <!-- Email/Username Field -->
+                <div class="form-group">
+                    <label for="email" class="form-label">
+                        Email Address
+                        <span class="required-indicator" aria-label="required">*</span>
+                    </label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-input"
+                        required 
+                        aria-required="true"
+                        aria-describedby="email-help email-error"
+                        autocomplete="email"
+                        spellcheck="false">
+                    <div id="email-help" class="form-help">
+                        Enter the email address associated with your account
+                    </div>
+                    <div id="email-error" class="form-error" role="alert" aria-live="polite"></div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group">
+                    <label for="password" class="form-label">
+                        Password
+                        <span class="required-indicator" aria-label="required">*</span>
+                    </label>
+                    <div class="password-input-container">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-input"
+                            required 
+                            aria-required="true"
+                            aria-describedby="password-help password-error"
+                            autocomplete="current-password"
+                            minlength="8">
+                        <button 
+                            type="button" 
+                            id="toggle-password" 
+                            class="password-toggle"
+                            aria-label="Show password"
+                            aria-pressed="false"
+                            tabindex="-1">
+                            <span class="toggle-text">Show</span>
+                        </button>
+                    </div>
+                    <div id="password-help" class="form-help">
+                        Password must be at least 8 characters long
+                    </div>
+                    <div id="password-error" class="form-error" role="alert" aria-live="polite"></div>
+                </div>
+
+                <!-- Remember Me Checkbox -->
+                <div class="form-group checkbox-group">
+                    <input 
+                        type="checkbox" 
+                        id="remember-me" 
+                        name="remember-me" 
+                        class="form-checkbox"
+                        aria-describedby="remember-help">
+                    <label for="remember-me" class="checkbox-label">
+                        Remember me for 30 days
+                    </label>
+                    <div id="remember-help" class="form-help">
+                        Keep me signed in on this device for convenience
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button 
+                        type="submit" 
+                        id="submit-button" 
+                        class="btn btn-primary"
+                        aria-describedby="submit-help">
+                        <span class="btn-text">Sign In</span>
+                        <span class="loading-spinner" aria-hidden="true"></span>
+                    </button>
+                    <div id="submit-help" class="form-help">
+                        Press Enter or click to submit the form
+                    </div>
+                </div>
+
+                <!-- Additional Links -->
+                <div class="form-links">
+                    <a href="#forgot-password" class="link-secondary">
+                        Forgot your password?
+                    </a>
+                    <a href="#create-account" class="link-secondary">
+                        Create new account
+                    </a>
+                </div>
+            </form>
+
+            <!-- Success/Error Messages -->
+            <div id="form-messages" class="form-messages" role="status" aria-live="polite"></div>
+        </div>
+    </main>
+
+    <script src="../utils/form-validation.js"></script>
+    <script src="../utils/accessibility-helpers.js"></script>
+</body>
+</html>

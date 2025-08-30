@@ -1,0 +1,366 @@
+/**
+ * Print Media Queries - Blog Layout
+ * Optimized styles for printing blog content
+ */
+
+@media print {
+  /* Reset and Base Print Styles */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  /* Hide Non-Essential Elements */
+  .blog-sidebar,
+  .blog-aside,
+  .blog-nav,
+  .search-widget,
+  .social-links,
+  .newsletter-widget,
+  .pagination,
+  .article-tags,
+  .widget,
+  button,
+  .search-form,
+  .navigation-widget {
+    display: none !important;
+  }
+  
+  /* Page Setup */
+  @page {
+    margin: 2cm;
+    size: A4;
+  }
+  
+  @page :first {
+    margin-top: 1cm;
+  }
+  
+  /* Container Adjustments */
+  .blog-container {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    grid-template-areas: none !important;
+    grid-template-columns: none !important;
+  }
+  
+  /* Header for Print */
+  .blog-header {
+    background: none !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    border-bottom: 2px solid #000 !important;
+    padding: 0 0 1rem 0 !important;
+    margin-bottom: 2rem !important;
+    position: static !important;
+    display: block !important;
+  }
+  
+  .blog-header h1 {
+    font-size: 24pt !important;
+    font-weight: bold !important;
+    margin: 0 !important;
+    text-align: center !important;
+  }
+  
+  /* Main Content */
+  .blog-main {
+    width: 100% !important;
+    background: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Article Styles */
+  .articles-grid {
+    display: block !important;
+    gap: 0 !important;
+  }
+  
+  .article-card {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 0 2rem 0 !important;
+    margin-bottom: 2rem !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  .article-card:not(:last-child) {
+    border-bottom: 1px solid #ccc !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  /* Article Typography */
+  .article-title {
+    font-size: 18pt !important;
+    font-weight: bold !important;
+    color: #000 !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .article-title a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+  
+  /* Article Meta Information */
+  .article-meta {
+    font-size: 10pt !important;
+    color: #666 !important;
+    margin-bottom: 1rem !important;
+    display: block !important;
+  }
+  
+  .article-meta::before {
+    content: "Published: " !important;
+    font-weight: bold !important;
+  }
+  
+  /* Article Content */
+  .article-excerpt {
+    font-size: 12pt !important;
+    line-height: 1.5 !important;
+    color: #000 !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Featured Articles */
+  .article-card.featured {
+    background: none !important;
+    border-left: 4px solid #000 !important;
+    padding-left: 1rem !important;
+  }
+  
+  .featured .article-title {
+    font-size: 20pt !important;
+    color: #000 !important;
+  }
+  
+  /* Footer */
+  .blog-footer {
+    background: none !important;
+    color: #000 !important;
+    border-top: 1px solid #000 !important;
+    margin-top: 2rem !important;
+    padding-top: 1rem !important;
+    font-size: 10pt !important;
+    text-align: center !important;
+  }
+  
+  /* Typography Adjustments */
+  h1, h2, h3, h4, h5, h6 {
+    color: #000 !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  /* Link Handling */
+  a {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+  
+  /* Show URLs for external links */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")" !important;
+    font-size: 9pt !important;
+    color: #666 !important;
+  }
+  
+  /* Don't show URLs for internal links */
+  a[href^="#"]:after,
+  a[href^="/"]:after {
+    content: "" !important;
+  }
+  
+  /* Image Handling */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Code Blocks */
+  pre, code {
+    background: #f5f5f5 !important;
+    border: 1px solid #ccc !important;
+    padding: 0.5rem !important;
+    font-family: "Courier New", monospace !important;
+    font-size: 10pt !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Block Quotes */
+  blockquote {
+    border-left: 4px solid #000 !important;
+    padding-left: 1rem !important;
+    margin: 1rem 0 !important;
+    font-style: italic !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Lists */
+  ul, ol {
+    margin: 1rem 0 !important;
+    padding-left: 1.5rem !important;
+  }
+  
+  li {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Table Styles */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 1rem 0 !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  th, td {
+    border: 1px solid #000 !important;
+    padding: 0.5rem !important;
+    text-align: left !important;
+  }
+  
+  th {
+    background: #f0f0f0 !important;
+    font-weight: bold !important;
+  }
+  
+  /* Page Break Controls */
+  .page-break-before {
+    page-break-before: always;
+    break-before: page;
+  }
+  
+  .page-break-after {
+    page-break-after: always;
+    break-after: page;
+  }
+  
+  .page-break-avoid {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Print-specific classes */
+  .print-only {
+    display: block !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Header and Footer for each page */
+  @page {
+    @top-center {
+      content: "Blog Archive - " attr(title);
+      font-size: 10pt;
+      color: #666;
+    }
+    
+    @bottom-center {
+      content: "Page " counter(page) " of " counter(pages);
+      font-size: 10pt;
+      color: #666;
+    }
+  }
+  
+  /* First page header */
+  @page :first {
+    @top-center {
+      content: none;
+    }
+  }
+  
+  /* Optimize for black and white printing */
+  .print-bw * {
+    background: none !important;
+    color: #000 !important;
+    border-color: #000 !important;
+  }
+  
+  /* Print date stamp */
+  .print-date::after {
+    content: "Printed: " date() !important;
+    font-size: 9pt !important;
+    color: #666 !important;
+    display: block !important;
+    text-align: right !important;
+    margin-top: 1rem !important;
+  }
+  
+  /* Accessible print styles */
+  .visually-hidden-print {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+}
+
+/* Print preview mode (when print dialog is open) */
+@media screen and (prefers-color-scheme: print) {
+  body {
+    background: white !important;
+  }
+  
+  .blog-container {
+    max-width: 8.5in !important;
+    margin: 1in auto !important;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3) !important;
+  }
+}
+
+/* High contrast printing */
+@media print and (prefers-contrast: high) {
+  * {
+    color: #000 !important;
+    background: #fff !important;
+  }
+  
+  .article-card {
+    border: 2px solid #000 !important;
+  }
+  
+  .blog-header {
+    border-bottom: 3px solid #000 !important;
+  }
+}
+
+/* Print utilities */
+.print-break-before { page-break-before: always; break-before: page; }
+.print-break-after { page-break-after: always; break-after: page; }
+.print-break-inside { page-break-inside: auto; break-inside: auto; }
+.print-break-avoid { page-break-inside: avoid; break-inside: avoid; }
+
+/* Force print in color if needed */
+.print-color {
+  -webkit-print-color-adjust: exact !important;
+  color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}

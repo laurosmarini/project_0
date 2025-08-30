@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS-Only Responsive Image Carousel</title>
+    <link rel="stylesheet" href="styles/carousel.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/accessibility.css">
+</head>
+<body>
+    <main class="carousel-container">
+        <h1 class="carousel-title">Responsive Image Carousel</h1>
+        
+        <!-- Carousel Structure -->
+        <section class="carousel" role="region" aria-label="Image carousel">
+            <!-- Navigation Controls -->
+            <div class="carousel-nav" aria-label="Carousel navigation">
+                <input type="radio" name="carousel" id="slide-1" checked aria-label="Go to slide 1">
+                <input type="radio" name="carousel" id="slide-2" aria-label="Go to slide 2">
+                <input type="radio" name="carousel" id="slide-3" aria-label="Go to slide 3">
+                <input type="radio" name="carousel" id="slide-4" aria-label="Go to slide 4">
+                <input type="radio" name="carousel" id="slide-5" aria-label="Go to slide 5">
+                
+                <!-- Previous/Next Controls -->
+                <div class="carousel-controls">
+                    <label for="slide-5" class="carousel-control prev" aria-label="Previous slide" tabindex="0">
+                        <span class="sr-only">Previous</span>
+                        &#8249;
+                    </label>
+                    <label for="slide-2" class="carousel-control next" aria-label="Next slide" tabindex="0">
+                        <span class="sr-only">Next</span>
+                        &#8250;
+                    </label>
+                </div>
+                
+                <!-- Dot Indicators -->
+                <div class="carousel-indicators" role="tablist" aria-label="Slide indicators">
+                    <label for="slide-1" class="carousel-indicator" role="tab" aria-label="Slide 1" tabindex="0"></label>
+                    <label for="slide-2" class="carousel-indicator" role="tab" aria-label="Slide 2" tabindex="0"></label>
+                    <label for="slide-3" class="carousel-indicator" role="tab" aria-label="Slide 3" tabindex="0"></label>
+                    <label for="slide-4" class="carousel-indicator" role="tab" aria-label="Slide 4" tabindex="0"></label>
+                    <label for="slide-5" class="carousel-indicator" role="tab" aria-label="Slide 5" tabindex="0"></label>
+                </div>
+            </div>
+            
+            <!-- Slides Container -->
+            <div class="carousel-slides" aria-live="polite">
+                <div class="carousel-slide" role="tabpanel" aria-labelledby="slide-1">
+                    <img src="https://picsum.photos/800/600?random=1" alt="Beautiful landscape with mountains and lake" loading="lazy">
+                    <div class="carousel-caption">
+                        <h2>Mountain Serenity</h2>
+                        <p>Breathtaking mountain landscape reflected in crystal clear lake waters</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide" role="tabpanel" aria-labelledby="slide-2">
+                    <img src="https://picsum.photos/800/600?random=2" alt="Urban cityscape at sunset" loading="lazy">
+                    <div class="carousel-caption">
+                        <h2>City Lights</h2>
+                        <p>Modern urban architecture illuminated by the golden hour</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide" role="tabpanel" aria-labelledby="slide-3">
+                    <img src="https://picsum.photos/800/600?random=3" alt="Forest path in autumn" loading="lazy">
+                    <div class="carousel-caption">
+                        <h2>Autumn Trail</h2>
+                        <p>Peaceful forest path covered with colorful autumn leaves</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide" role="tabpanel" aria-labelledby="slide-4">
+                    <img src="https://picsum.photos/800/600?random=4" alt="Ocean waves on sandy beach" loading="lazy">
+                    <div class="carousel-caption">
+                        <h2>Coastal Beauty</h2>
+                        <p>Pristine sandy beach with gentle waves and clear blue sky</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide" role="tabpanel" aria-labelledby="slide-5">
+                    <img src="https://picsum.photos/800/600?random=5" alt="Desert landscape with cacti" loading="lazy">
+                    <div class="carousel-caption">
+                        <h2>Desert Vista</h2>
+                        <p>Majestic desert landscape with towering cacti and endless horizons</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Auto-advance controls (hidden) -->
+            <div class="carousel-auto" aria-hidden="true">
+                <input type="checkbox" id="carousel-pause" aria-label="Pause auto-advance">
+                <label for="carousel-pause" class="carousel-pause-btn" tabindex="0">
+                    <span class="play-icon" aria-hidden="true">▶</span>
+                    <span class="pause-icon" aria-hidden="true">⏸</span>
+                    <span class="sr-only">Toggle auto-advance</span>
+                </label>
+            </div>
+        </section>
+        
+        <!-- Instructions for keyboard users -->
+        <div class="carousel-instructions" aria-label="Keyboard navigation instructions">
+            <p><strong>Keyboard Navigation:</strong> Use Tab to focus controls, Space/Enter to activate, Arrow keys to navigate slides</p>
+        </div>
+    </main>
+</body>
+</html>

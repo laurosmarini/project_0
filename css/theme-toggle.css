@@ -1,0 +1,240 @@
+/**
+ * CSS Theme Toggle Components
+ * Modern implementations using checkbox hack and :has() selector
+ */
+
+/* === HIDDEN TOGGLE INPUT === */
+.theme-toggle-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* === TOGGLE BUTTON STYLES === */
+.theme-toggle-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--color-border);
+  border-radius: 24px;
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: 
+    background-color var(--theme-transition-duration) var(--theme-transition-timing),
+    border-color var(--theme-transition-duration) var(--theme-transition-timing),
+    box-shadow var(--theme-transition-duration) var(--theme-transition-timing),
+    transform 0.15s ease;
+  box-shadow: var(--shadow-base);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.theme-toggle-btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle-btn:focus-visible {
+  outline: 2px solid var(--color-outline);
+  outline-offset: 2px;
+}
+
+/* === TOGGLE ICONS === */
+.theme-toggle-icon {
+  width: 20px;
+  height: 20px;
+  transition: 
+    opacity var(--theme-transition-duration) var(--theme-transition-timing),
+    transform var(--theme-transition-duration) var(--theme-transition-timing);
+  fill: var(--color-text-primary);
+}
+
+.theme-toggle-icon-sun {
+  position: absolute;
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.theme-toggle-icon-moon {
+  position: absolute;
+  opacity: 0;
+  transform: rotate(30deg) scale(0.8);
+}
+
+/* === CHECKBOX HACK METHOD === */
+.theme-toggle-input:checked + .theme-toggle-btn .theme-toggle-icon-sun {
+  opacity: 0;
+  transform: rotate(-30deg) scale(0.8);
+}
+
+.theme-toggle-input:checked + .theme-toggle-btn .theme-toggle-icon-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* === :HAS() SELECTOR METHOD (Modern browsers) === */
+@supports selector(:has(input)) {
+  .theme-toggle:has(.theme-toggle-input:checked) .theme-toggle-icon-sun {
+    opacity: 0;
+    transform: rotate(-30deg) scale(0.8);
+  }
+  
+  .theme-toggle:has(.theme-toggle-input:checked) .theme-toggle-icon-moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* === SWITCH STYLE TOGGLE === */
+.theme-toggle-switch {
+  position: relative;
+  width: 56px;
+  height: 32px;
+  border: 2px solid var(--color-border);
+  border-radius: 16px;
+  background: var(--color-background-secondary);
+  cursor: pointer;
+  transition: 
+    background-color var(--theme-transition-duration) var(--theme-transition-timing),
+    border-color var(--theme-transition-duration) var(--theme-transition-timing);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle-switch:hover {
+  border-color: var(--color-border-dark);
+}
+
+.theme-toggle-switch:focus-visible {
+  outline: 2px solid var(--color-outline);
+  outline-offset: 2px;
+}
+
+.theme-toggle-switch::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  background: var(--color-primary);
+  border-radius: 12px;
+  transition: 
+    transform var(--theme-transition-duration) var(--theme-transition-timing),
+    background-color var(--theme-transition-duration) var(--theme-transition-timing);
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle-input:checked + .theme-toggle-switch {
+  background: var(--color-primary-light);
+}
+
+.theme-toggle-input:checked + .theme-toggle-switch::before {
+  transform: translateX(24px);
+  background: var(--color-primary);
+}
+
+/* === ACCESSIBILITY LABELS === */
+.theme-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.theme-toggle-text {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  transition: color var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+/* === COMPACT TOGGLE VARIANT === */
+.theme-toggle-compact {
+  width: 40px;
+  height: 40px;
+}
+
+.theme-toggle-compact .theme-toggle-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* === LARGE TOGGLE VARIANT === */
+.theme-toggle-large {
+  width: 56px;
+  height: 56px;
+}
+
+.theme-toggle-large .theme-toggle-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  .theme-toggle-btn {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .theme-toggle-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .theme-toggle-switch {
+    width: 48px;
+    height: 28px;
+  }
+  
+  .theme-toggle-switch::before {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .theme-toggle-input:checked + .theme-toggle-switch::before {
+    transform: translateX(20px);
+  }
+}
+
+/* === HIGH CONTRAST MODE === */
+@media (prefers-contrast: high) {
+  .theme-toggle-btn {
+    border-width: 3px;
+  }
+  
+  .theme-toggle-switch {
+    border-width: 3px;
+  }
+}
+
+/* === MOTION PREFERENCES === */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle-btn,
+  .theme-toggle-icon,
+  .theme-toggle-switch,
+  .theme-toggle-switch::before,
+  .theme-toggle-text {
+    transition: none;
+  }
+}

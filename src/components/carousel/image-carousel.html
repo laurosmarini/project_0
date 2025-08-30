@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS-Only Responsive Image Carousel</title>
+  <link rel="stylesheet" href="image-carousel.css">
+</head>
+<body>
+  <!-- Main Carousel Container -->
+  <section class="carousel" role="region" aria-labelledby="carousel-heading" data-carousel="image-showcase">
+    <header class="carousel__header">
+      <h2 id="carousel-heading" class="carousel__title">Featured Images</h2>
+      <p class="carousel__subtitle">Navigate with keyboard arrows or click indicators</p>
+    </header>
+
+    <!-- Carousel Track Container -->
+    <div class="carousel__container">
+      <!-- Image Track -->
+      <div class="carousel__track" role="group" aria-label="Image gallery">
+        <!-- Slide 1 -->
+        <article class="carousel__slide" id="slide-1" tabindex="0" role="img" aria-labelledby="slide-1-title">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&crop=center" 
+               alt="Mountain landscape with snow-capped peaks reflecting in a serene lake"
+               class="carousel__image" 
+               loading="lazy">
+          <div class="carousel__caption">
+            <h3 id="slide-1-title" class="carousel__slide-title">Mountain Reflection</h3>
+            <p class="carousel__slide-description">Breathtaking alpine scenery captured at golden hour</p>
+          </div>
+        </article>
+
+        <!-- Slide 2 -->
+        <article class="carousel__slide" id="slide-2" tabindex="0" role="img" aria-labelledby="slide-2-title">
+          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&crop=center" 
+               alt="Dense forest with tall evergreen trees and morning mist"
+               class="carousel__image" 
+               loading="lazy">
+          <div class="carousel__caption">
+            <h3 id="slide-2-title" class="carousel__slide-title">Misty Forest</h3>
+            <p class="carousel__slide-description">Ancient woodland shrouded in ethereal morning fog</p>
+          </div>
+        </article>
+
+        <!-- Slide 3 -->
+        <article class="carousel__slide" id="slide-3" tabindex="0" role="img" aria-labelledby="slide-3-title">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop&crop=center" 
+               alt="Tropical beach with turquoise water and pristine white sand"
+               class="carousel__image" 
+               loading="lazy">
+          <div class="carousel__caption">
+            <h3 id="slide-3-title" class="carousel__slide-title">Paradise Beach</h3>
+            <p class="carousel__slide-description">Crystal clear waters meet untouched sandy shores</p>
+          </div>
+        </article>
+
+        <!-- Slide 4 -->
+        <article class="carousel__slide" id="slide-4" tabindex="0" role="img" aria-labelledby="slide-4-title">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&crop=center" 
+               alt="Desert landscape with rolling sand dunes under starlit sky"
+               class="carousel__image" 
+               loading="lazy">
+          <div class="carousel__caption">
+            <h3 id="slide-4-title" class="carousel__slide-title">Desert Stars</h3>
+            <p class="carousel__slide-description">Infinite dunes beneath a canvas of brilliant stars</p>
+          </div>
+        </article>
+
+        <!-- Slide 5 -->
+        <article class="carousel__slide" id="slide-5" tabindex="0" role="img" aria-labelledby="slide-5-title">
+          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop&crop=center" 
+               alt="Lush green meadow with wildflowers and distant mountains"
+               class="carousel__image" 
+               loading="lazy">
+          <div class="carousel__caption">
+            <h3 id="slide-5-title" class="carousel__slide-title">Wildflower Meadow</h3>
+            <p class="carousel__slide-description">Spring blooms carpet the valley floor</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Navigation Controls (CSS-only) -->
+      <nav class="carousel__navigation" role="tablist" aria-label="Carousel navigation">
+        <a href="#slide-1" 
+           class="carousel__indicator" 
+           role="tab" 
+           aria-selected="true"
+           aria-label="Go to slide 1: Mountain Reflection"
+           tabindex="0">
+          <span class="carousel__indicator-label">1</span>
+        </a>
+        
+        <a href="#slide-2" 
+           class="carousel__indicator" 
+           role="tab" 
+           aria-selected="false"
+           aria-label="Go to slide 2: Misty Forest"
+           tabindex="-1">
+          <span class="carousel__indicator-label">2</span>
+        </a>
+        
+        <a href="#slide-3" 
+           class="carousel__indicator" 
+           role="tab" 
+           aria-selected="false"
+           aria-label="Go to slide 3: Paradise Beach"
+           tabindex="-1">
+          <span class="carousel__indicator-label">3</span>
+        </a>
+        
+        <a href="#slide-4" 
+           class="carousel__indicator" 
+           role="tab" 
+           aria-selected="false"
+           aria-label="Go to slide 4: Desert Stars"
+           tabindex="-1">
+          <span class="carousel__indicator-label">4</span>
+        </a>
+        
+        <a href="#slide-5" 
+           class="carousel__indicator" 
+           role="tab" 
+           aria-selected="false"
+           aria-label="Go to slide 5: Wildflower Meadow"
+           tabindex="-1">
+          <span class="carousel__indicator-label">5</span>
+        </a>
+      </nav>
+
+      <!-- Directional Navigation (CSS-only) -->
+      <div class="carousel__arrows">
+        <a href="#slide-5" 
+           class="carousel__arrow carousel__arrow--prev" 
+           aria-label="Previous slide: Wildflower Meadow"
+           title="Previous slide">
+          <svg class="carousel__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15,18 9,12 15,6"></polyline>
+          </svg>
+        </a>
+        
+        <a href="#slide-2" 
+           class="carousel__arrow carousel__arrow--next" 
+           aria-label="Next slide: Misty Forest"
+           title="Next slide">
+          <svg class="carousel__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9,18 15,12 9,6"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Screen Reader Status -->
+    <div class="carousel__status" aria-live="polite" aria-atomic="true" class="sr-only">
+      <span>Showing slide 1 of 5</span>
+    </div>
+  </section>
+
+  <!-- Usage Instructions -->
+  <aside class="carousel__instructions" aria-labelledby="instructions-heading">
+    <h3 id="instructions-heading">Navigation Instructions</h3>
+    <ul>
+      <li><strong>Mouse/Touch:</strong> Click indicators or arrow buttons</li>
+      <li><strong>Keyboard:</strong> Use Tab to focus indicators, then press Enter</li>
+      <li><strong>Arrow Keys:</strong> Navigate between slides when focused</li>
+      <li><strong>Screen Readers:</strong> Navigate by headings or use tab navigation</li>
+    </ul>
+  </aside>
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible, cross-browser compatible CSS-only responsive image carousel">
+  <meta name="theme-color" content="#2563eb">
+  <title>Integrated CSS Carousel - Cross-browser Compatible</title>
+  <link rel="stylesheet" href="carousel-integrated.css">
+  
+  <!-- Feature detection script (progressive enhancement) -->
+  <script>
+    // Feature detection for CSS custom properties
+    if (window.CSS && CSS.supports && CSS.supports('color', 'var(--test)')) {
+      document.documentElement.classList.add('css-vars');
+    } else {
+      document.documentElement.classList.add('no-css-vars');
+    }
+    
+    // Feature detection for scroll-snap
+    if ('scrollSnapType' in document.documentElement.style ||
+        'webkitScrollSnapType' in document.documentElement.style ||
+        'msScrollSnapType' in document.documentElement.style) {
+      document.documentElement.classList.add('scroll-snap');
+    } else {
+      document.documentElement.classList.add('no-scroll-snap');
+    }
+    
+    // Feature detection for aspect-ratio
+    if (CSS.supports && CSS.supports('aspect-ratio', '1')) {
+      document.documentElement.classList.add('aspect-ratio');
+    } else {
+      document.documentElement.classList.add('no-aspect-ratio');
+    }
+  </script>
+  
+  <!-- Fallback styles for no-JS users -->
+  <noscript>
+    <style>
+      .carousel__slide {
+        display: block !important;
+        margin-bottom: 1rem;
+      }
+      
+      .carousel__navigation,
+      .carousel__arrows {
+        display: none !important;
+      }
+    </style>
+  </noscript>
+</head>
+<body>
+  <!-- Skip to main content for screen readers -->
+  <a href="#carousel-main" class="sr-only">Skip to carousel content</a>
+
+  <!-- Main Carousel Container -->
+  <main>
+    <section 
+      id="carousel-main"
+      class="carousel" 
+      role="region" 
+      aria-labelledby="carousel-heading" 
+      data-carousel="integrated-showcase"
+      data-slides="5">
+      
+      <header class="carousel__header">
+        <h1 id="carousel-heading" class="carousel__title">
+          Integrated Responsive Carousel
+        </h1>
+        <p class="carousel__subtitle">
+          Cross-browser compatible, accessible, and performance-optimized
+        </p>
+      </header>
+
+      <!-- Carousel Track Container -->
+      <div class="carousel__container">
+        <!-- Image Track -->
+        <div 
+          class="carousel__track" 
+          role="group" 
+          aria-label="Image gallery with 5 slides"
+          aria-live="polite"
+          aria-atomic="false">
+          
+          <!-- Slide 1 -->
+          <article 
+            class="carousel__slide" 
+            id="slide-1" 
+            tabindex="0" 
+            role="img" 
+            aria-labelledby="slide-1-title"
+            aria-describedby="slide-1-desc"
+            data-slide="1">
+            <img 
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&crop=center" 
+              alt="Majestic mountain landscape with snow-capped peaks reflecting perfectly in a pristine alpine lake during golden hour"
+              class="carousel__image" 
+              loading="lazy"
+              decoding="async"
+              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 800px, 1200px"
+              srcset="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop 400w,
+                      https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop 800w,
+                      https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=900&fit=crop 1200w"
+              onerror="this.setAttribute('data-error', 'true'); this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA4MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iNjAiIGZpbGw9IiNmM2Y0ZjYiLz48dGV4dCB4PSI0MCIgeT0iMzAiIGZpbGw9IiM2Yjc0ODEiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPkltYWdlIEVycm9yPC90ZXh0Pjwvc3ZnPg=='">
+            <div class="carousel__caption">
+              <h2 id="slide-1-title" class="carousel__slide-title">
+                Mountain Reflection
+              </h2>
+              <p id="slide-1-desc" class="carousel__slide-description">
+                Breathtaking alpine scenery captured at golden hour with perfect reflections in pristine glacial waters
+              </p>
+            </div>
+          </article>
+
+          <!-- Slide 2 -->
+          <article 
+            class="carousel__slide" 
+            id="slide-2" 
+            tabindex="0" 
+            role="img" 
+            aria-labelledby="slide-2-title"
+            aria-describedby="slide-2-desc"
+            data-slide="2">
+            <img 
+              src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&crop=center" 
+              alt="Dense ancient forest with towering evergreen trees shrouded in mystical morning mist and filtered sunlight"
+              class="carousel__image" 
+              loading="lazy"
+              decoding="async"
+              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 800px, 1200px"
+              srcset="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop 400w,
+                      https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop 800w,
+                      https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&h=900&fit=crop 1200w"
+              onerror="this.setAttribute('data-error', 'true'); this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA4MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iNjAiIGZpbGw9IiNmM2Y0ZjYiLz48dGV4dCB4PSI0MCIgeT0iMzAiIGZpbGw9IiM2Yjc0ODEiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPkltYWdlIEVycm9yPC90ZXh0Pjwvc3ZnPg=='">
+            <div class="carousel__caption">
+              <h2 id="slide-2-title" class="carousel__slide-title">
+                Misty Forest
+              </h2>
+              <p id="slide-2-desc" class="carousel__slide-description">
+                Ancient woodland shrouded in ethereal morning fog, creating a mystical atmosphere of tranquility
+              </p>
+            </div>
+          </article>
+
+          <!-- Slide 3 -->
+          <article 
+            class="carousel__slide" 
+            id="slide-3" 
+            tabindex="0" 
+            role="img" 
+            aria-labelledby="slide-3-title"
+            aria-describedby="slide-3-desc"
+            data-slide="3">
+            <img 
+              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop&crop=center" 
+              alt="Pristine tropical paradise beach with crystal clear turquoise water gently lapping against pure white sand under azure skies"
+              class="carousel__image" 
+              loading="lazy"
+              decoding="async"
+              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 800px, 1200px"
+              srcset="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop 400w,
+                      https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop 800w,
+                      https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=900&fit=crop 1200w"
+              onerror="this.setAttribute('data-error', 'true'); this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA4MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iNjAiIGZpbGw9IiNmM2Y0ZjYiLz48dGV4dCB4PSI0MCIgeT0iMzAiIGZpbGw9IiM2Yjc0ODEiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPkltYWdlIEVycm9yPC90ZXh0Pjwvc3ZnPg=='">
+            <div class="carousel__caption">
+              <h2 id="slide-3-title" class="carousel__slide-title">
+                Paradise Beach
+              </h2>
+              <p id="slide-3-desc" class="carousel__slide-description">
+                Crystal clear turquoise waters meet pristine sandy shores in this untouched tropical paradise
+              </p>
+            </div>
+          </article>
+
+          <!-- Slide 4 -->
+          <article 
+            class="carousel__slide" 
+            id="slide-4" 
+            tabindex="0" 
+            role="img" 
+            aria-labelledby="slide-4-title"
+            aria-describedby="slide-4-desc"
+            data-slide="4">
+            <img 
+              src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&h=600&fit=crop&crop=center" 
+              alt="Vast desert landscape with sweeping sand dunes illuminated under a brilliant canopy of stars in the night sky"
+              class="carousel__image" 
+              loading="lazy"
+              decoding="async"
+              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 800px, 1200px"
+              srcset="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop 400w,
+                      https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&h=600&fit=crop 800w,
+                      https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1200&h=900&fit=crop 1200w"
+              onerror="this.setAttribute('data-error', 'true'); this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA4MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iNjAiIGZpbGw9IiNmM2Y0ZjYiLz48dGV4dCB4PSI0MCIgeT0iMzAiIGZpbGw9IiM2Yjc0ODEiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPkltYWdlIEVycm9yPC90ZXh0Pjwvc3ZnPg=='">
+            <div class="carousel__caption">
+              <h2 id="slide-4-title" class="carousel__slide-title">
+                Desert Stars
+              </h2>
+              <p id="slide-4-desc" class="carousel__slide-description">
+                Infinite golden dunes stretch beneath a magnificent canvas of brilliant stars in the clear desert sky
+              </p>
+            </div>
+          </article>
+
+          <!-- Slide 5 -->
+          <article 
+            class="carousel__slide" 
+            id="slide-5" 
+            tabindex="0" 
+            role="img" 
+            aria-labelledby="slide-5-title"
+            aria-describedby="slide-5-desc"
+            data-slide="5">
+            <img 
+              src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop&crop=center" 
+              alt="Vibrant spring meadow bursting with colorful wildflowers beneath rolling green hills and distant mountain ranges"
+              class="carousel__image" 
+              loading="lazy"
+              decoding="async"
+              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 800px, 1200px"
+              srcset="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop 400w,
+                      https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop 800w,
+                      https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=900&fit=crop 1200w"
+              onerror="this.setAttribute('data-error', 'true'); this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA4MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iNjAiIGZpbGw9IiNmM2Y0ZjYiLz48dGV4dCB4PSI0MCIgeT0iMzAiIGZpbGw9IiM2Yjc0ODEiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPkltYWdlIEVycm9yPC90ZXh0Pjwvc3ZnPg=='">
+            <div class="carousel__caption">
+              <h2 id="slide-5-title" class="carousel__slide-title">
+                Wildflower Meadow
+              </h2>
+              <p id="slide-5-desc" class="carousel__slide-description">
+                Vibrant spring blooms create a natural carpet across the valley floor beneath rolling green hills
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Navigation Controls (CSS-only) -->
+        <nav 
+          class="carousel__navigation" 
+          role="tablist" 
+          aria-label="Carousel slide navigation"
+          data-navigation="indicators">
+          <a 
+            href="#slide-1" 
+            class="carousel__indicator" 
+            role="tab" 
+            aria-selected="true"
+            aria-controls="slide-1"
+            aria-label="Go to slide 1: Mountain Reflection"
+            tabindex="0"
+            data-slide-target="1">
+            <span class="carousel__indicator-label" aria-hidden="true">1</span>
+            <span class="sr-only">Slide 1 of 5: Mountain Reflection</span>
+          </a>
+          
+          <a 
+            href="#slide-2" 
+            class="carousel__indicator" 
+            role="tab" 
+            aria-selected="false"
+            aria-controls="slide-2"
+            aria-label="Go to slide 2: Misty Forest"
+            tabindex="-1"
+            data-slide-target="2">
+            <span class="carousel__indicator-label" aria-hidden="true">2</span>
+            <span class="sr-only">Slide 2 of 5: Misty Forest</span>
+          </a>
+          
+          <a 
+            href="#slide-3" 
+            class="carousel__indicator" 
+            role="tab" 
+            aria-selected="false"
+            aria-controls="slide-3"
+            aria-label="Go to slide 3: Paradise Beach"
+            tabindex="-1"
+            data-slide-target="3">
+            <span class="carousel__indicator-label" aria-hidden="true">3</span>
+            <span class="sr-only">Slide 3 of 5: Paradise Beach</span>
+          </a>
+          
+          <a 
+            href="#slide-4" 
+            class="carousel__indicator" 
+            role="tab" 
+            aria-selected="false"
+            aria-controls="slide-4"
+            aria-label="Go to slide 4: Desert Stars"
+            tabindex="-1"
+            data-slide-target="4">
+            <span class="carousel__indicator-label" aria-hidden="true">4</span>
+            <span class="sr-only">Slide 4 of 5: Desert Stars</span>
+          </a>
+          
+          <a 
+            href="#slide-5" 
+            class="carousel__indicator" 
+            role="tab" 
+            aria-selected="false"
+            aria-controls="slide-5"
+            aria-label="Go to slide 5: Wildflower Meadow"
+            tabindex="-1"
+            data-slide-target="5">
+            <span class="carousel__indicator-label" aria-hidden="true">5</span>
+            <span class="sr-only">Slide 5 of 5: Wildflower Meadow</span>
+          </a>
+        </nav>
+
+        <!-- Directional Navigation (CSS-only) -->
+        <div class="carousel__arrows" data-navigation="arrows">
+          <a 
+            href="#slide-5" 
+            class="carousel__arrow carousel__arrow--prev" 
+            aria-label="Go to previous slide: Wildflower Meadow"
+            title="Previous slide"
+            data-direction="prev">
+            <svg 
+              class="carousel__arrow-icon" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="2"
+              aria-hidden="true"
+              focusable="false">
+              <polyline points="15,18 9,12 15,6"></polyline>
+            </svg>
+            <span class="sr-only">Previous slide</span>
+          </a>
+          
+          <a 
+            href="#slide-2" 
+            class="carousel__arrow carousel__arrow--next" 
+            aria-label="Go to next slide: Misty Forest"
+            title="Next slide"
+            data-direction="next">
+            <svg 
+              class="carousel__arrow-icon" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="2"
+              aria-hidden="true"
+              focusable="false">
+              <polyline points="9,18 15,12 9,6"></polyline>
+            </svg>
+            <span class="sr-only">Next slide</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Screen Reader Status -->
+      <div 
+        class="carousel__status" 
+        aria-live="polite" 
+        aria-atomic="true" 
+        role="status"
+        data-status="current">
+        <span>Showing slide 1 of 5: Mountain Reflection</span>
+      </div>
+    </section>
+
+    <!-- Usage Instructions -->
+    <aside 
+      class="carousel__instructions" 
+      aria-labelledby="instructions-heading"
+      role="complementary">
+      <h3 id="instructions-heading">Navigation Instructions</h3>
+      <ul role="list">
+        <li>
+          <strong>Mouse/Touch:</strong> Click circular indicators below the image or use arrow buttons on the sides
+        </li>
+        <li>
+          <strong>Keyboard:</strong> Use Tab key to focus on navigation elements, then press Enter or Space to activate
+        </li>
+        <li>
+          <strong>Arrow Keys:</strong> Navigate between slides when carousel is focused (some screen readers)
+        </li>
+        <li>
+          <strong>Screen Readers:</strong> Navigate by headings (H2 for slide titles) or use tab navigation through controls
+        </li>
+        <li>
+          <strong>Accessibility:</strong> Each slide has descriptive captions and alternative text for images
+        </li>
+      </ul>
+      
+      <h4>Browser Compatibility</h4>
+      <ul role="list">
+        <li><strong>Modern Browsers:</strong> Full features including smooth animations and custom properties</li>
+        <li><strong>Legacy Browsers:</strong> Core functionality with fallback styles</li>
+        <li><strong>No JavaScript:</strong> All navigation works with CSS-only implementation</li>
+      </ul>
+    </aside>
+  </main>
+
+  <!-- Progressive Enhancement JavaScript (optional) -->
+  <script>
+    (function() {
+      'use strict';
+      
+      // Enhanced functionality for modern browsers
+      function enhanceCarousel() {
+        const carousel = document.querySelector('[data-carousel="integrated-showcase"]');
+        const track = carousel.querySelector('.carousel__track');
+        const slides = carousel.querySelectorAll('.carousel__slide');
+        const indicators = carousel.querySelectorAll('.carousel__indicator');
+        const status = carousel.querySelector('[data-status="current"]');
+        
+        // Update aria-selected and tabindex for indicators
+        function updateIndicators(activeIndex) {
+          indicators.forEach((indicator, index) => {
+            const isActive = index === activeIndex;
+            indicator.setAttribute('aria-selected', isActive);
+            indicator.setAttribute('tabindex', isActive ? '0' : '-1');
+          });
+        }
+        
+        // Update screen reader status
+        function updateStatus(activeIndex) {
+          const slide = slides[activeIndex];
+          const title = slide.querySelector('.carousel__slide-title').textContent;
+          status.innerHTML = `<span>Showing slide ${activeIndex + 1} of ${slides.length}: ${title}</span>`;
+        }
+        
+        // Handle hash changes
+        function handleHashChange() {
+          const hash = window.location.hash;
+          const match = hash.match(/^#slide-(\d+)$/);
+          if (match) {
+            const slideIndex = parseInt(match[1]) - 1;
+            if (slideIndex >= 0 && slideIndex < slides.length) {
+              updateIndicators(slideIndex);
+              updateStatus(slideIndex);
+            }
+          }
+        }
+        
+        // Initialize
+        handleHashChange();
+        
+        // Listen for hash changes
+        window.addEventListener('hashchange', handleHashChange);
+        
+        // Keyboard navigation enhancement
+        carousel.addEventListener('keydown', function(e) {
+          const activeElement = document.activeElement;
+          const isIndicator = activeElement.classList.contains('carousel__indicator');
+          
+          if (isIndicator) {
+            let currentIndex = Array.from(indicators).indexOf(activeElement);
+            let newIndex = currentIndex;
+            
+            switch(e.key) {
+              case 'ArrowLeft':
+                e.preventDefault();
+                newIndex = currentIndex > 0 ? currentIndex - 1 : indicators.length - 1;
+                break;
+              case 'ArrowRight':
+                e.preventDefault();
+                newIndex = currentIndex < indicators.length - 1 ? currentIndex + 1 : 0;
+                break;
+              case 'Home':
+                e.preventDefault();
+                newIndex = 0;
+                break;
+              case 'End':
+                e.preventDefault();
+                newIndex = indicators.length - 1;
+                break;
+            }
+            
+            if (newIndex !== currentIndex) {
+              indicators[newIndex].focus();
+              indicators[newIndex].click();
+            }
+          }
+        });
+        
+        // Touch/swipe support (basic)
+        let startX = 0;
+        let endX = 0;
+        
+        track.addEventListener('touchstart', function(e) {
+          startX = e.touches[0].clientX;
+        }, { passive: true });
+        
+        track.addEventListener('touchend', function(e) {
+          endX = e.changedTouches[0].clientX;
+          const diff = startX - endX;
+          const threshold = 50;
+          
+          if (Math.abs(diff) > threshold) {
+            const currentHash = window.location.hash;
+            const match = currentHash.match(/^#slide-(\d+)$/);
+            const currentIndex = match ? parseInt(match[1]) - 1 : 0;
+            
+            let newIndex;
+            if (diff > 0) { // Swipe left (next)
+              newIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
+            } else { // Swipe right (previous)
+              newIndex = currentIndex > 0 ? currentIndex - 1 : slides.length - 1;
+            }
+            
+            window.location.hash = `#slide-${newIndex + 1}`;
+          }
+        }, { passive: true });
+      }
+      
+      // Run enhancement when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', enhanceCarousel);
+      } else {
+        enhanceCarousel();
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+/**
+ * Base Theme Variables
+ * Core CSS custom properties that define the foundation of the theme system
+ */
+
+:root {
+  /* === COLOR PRIMITIVES === */
+  --color-primary-hue: 220;
+  --color-primary-saturation: 100%;
+  --color-neutral-hue: 220;
+  
+  /* === SEMANTIC COLOR TOKENS === */
+  
+  /* Background Colors */
+  --color-background: hsl(var(--color-neutral-hue), 10%, 98%);
+  --color-surface: hsl(var(--color-neutral-hue), 10%, 100%);
+  --color-surface-elevated: hsl(var(--color-neutral-hue), 10%, 100%);
+  
+  /* Text Colors */
+  --color-text-primary: hsl(var(--color-neutral-hue), 15%, 15%);
+  --color-text-secondary: hsl(var(--color-neutral-hue), 10%, 45%);
+  --color-text-tertiary: hsl(var(--color-neutral-hue), 8%, 65%);
+  --color-text-inverse: hsl(var(--color-neutral-hue), 10%, 95%);
+  
+  /* Interactive Colors */
+  --color-accent: hsl(var(--color-primary-hue), var(--color-primary-saturation), 50%);
+  --color-accent-hover: hsl(var(--color-primary-hue), var(--color-primary-saturation), 45%);
+  --color-accent-active: hsl(var(--color-primary-hue), var(--color-primary-saturation), 40%);
+  
+  /* Border Colors */
+  --color-border: hsl(var(--color-neutral-hue), 15%, 90%);
+  --color-border-subtle: hsl(var(--color-neutral-hue), 10%, 95%);
+  --color-border-strong: hsl(var(--color-neutral-hue), 20%, 80%);
+  
+  /* State Colors */
+  --color-success: hsl(142, 76%, 36%);
+  --color-warning: hsl(38, 92%, 50%);
+  --color-error: hsl(0, 84%, 60%);
+  --color-info: hsl(var(--color-primary-hue), 100%, 60%);
+  
+  /* === COMPONENT-SPECIFIC TOKENS === */
+  
+  /* Button Tokens */
+  --button-background: var(--color-accent);
+  --button-background-hover: var(--color-accent-hover);
+  --button-background-active: var(--color-accent-active);
+  --button-text: white;
+  --button-border: transparent;
+  
+  /* Card Tokens */
+  --card-background: var(--color-surface);
+  --card-border: var(--color-border-subtle);
+  --card-shadow: hsla(var(--color-neutral-hue), 20%, 0%, 0.08);
+  --card-shadow-hover: hsla(var(--color-neutral-hue), 20%, 0%, 0.16);
+  
+  /* Input Tokens */
+  --input-background: var(--color-surface);
+  --input-border: var(--color-border);
+  --input-border-focus: var(--color-accent);
+  --input-text: var(--color-text-primary);
+  --input-placeholder: var(--color-text-tertiary);
+  
+  /* === ANIMATION & TRANSITION TOKENS === */
+  --transition-duration-fast: 150ms;
+  --transition-duration: 250ms;
+  --transition-duration-slow: 400ms;
+  --transition-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-property: background-color, border-color, color, fill, stroke, box-shadow, transform;
+  
+  /* === LAYOUT TOKENS === */
+  --border-radius-small: 0.25rem;
+  --border-radius: 0.5rem;
+  --border-radius-large: 1rem;
+  
+  /* === TYPOGRAPHY TOKENS === */
+  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
+  
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  
+  --line-height-tight: 1.25;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* === SPACING TOKENS === */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-base: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  
+  /* === Z-INDEX TOKENS === */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  
+  /* === SHADOW TOKENS === */
+  --shadow-xs: 0 1px 2px hsla(var(--color-neutral-hue), 20%, 0%, 0.05);
+  --shadow-sm: 0 1px 3px hsla(var(--color-neutral-hue), 20%, 0%, 0.1), 0 1px 2px hsla(var(--color-neutral-hue), 20%, 0%, 0.06);
+  --shadow-base: 0 4px 6px -1px hsla(var(--color-neutral-hue), 20%, 0%, 0.1), 0 2px 4px -1px hsla(var(--color-neutral-hue), 20%, 0%, 0.06);
+  --shadow-lg: 0 10px 15px -3px hsla(var(--color-neutral-hue), 20%, 0%, 0.1), 0 4px 6px -2px hsla(var(--color-neutral-hue), 20%, 0%, 0.05);
+  --shadow-xl: 0 20px 25px -5px hsla(var(--color-neutral-hue), 20%, 0%, 0.1), 0 10px 10px -5px hsla(var(--color-neutral-hue), 20%, 0%, 0.04);
+}
+
+/* === BROWSER OPTIMIZATION HINTS === */
+:root {
+  color-scheme: light dark;
+}
+
+/* === BASE STYLES === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+}
+
+body {
+  margin: 0;
+  transition: background-color var(--transition-duration) var(--transition-easing),
+              color var(--transition-duration) var(--transition-easing);
+}

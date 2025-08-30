@@ -1,0 +1,337 @@
+/* ==========================================================================
+   CSS-Only Responsive Image Carousel - Main Styles
+   ========================================================================== */
+
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* Container Styles */
+.carousel-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.carousel-title {
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Main Carousel Structure */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Hide Radio Inputs */
+.carousel input[type="radio"],
+.carousel input[type="checkbox"] {
+    display: none;
+}
+
+/* Slides Container */
+.carousel-slides {
+    position: relative;
+    width: 500%; /* 5 slides × 100% */
+    height: 400px;
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Individual Slides */
+.carousel-slide {
+    position: relative;
+    width: 20%; /* 100% / 5 slides */
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Slide Captions */
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 2rem 1.5rem 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.carousel-caption h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.carousel-caption p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+/* Show caption on slide hover */
+.carousel-slide:hover .carousel-caption {
+    transform: translateY(0);
+}
+
+/* Navigation Controls */
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.carousel-control {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    pointer-events: all;
+    transition: all 0.3s ease;
+    margin: 0 1rem;
+    transform: translateY(-50%);
+    user-select: none;
+}
+
+.carousel-control:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-control:focus {
+    outline: 3px solid #4285f4;
+    outline-offset: 2px;
+}
+
+/* Dot Indicators */
+.carousel-indicators {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 2;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.carousel-indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+.carousel-indicator:focus {
+    outline: 2px solid #4285f4;
+    outline-offset: 2px;
+}
+
+/* Auto-advance Controls */
+.carousel-auto {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 3;
+}
+
+.carousel-pause-btn {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.carousel-pause-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.carousel-pause-btn:focus {
+    outline: 2px solid #4285f4;
+    outline-offset: 2px;
+}
+
+/* Hide/show play/pause icons */
+.carousel-pause-btn .pause-icon {
+    display: block;
+}
+
+.carousel-pause-btn .play-icon {
+    display: none;
+}
+
+#carousel-pause:checked ~ .carousel-pause-btn .pause-icon {
+    display: none;
+}
+
+#carousel-pause:checked ~ .carousel-pause-btn .play-icon {
+    display: block;
+}
+
+/* Slide Navigation Logic */
+#slide-1:checked ~ .carousel-slides {
+    transform: translateX(0%);
+}
+
+#slide-2:checked ~ .carousel-slides {
+    transform: translateX(-20%);
+}
+
+#slide-3:checked ~ .carousel-slides {
+    transform: translateX(-40%);
+}
+
+#slide-4:checked ~ .carousel-slides {
+    transform: translateX(-60%);
+}
+
+#slide-5:checked ~ .carousel-slides {
+    transform: translateX(-80%);
+}
+
+/* Active Indicator Styling */
+#slide-1:checked ~ .carousel-nav .carousel-indicators label:nth-child(1),
+#slide-2:checked ~ .carousel-nav .carousel-indicators label:nth-child(2),
+#slide-3:checked ~ .carousel-nav .carousel-indicators label:nth-child(3),
+#slide-4:checked ~ .carousel-nav .carousel-indicators label:nth-child(4),
+#slide-5:checked ~ .carousel-nav .carousel-indicators label:nth-child(5) {
+    background: white;
+    box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.3);
+}
+
+/* Dynamic Navigation Controls */
+/* Previous button logic */
+#slide-1:checked ~ .carousel-nav .carousel-controls .prev { 
+    /* Show previous for slide 1 -> slide 5 */ 
+}
+
+#slide-2:checked ~ .carousel-nav .carousel-controls .prev { 
+    /* Point to slide 1 for slide 2 */ 
+}
+
+#slide-3:checked ~ .carousel-nav .carousel-controls .prev { 
+    /* Point to slide 2 for slide 3 */ 
+}
+
+#slide-4:checked ~ .carousel-nav .carousel-controls .prev { 
+    /* Point to slide 3 for slide 4 */ 
+}
+
+#slide-5:checked ~ .carousel-nav .carousel-controls .prev { 
+    /* Point to slide 4 for slide 5 */ 
+}
+
+/* Next button logic */
+#slide-1:checked ~ .carousel-nav .carousel-controls .next { 
+    /* Point to slide 2 for slide 1 */ 
+}
+
+#slide-2:checked ~ .carousel-nav .carousel-controls .next { 
+    /* Point to slide 3 for slide 2 */ 
+}
+
+#slide-3:checked ~ .carousel-nav .carousel-controls .next { 
+    /* Point to slide 4 for slide 3 */ 
+}
+
+#slide-4:checked ~ .carousel-nav .carousel-controls .next { 
+    /* Point to slide 5 for slide 4 */ 
+}
+
+#slide-5:checked ~ .carousel-nav .carousel-controls .next { 
+    /* Point to slide 1 for slide 5 */ 
+}
+
+/* Auto-advance Animation (when not paused) */
+@keyframes carousel-auto {
+    0%, 18% { transform: translateX(0%); }
+    20%, 38% { transform: translateX(-20%); }
+    40%, 58% { transform: translateX(-40%); }
+    60%, 78% { transform: translateX(-60%); }
+    80%, 98% { transform: translateX(-80%); }
+    100% { transform: translateX(0%); }
+}
+
+/* Apply auto-advance when not paused */
+.carousel-slides {
+    animation: carousel-auto 15s infinite;
+    animation-play-state: running;
+}
+
+#carousel-pause:checked ~ .carousel-slides {
+    animation-play-state: paused;
+}
+
+/* Instructions */
+.carousel-instructions {
+    text-align: center;
+    margin-top: 2rem;
+    color: white;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.carousel-instructions p {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Table Demo - Complete Implementation</title>
+    <meta name="description" content="Complete responsive pricing table demonstration with accessibility features">
+    <link rel="stylesheet" href="../src/css/pricing-table.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Demo-specific styles */
+        .demo-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .demo-header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.5rem;
+        }
+        
+        .demo-header p {
+            margin: 0;
+            font-size: 1.125rem;
+            opacity: 0.9;
+        }
+        
+        .demo-controls {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .demo-controls h2 {
+            margin: 0 0 1rem 0;
+            font-size: 1.25rem;
+            color: #1f2937;
+        }
+        
+        .control-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .control-group label {
+            font-weight: 500;
+            color: #374151;
+            min-width: 120px;
+        }
+        
+        .control-group select,
+        .control-group input[type="range"] {
+            flex: 1;
+            max-width: 200px;
+        }
+        
+        .demo-info {
+            background: #f3f4f6;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .demo-info h3 {
+            margin: 0 0 1rem 0;
+            color: #1f2937;
+        }
+        
+        .demo-info ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin: 0;
+        }
+        
+        .demo-info li {
+            margin-bottom: 0.5rem;
+            color: #4b5563;
+        }
+        
+        .demo-footer {
+            text-align: center;
+            padding: 2rem;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive demo controls */
+        @media (max-width: 768px) {
+            .demo-controls {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            
+            .control-group {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.5rem;
+            }
+            
+            .control-group label {
+                min-width: auto;
+            }
+            
+            .control-group select,
+            .control-group input[type="range"] {
+                max-width: none;
+            }
+        }
+        
+        /* Status indicator */
+        .status-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .status-indicator.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .status-indicator.error {
+            background: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <header class="demo-header">
+        <h1>Responsive Pricing Table Demo</h1>
+        <p>Complete implementation with CSS variables, accessibility features, and mobile optimization</p>
+    </header>
+
+    <div class="demo-controls">
+        <h2>Demo Controls</h2>
+        <div class="control-group">
+            <label for="theme-select">Theme:</label>
+            <select id="theme-select">
+                <option value="light">Light Theme</option>
+                <option value="dark">Dark Theme</option>
+                <option value="high-contrast">High Contrast</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="motion-toggle">Reduced Motion:</label>
+            <input type="checkbox" id="motion-toggle">
+        </div>
+        <div class="control-group">
+            <label for="viewport-size">Viewport Size:</label>
+            <select id="viewport-size">
+                <option value="desktop">Desktop (1200px+)</option>
+                <option value="tablet">Tablet (768px-1023px)</option>
+                <option value="mobile">Mobile (320px-767px)</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="font-size-slider">Font Size:</label>
+            <input type="range" id="font-size-slider" min="14" max="20" value="16">
+            <span id="font-size-value">16px</span>
+        </div>
+    </div>
+
+    <div class="demo-info">
+        <h3>Implementation Features</h3>
+        <ul>
+            <li><strong>CSS Variables:</strong> Fully customizable design system with consistent spacing, colors, and typography</li>
+            <li><strong>Responsive Design:</strong> Mobile-first approach with fluid layouts and optimal breakpoints</li>
+            <li><strong>Accessibility:</strong> Full WCAG 2.1 AA compliance with ARIA labels, keyboard navigation, and screen reader support</li>
+            <li><strong>Progressive Enhancement:</strong> Works without JavaScript, enhanced with JS interactions</li>
+            <li><strong>Performance Optimized:</strong> Lazy loading, efficient animations, and reduced motion support</li>
+            <li><strong>Cross-browser Compatible:</strong> Works in all modern browsers with graceful fallbacks</li>
+            <li><strong>Mobile Collapse:</strong> Comparison table for mobile devices with expandable sections</li>
+            <li><strong>Local Storage:</strong> Remembers user preferences across sessions</li>
+        </ul>
+    </div>
+
+    <main class="pricing-container" role="main">
+        <header class="pricing-header">
+            <h1 class="pricing-title">Choose Your Plan</h1>
+            <p class="pricing-subtitle">Select the perfect plan for your needs. Upgrade or downgrade at any time.</p>
+        </header>
+
+        <div class="pricing-toggle" role="group" aria-labelledby="billing-toggle-label">
+            <span id="billing-toggle-label" class="toggle-label">Billing Period</span>
+            <div class="toggle-wrapper">
+                <label class="toggle-option">
+                    <input type="radio" name="billing" value="monthly" checked aria-describedby="monthly-desc">
+                    <span class="toggle-text">Monthly</span>
+                    <span id="monthly-desc" class="sr-only">Pay monthly with no commitment</span>
+                </label>
+                <label class="toggle-option">
+                    <input type="radio" name="billing" value="yearly" aria-describedby="yearly-desc">
+                    <span class="toggle-text">Yearly</span>
+                    <span class="discount-badge" aria-label="20% discount">Save 20%</span>
+                    <span id="yearly-desc" class="sr-only">Pay yearly and save 20%</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="pricing-grid" role="list">
+            <!-- Basic Plan -->
+            <article class="pricing-card" role="listitem" data-plan="basic">
+                <header class="card-header">
+                    <h2 class="plan-name">Basic</h2>
+                    <p class="plan-description">Perfect for individuals and small projects</p>
+                </header>
+                
+                <div class="price-section" aria-live="polite">
+                    <div class="price-display">
+                        <span class="currency">$</span>
+                        <span class="price-amount" data-monthly="9" data-yearly="7.20">9</span>
+                        <span class="billing-period">/month</span>
+                    </div>
+                    <div class="price-note">
+                        <span class="yearly-price" aria-hidden="true">$86.40 billed annually</span>
+                    </div>
+                </div>
+
+                <ul class="features-list" role="list" aria-label="Basic plan features">
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Up to 5 projects</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>10GB storage</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Email support</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Basic analytics</span>
+                    </li>
+                </ul>
+
+                <button class="cta-button" type="button" aria-describedby="basic-plan-desc">
+                    Start Basic Plan
+                </button>
+                <p id="basic-plan-desc" class="sr-only">Start your basic plan subscription</p>
+            </article>
+
+            <!-- Professional Plan (Popular) -->
+            <article class="pricing-card popular" role="listitem" data-plan="professional">
+                <div class="popular-badge" aria-label="Most popular plan">Most Popular</div>
+                <header class="card-header">
+                    <h2 class="plan-name">Professional</h2>
+                    <p class="plan-description">Best for growing teams and businesses</p>
+                </header>
+                
+                <div class="price-section" aria-live="polite">
+                    <div class="price-display">
+                        <span class="currency">$</span>
+                        <span class="price-amount" data-monthly="29" data-yearly="23.20">29</span>
+                        <span class="billing-period">/month</span>
+                    </div>
+                    <div class="price-note">
+                        <span class="yearly-price" aria-hidden="true">$278.40 billed annually</span>
+                    </div>
+                </div>
+
+                <ul class="features-list" role="list" aria-label="Professional plan features">
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Unlimited projects</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>100GB storage</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Priority support</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Advanced analytics</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Team collaboration</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>API access</span>
+                    </li>
+                </ul>
+
+                <button class="cta-button primary" type="button" aria-describedby="pro-plan-desc">
+                    Start Professional Plan
+                </button>
+                <p id="pro-plan-desc" class="sr-only">Start your professional plan subscription</p>
+            </article>
+
+            <!-- Enterprise Plan -->
+            <article class="pricing-card" role="listitem" data-plan="enterprise">
+                <header class="card-header">
+                    <h2 class="plan-name">Enterprise</h2>
+                    <p class="plan-description">For large organizations with advanced needs</p>
+                </header>
+                
+                <div class="price-section" aria-live="polite">
+                    <div class="price-display">
+                        <span class="currency">$</span>
+                        <span class="price-amount" data-monthly="99" data-yearly="79.20">99</span>
+                        <span class="billing-period">/month</span>
+                    </div>
+                    <div class="price-note">
+                        <span class="yearly-price" aria-hidden="true">$950.40 billed annually</span>
+                    </div>
+                </div>
+
+                <ul class="features-list" role="list" aria-label="Enterprise plan features">
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Everything in Professional</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Unlimited storage</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>24/7 phone support</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Custom integrations</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Advanced security</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="check-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill="currentColor"/>
+                        </svg>
+                        <span>Dedicated account manager</span>
+                    </li>
+                </ul>
+
+                <button class="cta-button" type="button" aria-describedby="enterprise-plan-desc">
+                    Contact Sales
+                </button>
+                <p id="enterprise-plan-desc" class="sr-only">Contact our sales team for enterprise pricing</p>
+            </article>
+        </div>
+
+        <!-- Mobile Comparison -->
+        <div class="mobile-comparison" role="region" aria-labelledby="mobile-comparison-title">
+            <h2 id="mobile-comparison-title" class="comparison-title">Compare Plans</h2>
+            <button class="comparison-toggle" type="button" aria-expanded="false" aria-controls="comparison-content">
+                <span class="toggle-text">Show Feature Comparison</span>
+                <svg class="toggle-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill="currentColor"/>
+                </svg>
+            </button>
+            
+            <div id="comparison-content" class="comparison-content" aria-hidden="true">
+                <div class="comparison-table">
+                    <div class="feature-row">
+                        <span class="feature-name">Projects</span>
+                        <div class="feature-values">
+                            <span class="basic-value">5</span>
+                            <span class="pro-value">Unlimited</span>
+                            <span class="enterprise-value">Unlimited</span>
+                        </div>
+                    </div>
+                    <div class="feature-row">
+                        <span class="feature-name">Storage</span>
+                        <div class="feature-values">
+                            <span class="basic-value">10GB</span>
+                            <span class="pro-value">100GB</span>
+                            <span class="enterprise-value">Unlimited</span>
+                        </div>
+                    </div>
+                    <div class="feature-row">
+                        <span class="feature-name">Support</span>
+                        <div class="feature-values">
+                            <span class="basic-value">Email</span>
+                            <span class="pro-value">Priority</span>
+                            <span class="enterprise-value">24/7 Phone</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="demo-footer">
+        <p>Pricing Table Demo - Built with modern web standards and accessibility in mind</p>
+        <p>Features: CSS Variables, Responsive Design, Accessibility, Progressive Enhancement, Performance Optimization</p>
+    </footer>
+
+    <div id="status-indicator" class="status-indicator">
+        Ready
+    </div>
+
+    <script src="../src/js/pricing-table.js"></script>
+    <script>
+        // Demo-specific JavaScript
+        document.addEventListener('DOMContentLoaded', () => {
+            const statusIndicator = document.getElementById('status-indicator');
+            const themeSelect = document.getElementById('theme-select');
+            const motionToggle = document.getElementById('motion-toggle');
+            const viewportSelect = document.getElementById('viewport-size');
+            const fontSizeSlider = document.getElementById('font-size-slider');
+            const fontSizeValue = document.getElementById('font-size-value');
+
+            // Show status indicator
+            setTimeout(() => {
+                statusIndicator.classList.add('show');
+                setTimeout(() => {
+                    statusIndicator.classList.remove('show');
+                }, 3000);
+            }, 500);
+
+            // Theme switching
+            themeSelect.addEventListener('change', (e) => {
+                document.documentElement.setAttribute('data-theme', e.target.value);
+                showStatus(`Switched to ${e.target.value} theme`);
+            });
+
+            // Motion toggle
+            motionToggle.addEventListener('change', (e) => {
+                if (e.target.checked) {
+                    document.documentElement.style.setProperty('--transition-fast', '0ms');
+                    document.documentElement.style.setProperty('--transition-base', '0ms');
+                    document.documentElement.style.setProperty('--transition-slow', '0ms');
+                    showStatus('Reduced motion enabled');
+                } else {
+                    document.documentElement.style.removeProperty('--transition-fast');
+                    document.documentElement.style.removeProperty('--transition-base');
+                    document.documentElement.style.removeProperty('--transition-slow');
+                    showStatus('Animations enabled');
+                }
+            });
+
+            // Viewport simulation
+            viewportSelect.addEventListener('change', (e) => {
+                const container = document.querySelector('.pricing-container');
+                const value = e.target.value;
+                
+                container.classList.remove('demo-desktop', 'demo-tablet', 'demo-mobile');
+                
+                switch (value) {
+                    case 'desktop':
+                        container.style.maxWidth = '1200px';
+                        break;
+                    case 'tablet':
+                        container.style.maxWidth = '768px';
+                        break;
+                    case 'mobile':
+                        container.style.maxWidth = '375px';
+                        break;
+                }
+                
+                showStatus(`Viewport set to ${value}`);
+            });
+
+            // Font size adjustment
+            fontSizeSlider.addEventListener('input', (e) => {
+                const size = e.target.value;
+                document.documentElement.style.fontSize = `${size}px`;
+                fontSizeValue.textContent = `${size}px`;
+                showStatus(`Font size: ${size}px`);
+            });
+
+            function showStatus(message, isError = false) {
+                statusIndicator.textContent = message;
+                statusIndicator.className = `status-indicator show ${isError ? 'error' : ''}`;
+                
+                setTimeout(() => {
+                    statusIndicator.classList.remove('show');
+                }, 3000);
+            }
+
+            // Demo event listeners
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    showStatus('Demo controls: Use select boxes above to test features');
+                }
+            });
+
+            // Monitor pricing table events
+            if (window.pricingTable) {
+                const originalReportProgress = window.pricingTable.reportProgress.bind(window.pricingTable);
+                window.pricingTable.reportProgress = (message) => {
+                    originalReportProgress(message);
+                    showStatus(message);
+                };
+            }
+        });
+    </script>
+</body>
+</html>

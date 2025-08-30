@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Responsive Navigation</title>
+    <link rel="stylesheet" href="../styles/navigation.css">
+</head>
+<body>
+    <!-- Skip Links for Accessibility -->
+    <div class="skip-links">
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+        <a href="#navigation" class="skip-link">Skip to navigation</a>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="site-header" role="banner">
+        <nav id="navigation" class="main-navigation" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <!-- Logo/Brand -->
+                <div class="nav-brand">
+                    <a href="/" class="brand-link" aria-label="Homepage">
+                        <img src="/assets/logo.svg" alt="Company Logo" class="brand-logo">
+                        <span class="brand-text">Brand</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button 
+                    class="mobile-menu-toggle" 
+                    aria-expanded="false" 
+                    aria-controls="nav-menu" 
+                    aria-label="Toggle navigation menu"
+                    type="button"
+                >
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="sr-only">Menu</span>
+                </button>
+
+                <!-- Navigation Menu -->
+                <div id="nav-menu" class="nav-menu" aria-hidden="false">
+                    <ul class="nav-list" role="menubar">
+                        <!-- Simple Navigation Items -->
+                        <li class="nav-item" role="none">
+                            <a href="/" class="nav-link" role="menuitem" aria-current="page">Home</a>
+                        </li>
+                        
+                        <li class="nav-item" role="none">
+                            <a href="/about" class="nav-link" role="menuitem">About</a>
+                        </li>
+
+                        <!-- Dropdown Navigation Item -->
+                        <li class="nav-item has-dropdown" role="none">
+                            <button 
+                                class="nav-link dropdown-toggle" 
+                                aria-expanded="false"
+                                aria-haspopup="true"
+                                aria-controls="services-dropdown"
+                                role="menuitem"
+                                type="button"
+                            >
+                                Services
+                                <span class="dropdown-icon" aria-hidden="true">▼</span>
+                            </button>
+                            <ul 
+                                id="services-dropdown" 
+                                class="dropdown-menu" 
+                                role="menu"
+                                aria-label="Services submenu"
+                                aria-hidden="true"
+                            >
+                                <li role="none">
+                                    <a href="/services/web-design" class="dropdown-link" role="menuitem">Web Design</a>
+                                </li>
+                                <li role="none">
+                                    <a href="/services/development" class="dropdown-link" role="menuitem">Development</a>
+                                </li>
+                                <li role="none">
+                                    <a href="/services/consulting" class="dropdown-link" role="menuitem">Consulting</a>
+                                </li>
+                                <li role="none">
+                                    <a href="/services/support" class="dropdown-link" role="menuitem">Support</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Multi-level Dropdown -->
+                        <li class="nav-item has-dropdown" role="none">
+                            <button 
+                                class="nav-link dropdown-toggle" 
+                                aria-expanded="false"
+                                aria-haspopup="true"
+                                aria-controls="products-dropdown"
+                                role="menuitem"
+                                type="button"
+                            >
+                                Products
+                                <span class="dropdown-icon" aria-hidden="true">▼</span>
+                            </button>
+                            <ul 
+                                id="products-dropdown" 
+                                class="dropdown-menu" 
+                                role="menu"
+                                aria-label="Products submenu"
+                                aria-hidden="true"
+                            >
+                                <li role="none">
+                                    <a href="/products/software" class="dropdown-link" role="menuitem">Software</a>
+                                </li>
+                                <li class="has-submenu" role="none">
+                                    <button 
+                                        class="dropdown-link submenu-toggle" 
+                                        aria-expanded="false"
+                                        aria-haspopup="true"
+                                        aria-controls="hardware-submenu"
+                                        role="menuitem"
+                                        type="button"
+                                    >
+                                        Hardware
+                                        <span class="dropdown-icon" aria-hidden="true">▶</span>
+                                    </button>
+                                    <ul 
+                                        id="hardware-submenu" 
+                                        class="submenu" 
+                                        role="menu"
+                                        aria-label="Hardware submenu"
+                                        aria-hidden="true"
+                                    >
+                                        <li role="none">
+                                            <a href="/products/hardware/servers" class="dropdown-link" role="menuitem">Servers</a>
+                                        </li>
+                                        <li role="none">
+                                            <a href="/products/hardware/workstations" class="dropdown-link" role="menuitem">Workstations</a>
+                                        </li>
+                                        <li role="none">
+                                            <a href="/products/hardware/accessories" class="dropdown-link" role="menuitem">Accessories</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li role="none">
+                                    <a href="/products/services" class="dropdown-link" role="menuitem">Services</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item" role="none">
+                            <a href="/blog" class="nav-link" role="menuitem">Blog</a>
+                        </li>
+
+                        <li class="nav-item" role="none">
+                            <a href="/contact" class="nav-link" role="menuitem">Contact</a>
+                        </li>
+
+                        <!-- CTA Button -->
+                        <li class="nav-item nav-cta" role="none">
+                            <a href="/get-started" class="nav-link cta-button" role="menuitem">Get Started</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ARIA Live Region for Screen Reader Announcements -->
+    <div id="navigation-announcements" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content" role="main">
+        <section class="hero-section">
+            <h1>Accessible Navigation Demo</h1>
+            <p>This navigation component demonstrates best practices for accessibility, responsive design, and keyboard navigation.</p>
+            
+            <div class="demo-features">
+                <h2>Features Implemented:</h2>
+                <ul>
+                    <li>✅ Semantic HTML with proper ARIA attributes</li>
+                    <li>✅ Skip links for keyboard navigation</li>
+                    <li>✅ Responsive mobile-first design</li>
+                    <li>✅ Keyboard navigation support</li>
+                    <li>✅ Screen reader announcements</li>
+                    <li>✅ Focus management and visual indicators</li>
+                    <li>✅ Mobile hamburger menu with animations</li>
+                    <li>✅ Multi-level dropdown menus</li>
+                    <li>✅ WCAG 2.1 AA compliance</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="../scripts/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+/**
+ * Dark Theme Overrides
+ * CSS custom property overrides for dark theme implementation
+ */
+
+[data-theme="dark"] {
+  /* === SEMANTIC COLOR TOKENS - DARK THEME === */
+  
+  /* Background Colors */
+  --color-background: hsl(var(--color-neutral-hue), 15%, 8%);
+  --color-surface: hsl(var(--color-neutral-hue), 15%, 12%);
+  --color-surface-elevated: hsl(var(--color-neutral-hue), 15%, 16%);
+  
+  /* Text Colors */
+  --color-text-primary: hsl(var(--color-neutral-hue), 10%, 95%);
+  --color-text-secondary: hsl(var(--color-neutral-hue), 5%, 65%);
+  --color-text-tertiary: hsl(var(--color-neutral-hue), 5%, 45%);
+  --color-text-inverse: hsl(var(--color-neutral-hue), 15%, 15%);
+  
+  /* Interactive Colors - Adjusted for dark theme */
+  --color-accent: hsl(var(--color-primary-hue), var(--color-primary-saturation), 60%);
+  --color-accent-hover: hsl(var(--color-primary-hue), var(--color-primary-saturation), 65%);
+  --color-accent-active: hsl(var(--color-primary-hue), var(--color-primary-saturation), 55%);
+  
+  /* Border Colors */
+  --color-border: hsl(var(--color-neutral-hue), 15%, 25%);
+  --color-border-subtle: hsl(var(--color-neutral-hue), 10%, 20%);
+  --color-border-strong: hsl(var(--color-neutral-hue), 20%, 35%);
+  
+  /* State Colors - Dark theme variations */
+  --color-success: hsl(142, 76%, 45%);
+  --color-warning: hsl(38, 92%, 60%);
+  --color-error: hsl(0, 84%, 65%);
+  --color-info: hsl(var(--color-primary-hue), 100%, 70%);
+  
+  /* === COMPONENT-SPECIFIC TOKENS - DARK THEME === */
+  
+  /* Card Tokens */
+  --card-shadow: hsla(0, 0%, 0%, 0.3);
+  --card-shadow-hover: hsla(0, 0%, 0%, 0.4);
+  
+  /* Input Tokens */
+  --input-background: hsl(var(--color-neutral-hue), 15%, 16%);
+  --input-border: hsl(var(--color-neutral-hue), 15%, 30%);
+  
+  /* === SHADOW TOKENS - DARK THEME === */
+  --shadow-xs: 0 1px 2px hsla(0, 0%, 0%, 0.2);
+  --shadow-sm: 0 1px 3px hsla(0, 0%, 0%, 0.3), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+  --shadow-base: 0 4px 6px -1px hsla(0, 0%, 0%, 0.3), 0 2px 4px -1px hsla(0, 0%, 0%, 0.2);
+  --shadow-lg: 0 10px 15px -3px hsla(0, 0%, 0%, 0.3), 0 4px 6px -2px hsla(0, 0%, 0%, 0.15);
+  --shadow-xl: 0 20px 25px -5px hsla(0, 0%, 0%, 0.3), 0 10px 10px -5px hsla(0, 0%, 0%, 0.1);
+}
+
+/* === SYSTEM PREFERENCE INTEGRATION === */
+/* Automatically apply dark theme based on user's OS preference if no explicit theme is set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    /* Background Colors */
+    --color-background: hsl(var(--color-neutral-hue), 15%, 8%);
+    --color-surface: hsl(var(--color-neutral-hue), 15%, 12%);
+    --color-surface-elevated: hsl(var(--color-neutral-hue), 15%, 16%);
+    
+    /* Text Colors */
+    --color-text-primary: hsl(var(--color-neutral-hue), 10%, 95%);
+    --color-text-secondary: hsl(var(--color-neutral-hue), 5%, 65%);
+    --color-text-tertiary: hsl(var(--color-neutral-hue), 5%, 45%);
+    --color-text-inverse: hsl(var(--color-neutral-hue), 15%, 15%);
+    
+    /* Interactive Colors */
+    --color-accent: hsl(var(--color-primary-hue), var(--color-primary-saturation), 60%);
+    --color-accent-hover: hsl(var(--color-primary-hue), var(--color-primary-saturation), 65%);
+    --color-accent-active: hsl(var(--color-primary-hue), var(--color-primary-saturation), 55%);
+    
+    /* Border Colors */
+    --color-border: hsl(var(--color-neutral-hue), 15%, 25%);
+    --color-border-subtle: hsl(var(--color-neutral-hue), 10%, 20%);
+    --color-border-strong: hsl(var(--color-neutral-hue), 20%, 35%);
+    
+    /* Component Tokens */
+    --card-shadow: hsla(0, 0%, 0%, 0.3);
+    --card-shadow-hover: hsla(0, 0%, 0%, 0.4);
+    --input-background: hsl(var(--color-neutral-hue), 15%, 16%);
+    --input-border: hsl(var(--color-neutral-hue), 15%, 30%);
+    
+    /* Shadow Tokens */
+    --shadow-xs: 0 1px 2px hsla(0, 0%, 0%, 0.2);
+    --shadow-sm: 0 1px 3px hsla(0, 0%, 0%, 0.3), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+    --shadow-base: 0 4px 6px -1px hsla(0, 0%, 0%, 0.3), 0 2px 4px -1px hsla(0, 0%, 0%, 0.2);
+    --shadow-lg: 0 10px 15px -3px hsla(0, 0%, 0%, 0.3), 0 4px 6px -2px hsla(0, 0%, 0%, 0.15);
+    --shadow-xl: 0 20px 25px -5px hsla(0, 0%, 0%, 0.3), 0 10px 10px -5px hsla(0, 0%, 0%, 0.1);
+  }
+}
+
+/* === REDUCED MOTION SUPPORT === */
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="dark"] * {
+    transition-duration: 0.01ms !important;
+  }
+}

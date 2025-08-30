@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CSS-only dark/light mode toggle system with localStorage persistence">
+    <title>Theme Toggle System - Demo</title>
+    
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../css/theme-variables.css">
+    <link rel="stylesheet" href="../css/theme-base.css">
+    <link rel="stylesheet" href="../css/theme-toggle.css">
+    
+    <!-- Demo specific styles -->
+    <style>
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .demo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .demo-section {
+            padding: 20px;
+        }
+        
+        .toggle-examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .toggle-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .example-components {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .status-indicators {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .theme-info {
+            font-family: 'SF Mono', Monaco, Inconsolata, 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 14px;
+            padding: 16px;
+            background-color: var(--color-background-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+        }
+        
+        @media (max-width: 768px) {
+            .demo-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .toggle-examples {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Header with main toggle -->
+        <header class="demo-header">
+            <div>
+                <h1>Theme Toggle System</h1>
+                <p>Production-ready CSS-only dark/light mode with localStorage persistence</p>
+            </div>
+            
+            <!-- Main theme toggle -->
+            <label class="theme-toggle theme-toggle-label" data-theme-toggle>
+                <input type="checkbox" class="theme-toggle-input" aria-label="Toggle dark mode">
+                <span class="theme-toggle-btn">
+                    <!-- Sun icon -->
+                    <svg class="theme-toggle-icon theme-toggle-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <!-- Moon icon -->
+                    <svg class="theme-toggle-icon theme-toggle-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </span>
+                <span class="theme-toggle-text">Toggle theme</span>
+            </label>
+        </header>
+
+        <!-- Toggle variations -->
+        <section class="card demo-section">
+            <h2>Toggle Variations</h2>
+            <p>Different styles and sizes of theme toggles</p>
+            
+            <div class="toggle-examples">
+                <!-- Icon button toggle -->
+                <div class="toggle-group">
+                    <label class="theme-toggle" data-theme-toggle>
+                        <input type="checkbox" class="theme-toggle-input" aria-label="Icon toggle">
+                        <span class="theme-toggle-btn">
+                            <svg class="theme-toggle-icon theme-toggle-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="12" cy="12" r="5"/>
+                                <line x1="12" y1="1" x2="12" y2="3"/>
+                                <line x1="12" y1="21" x2="12" y2="23"/>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                                <line x1="1" y1="12" x2="3" y2="12"/>
+                                <line x1="21" y1="12" x2="23" y2="12"/>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                            </svg>
+                            <svg class="theme-toggle-icon theme-toggle-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                            </svg>
+                        </span>
+                    </label>
+                    <small>Default</small>
+                </div>
+
+                <!-- Compact toggle -->
+                <div class="toggle-group">
+                    <label class="theme-toggle" data-theme-toggle>
+                        <input type="checkbox" class="theme-toggle-input" aria-label="Compact toggle">
+                        <span class="theme-toggle-btn theme-toggle-compact">
+                            <svg class="theme-toggle-icon theme-toggle-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="12" cy="12" r="5"/>
+                                <line x1="12" y1="1" x2="12" y2="3"/>
+                                <line x1="12" y1="21" x2="12" y2="23"/>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                                <line x1="1" y1="12" x2="3" y2="12"/>
+                                <line x1="21" y1="12" x2="23" y2="12"/>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                            </svg>
+                            <svg class="theme-toggle-icon theme-toggle-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                            </svg>
+                        </span>
+                    </label>
+                    <small>Compact</small>
+                </div>
+
+                <!-- Large toggle -->
+                <div class="toggle-group">
+                    <label class="theme-toggle" data-theme-toggle>
+                        <input type="checkbox" class="theme-toggle-input" aria-label="Large toggle">
+                        <span class="theme-toggle-btn theme-toggle-large">
+                            <svg class="theme-toggle-icon theme-toggle-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="12" cy="12" r="5"/>
+                                <line x1="12" y1="1" x2="12" y2="3"/>
+                                <line x1="12" y1="21" x2="12" y2="23"/>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                                <line x1="1" y1="12" x2="3" y2="12"/>
+                                <line x1="21" y1="12" x2="23" y2="12"/>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                            </svg>
+                            <svg class="theme-toggle-icon theme-toggle-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                            </svg>
+                        </span>
+                    </label>
+                    <small>Large</small>
+                </div>
+
+                <!-- Switch toggle -->
+                <div class="toggle-group">
+                    <label class="theme-toggle" data-theme-toggle>
+                        <input type="checkbox" class="theme-toggle-input" aria-label="Switch toggle">
+                        <span class="theme-toggle-switch"></span>
+                    </label>
+                    <small>Switch</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example components -->
+        <div class="demo-grid">
+            <!-- Typography examples -->
+            <section class="card">
+                <h2>Typography</h2>
+                <h3>Heading 3</h3>
+                <h4>Heading 4</h4>
+                <p>Regular paragraph text with <a href="#">a link</a> and <strong>bold text</strong>.</p>
+                <small>Small text for additional information</small>
+                <code>inline code example</code>
+            </section>
+
+            <!-- Form elements -->
+            <section class="card">
+                <h2>Form Elements</h2>
+                <form>
+                    <div style="margin-bottom: 16px;">
+                        <label for="demo-input">Text Input:</label><br>
+                        <input type="text" id="demo-input" placeholder="Enter text here">
+                    </div>
+                    <div style="margin-bottom: 16px;">
+                        <label for="demo-select">Select:</label><br>
+                        <select id="demo-select">
+                            <option>Option 1</option>
+                            <option>Option 2</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 16px;">
+                        <label for="demo-textarea">Textarea:</label><br>
+                        <textarea id="demo-textarea" rows="3" placeholder="Enter description"></textarea>
+                    </div>
+                    <button type="button" class="btn-primary">Primary Button</button>
+                    <button type="button">Secondary Button</button>
+                </form>
+            </section>
+
+            <!-- Status indicators -->
+            <section class="card">
+                <h2>Status Colors</h2>
+                <div class="status-indicators">
+                    <span class="status-badge bg-success text-success">Success</span>
+                    <span class="status-badge bg-warning text-warning">Warning</span>
+                    <span class="status-badge bg-error text-error">Error</span>
+                    <span class="status-badge bg-info text-info">Info</span>
+                </div>
+                <p class="text-success">Success text color</p>
+                <p class="text-warning">Warning text color</p>
+                <p class="text-error">Error text color</p>
+                <p class="text-info">Info text color</p>
+            </section>
+
+            <!-- Code example -->
+            <section class="card">
+                <h2>Code Block</h2>
+                <pre><code>// Example CSS custom properties
+:root {
+  --color-primary: hsl(220, 90%, 56%);
+  --color-background: hsl(0, 0%, 100%);
+}
+
+[data-theme="dark"] {
+  --color-primary: hsl(220, 90%, 66%);
+  --color-background: hsl(220, 13%, 9%);
+}</code></pre>
+            </section>
+        </div>
+
+        <!-- Theme information -->
+        <section class="card">
+            <h2>Theme Information</h2>
+            <div class="theme-info" id="theme-info">
+                <div>Current theme: <span id="current-theme">-</span></div>
+                <div>System preference: <span id="system-preference">-</span></div>
+                <div>Stored theme: <span id="stored-theme">-</span></div>
+                <div>Color scheme: <span id="color-scheme">-</span></div>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <button type="button" onclick="window.themeController?.resetToSystemPreference()">
+                    Reset to System Preference
+                </button>
+                <button type="button" onclick="updateThemeInfo()">
+                    Refresh Info
+                </button>
+            </div>
+        </section>
+
+        <!-- Feature checklist -->
+        <section class="card">
+            <h2>Features</h2>
+            <ul>
+                <li>✅ CSS-only toggle mechanism (checkbox hack + :has() selector)</li>
+                <li>✅ localStorage persistence across sessions</li>
+                <li>✅ System preference detection and auto-switching</li>
+                <li>✅ Cross-browser compatibility with fallbacks</li>
+                <li>✅ WCAG 2.1 AA compliant color scheme</li>
+                <li>✅ Smooth transitions with reduced motion support</li>
+                <li>✅ Responsive design for all devices</li>
+                <li>✅ High contrast mode support</li>
+                <li>✅ Cross-tab synchronization</li>
+                <li>✅ Mobile browser theme-color integration</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Theme controller JavaScript -->
+    <script src="../js/theme-controller.js"></script>
+    
+    <!-- Demo-specific JavaScript -->
+    <script>
+        // Update theme information display
+        function updateThemeInfo() {
+            if (!window.themeController) return;
+            
+            const currentTheme = window.themeController.getCurrentTheme();
+            const systemPreference = window.themeController.getSystemPreference();
+            const storedTheme = window.themeController.getStoredTheme();
+            const colorScheme = getComputedStyle(document.documentElement).getPropertyValue('--color-scheme').trim();
+            
+            document.getElementById('current-theme').textContent = currentTheme || 'unknown';
+            document.getElementById('system-preference').textContent = systemPreference || 'unknown';
+            document.getElementById('stored-theme').textContent = storedTheme || 'none (using system)';
+            document.getElementById('color-scheme').textContent = colorScheme || 'unknown';
+        }
+        
+        // Listen for theme changes
+        document.addEventListener('themechange', (e) => {
+            console.log('Theme changed:', e.detail);
+            updateThemeInfo();
+        });
+        
+        // Update info when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(updateThemeInfo, 100);
+        });
+        
+        // Log theme controller availability
+        if (window.themeController) {
+            console.log('Theme controller loaded successfully');
+            console.log('Available methods:', Object.getOwnPropertyNames(Object.getPrototypeOf(window.themeController)));
+        }
+    </script>
+</body>
+</html>
