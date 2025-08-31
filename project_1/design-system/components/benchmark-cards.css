@@ -1,0 +1,326 @@
+/* Neobrutalist Benchmark Cards - Bold and Functional */
+
+/* Base Benchmark Card */
+.neo-benchmark-card {
+  background-color: var(--neo-white);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  box-shadow: var(--neo-shadow-medium);
+  padding: var(--neo-space-6);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.neo-benchmark-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--neo-shadow-lg);
+}
+
+.neo-benchmark-card:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--neo-shadow-small);
+}
+
+/* Difficulty Level Variants */
+.neo-benchmark-card--easy {
+  border-left: var(--neo-border-ultra) solid var(--neo-easy);
+  background: linear-gradient(90deg, var(--neo-easy) 0%, var(--neo-easy) 4px, var(--neo-white) 4px);
+}
+
+.neo-benchmark-card--medium {
+  border-left: var(--neo-border-ultra) solid var(--neo-medium);
+  background: linear-gradient(90deg, var(--neo-medium) 0%, var(--neo-medium) 4px, var(--neo-white) 4px);
+}
+
+.neo-benchmark-card--hard {
+  border-left: var(--neo-border-ultra) solid var(--neo-hard);
+  background: linear-gradient(90deg, var(--neo-hard) 0%, var(--neo-hard) 4px, var(--neo-white) 4px);
+}
+
+.neo-benchmark-card--expert {
+  border-left: var(--neo-border-ultra) solid var(--neo-expert);
+  background: linear-gradient(90deg, var(--neo-expert) 0%, var(--neo-expert) 4px, var(--neo-white) 4px);
+}
+
+/* Card Header */
+.neo-benchmark-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--neo-space-4);
+  padding-bottom: var(--neo-space-3);
+  border-bottom: var(--neo-border-thin) solid var(--neo-black);
+}
+
+.neo-benchmark-card__title {
+  font-family: var(--neo-font-display);
+  font-size: var(--neo-text-xl);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-black);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: var(--neo-tracking-wide);
+}
+
+.neo-benchmark-card__difficulty {
+  padding: var(--neo-space-1) var(--neo-space-3);
+  border: var(--neo-border-thin) solid var(--neo-black);
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-xs);
+  font-weight: var(--neo-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--neo-tracking-wider);
+}
+
+.neo-benchmark-card__difficulty--easy {
+  background-color: var(--neo-easy);
+  color: var(--neo-black);
+}
+
+.neo-benchmark-card__difficulty--medium {
+  background-color: var(--neo-medium);
+  color: var(--neo-black);
+}
+
+.neo-benchmark-card__difficulty--hard {
+  background-color: var(--neo-hard);
+  color: var(--neo-white);
+}
+
+.neo-benchmark-card__difficulty--expert {
+  background-color: var(--neo-expert);
+  color: var(--neo-white);
+}
+
+/* Card Body */
+.neo-benchmark-card__body {
+  margin-bottom: var(--neo-space-4);
+}
+
+.neo-benchmark-card__description {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-sm);
+  line-height: var(--neo-leading-normal);
+  color: var(--neo-text-muted);
+  margin-bottom: var(--neo-space-3);
+}
+
+.neo-benchmark-card__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--neo-space-3);
+  margin-bottom: var(--neo-space-4);
+}
+
+.neo-benchmark-card__stat {
+  text-align: center;
+  padding: var(--neo-space-2);
+  border: var(--neo-border-thin) solid var(--neo-black);
+  background-color: var(--neo-gray-light);
+}
+
+.neo-benchmark-card__stat-value {
+  font-family: var(--neo-font-display);
+  font-size: var(--neo-text-lg);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-black);
+  display: block;
+  margin-bottom: var(--neo-space-1);
+}
+
+.neo-benchmark-card__stat-label {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-xs);
+  color: var(--neo-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--neo-tracking-wide);
+}
+
+/* Progress Bar */
+.neo-benchmark-card__progress {
+  margin-bottom: var(--neo-space-4);
+}
+
+.neo-benchmark-card__progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--neo-space-2);
+}
+
+.neo-benchmark-card__progress-text {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-sm);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-black);
+  text-transform: uppercase;
+}
+
+.neo-benchmark-card__progress-percentage {
+  font-family: var(--neo-font-display);
+  font-size: var(--neo-text-sm);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-electric-blue);
+}
+
+.neo-benchmark-card__progress-bar {
+  width: 100%;
+  height: 12px;
+  background-color: var(--neo-gray-light);
+  border: var(--neo-border-thin) solid var(--neo-black);
+  position: relative;
+  overflow: hidden;
+}
+
+.neo-benchmark-card__progress-fill {
+  height: 100%;
+  background-color: var(--neo-progress);
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.neo-benchmark-card__progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 4px,
+    rgba(255, 255, 255, 0.2) 4px,
+    rgba(255, 255, 255, 0.2) 8px
+  );
+}
+
+/* Card Footer */
+.neo-benchmark-card__footer {
+  display: flex;
+  gap: var(--neo-space-3);
+}
+
+.neo-benchmark-card__action {
+  flex: 1;
+  padding: var(--neo-space-3) var(--neo-space-4);
+  border: var(--neo-border-thin) solid var(--neo-black);
+  background-color: var(--neo-white);
+  color: var(--neo-black);
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-sm);
+  font-weight: var(--neo-weight-bold);
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: block;
+}
+
+.neo-benchmark-card__action:hover {
+  background-color: var(--neo-black);
+  color: var(--neo-white);
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0 var(--neo-electric-blue);
+}
+
+.neo-benchmark-card__action:active {
+  transform: translate(0, 0);
+  box-shadow: none;
+}
+
+.neo-benchmark-card__action--primary {
+  background-color: var(--neo-electric-blue);
+  color: var(--neo-white);
+  border-color: var(--neo-black);
+}
+
+.neo-benchmark-card__action--primary:hover {
+  background-color: var(--neo-hot-pink);
+}
+
+/* Status Indicators */
+.neo-benchmark-card__status {
+  position: absolute;
+  top: var(--neo-space-4);
+  right: var(--neo-space-4);
+  width: 16px;
+  height: 16px;
+  border: var(--neo-border-thin) solid var(--neo-black);
+}
+
+.neo-benchmark-card__status--not-started {
+  background-color: var(--neo-gray-light);
+}
+
+.neo-benchmark-card__status--in-progress {
+  background-color: var(--neo-warning);
+}
+
+.neo-benchmark-card__status--completed {
+  background-color: var(--neo-success);
+}
+
+/* Category Tags */
+.neo-benchmark-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--neo-space-2);
+  margin-bottom: var(--neo-space-4);
+}
+
+.neo-benchmark-card__tag {
+  padding: var(--neo-space-1) var(--neo-space-2);
+  background-color: var(--neo-gray-light);
+  border: var(--neo-border-thin) solid var(--neo-black);
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-xs);
+  font-weight: var(--neo-weight-normal);
+  color: var(--neo-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--neo-tracking-wide);
+}
+
+/* Compact Card Variant */
+.neo-benchmark-card--compact {
+  padding: var(--neo-space-4);
+}
+
+.neo-benchmark-card--compact .neo-benchmark-card__title {
+  font-size: var(--neo-text-lg);
+  margin-bottom: var(--neo-space-2);
+}
+
+.neo-benchmark-card--compact .neo-benchmark-card__stats {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.neo-benchmark-card--compact .neo-benchmark-card__description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Responsive Behavior */
+@media (max-width: 768px) {
+  .neo-benchmark-card {
+    padding: var(--neo-space-4);
+  }
+  
+  .neo-benchmark-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--neo-space-2);
+  }
+  
+  .neo-benchmark-card__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .neo-benchmark-card__footer {
+    flex-direction: column;
+  }
+}

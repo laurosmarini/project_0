@@ -1,0 +1,233 @@
+/* Neobrutalist Typography System - Monospace Focus */
+
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700;900&display=swap');
+
+:root {
+  /* Font Families */
+  --neo-font-primary: 'JetBrains Mono', 'Courier New', monospace;
+  --neo-font-secondary: 'Space Mono', 'Monaco', monospace;
+  --neo-font-display: 'Roboto Mono', 'Consolas', monospace;
+  --neo-font-system: system-ui, -apple-system, sans-serif;
+
+  /* Font Sizes */
+  --neo-text-xs: 0.75rem;    /* 12px */
+  --neo-text-sm: 0.875rem;   /* 14px */
+  --neo-text-base: 1rem;     /* 16px */
+  --neo-text-lg: 1.125rem;   /* 18px */
+  --neo-text-xl: 1.25rem;    /* 20px */
+  --neo-text-2xl: 1.5rem;    /* 24px */
+  --neo-text-3xl: 1.875rem;  /* 30px */
+  --neo-text-4xl: 2.25rem;   /* 36px */
+  --neo-text-5xl: 3rem;      /* 48px */
+  --neo-text-6xl: 3.75rem;   /* 60px */
+
+  /* Line Heights */
+  --neo-leading-tight: 1.25;
+  --neo-leading-normal: 1.5;
+  --neo-leading-relaxed: 1.75;
+
+  /* Letter Spacing */
+  --neo-tracking-tight: -0.025em;
+  --neo-tracking-normal: 0;
+  --neo-tracking-wide: 0.025em;
+  --neo-tracking-wider: 0.05em;
+  --neo-tracking-widest: 0.1em;
+
+  /* Font Weights */
+  --neo-weight-normal: 400;
+  --neo-weight-bold: 700;
+  --neo-weight-black: 800;
+  --neo-weight-ultra: 900;
+}
+
+/* Base Typography */
+body {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-base);
+  line-height: var(--neo-leading-normal);
+  font-weight: var(--neo-weight-normal);
+  color: var(--neo-text-primary);
+  letter-spacing: var(--neo-tracking-normal);
+}
+
+/* Headings - Bold and Geometric */
+.neo-h1, h1.neo {
+  font-family: var(--neo-font-display);
+  font-size: var(--neo-text-6xl);
+  font-weight: var(--neo-weight-black);
+  line-height: var(--neo-leading-tight);
+  letter-spacing: var(--neo-tracking-tight);
+  text-transform: uppercase;
+  margin: 0 0 1rem 0;
+}
+
+.neo-h2, h2.neo {
+  font-family: var(--neo-font-display);
+  font-size: var(--neo-text-4xl);
+  font-weight: var(--neo-weight-bold);
+  line-height: var(--neo-leading-tight);
+  letter-spacing: var(--neo-tracking-normal);
+  text-transform: uppercase;
+  margin: 0 0 0.75rem 0;
+}
+
+.neo-h3, h3.neo {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-2xl);
+  font-weight: var(--neo-weight-bold);
+  line-height: var(--neo-leading-normal);
+  letter-spacing: var(--neo-tracking-wide);
+  margin: 0 0 0.5rem 0;
+}
+
+.neo-h4, h4.neo {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-xl);
+  font-weight: var(--neo-weight-bold);
+  line-height: var(--neo-leading-normal);
+  letter-spacing: var(--neo-tracking-wider);
+  margin: 0 0 0.5rem 0;
+}
+
+/* Body Text Variations */
+.neo-text-large {
+  font-size: var(--neo-text-lg);
+  line-height: var(--neo-leading-relaxed);
+}
+
+.neo-text-small {
+  font-size: var(--neo-text-sm);
+  line-height: var(--neo-leading-normal);
+}
+
+.neo-text-tiny {
+  font-size: var(--neo-text-xs);
+  line-height: var(--neo-leading-tight);
+  letter-spacing: var(--neo-tracking-wide);
+}
+
+/* Special Text Styles */
+.neo-text-display {
+  font-family: var(--neo-font-display);
+  font-size: var(--neo-text-5xl);
+  font-weight: var(--neo-weight-ultra);
+  line-height: var(--neo-leading-tight);
+  letter-spacing: var(--neo-tracking-tight);
+  text-transform: uppercase;
+}
+
+.neo-text-code {
+  font-family: var(--neo-font-secondary);
+  font-size: var(--neo-text-sm);
+  background-color: var(--neo-gray-light);
+  padding: 0.25rem 0.5rem;
+  border: 2px solid var(--neo-black);
+  border-radius: 0;
+  letter-spacing: var(--neo-tracking-normal);
+}
+
+.neo-text-highlight {
+  background-color: var(--neo-neon-yellow);
+  color: var(--neo-black);
+  padding: 0.125rem 0.25rem;
+  border: 2px solid var(--neo-black);
+  font-weight: var(--neo-weight-bold);
+  letter-spacing: var(--neo-tracking-wide);
+}
+
+.neo-text-tech {
+  font-family: var(--neo-font-secondary);
+  font-weight: var(--neo-weight-normal);
+  letter-spacing: var(--neo-tracking-wider);
+  text-transform: uppercase;
+}
+
+/* Interactive Text States */
+.neo-text-link {
+  color: var(--neo-electric-blue);
+  text-decoration: none;
+  font-weight: var(--neo-weight-bold);
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.neo-text-link:hover {
+  border-bottom-color: var(--neo-electric-blue);
+}
+
+.neo-text-link:active {
+  color: var(--neo-hot-pink);
+  border-bottom-color: var(--neo-hot-pink);
+}
+
+/* Status Text Colors */
+.neo-text-success {
+  color: var(--neo-success);
+  font-weight: var(--neo-weight-bold);
+}
+
+.neo-text-warning {
+  color: var(--neo-warning);
+  font-weight: var(--neo-weight-bold);
+}
+
+.neo-text-error {
+  color: var(--neo-error);
+  font-weight: var(--neo-weight-bold);
+}
+
+.neo-text-muted {
+  color: var(--neo-text-muted);
+  font-weight: var(--neo-weight-normal);
+}
+
+/* Benchmark Difficulty Text */
+.neo-text-easy {
+  color: var(--neo-easy);
+  font-weight: var(--neo-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--neo-tracking-wider);
+}
+
+.neo-text-medium {
+  color: var(--neo-medium);
+  font-weight: var(--neo-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--neo-tracking-wider);
+}
+
+.neo-text-hard {
+  color: var(--neo-hard);
+  font-weight: var(--neo-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--neo-tracking-wider);
+}
+
+.neo-text-expert {
+  color: var(--neo-expert);
+  font-weight: var(--neo-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--neo-tracking-wider);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .neo-h1, h1.neo {
+    font-size: var(--neo-text-4xl);
+  }
+  
+  .neo-h2, h2.neo {
+    font-size: var(--neo-text-3xl);
+  }
+  
+  .neo-text-display {
+    font-size: var(--neo-text-3xl);
+  }
+  
+  body {
+    font-size: var(--neo-text-sm);
+  }
+}

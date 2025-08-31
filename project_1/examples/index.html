@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neobrutalist CSS System - Demo</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../css/neobrutalist.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2300ffff'/><rect x='10' y='10' width='80' height='80' fill='%23000' stroke='%2300ffff' stroke-width='4'/></svg>">
+</head>
+<body>
+    <!-- Theme Switcher -->
+    <div class="neo-theme-switcher">
+        <button class="neo-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light theme"></button>
+    </div>
+
+    <!-- Header -->
+    <header class="neo-header">
+        <div class="neo-container">
+            <nav class="neo-nav">
+                <a href="#" class="neo-nav-brand neo-text-neon">NeoCSS</a>
+                <div class="neo-nav-menu">
+                    <a href="#components" class="neo-nav-link neo-active">Components</a>
+                    <a href="#forms" class="neo-nav-link">Forms</a>
+                    <a href="#utilities" class="neo-nav-link">Utilities</a>
+                    <a href="#themes" class="neo-nav-link">Themes</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="neo-main">
+        <!-- Hero Section -->
+        <section class="neo-hero">
+            <div class="neo-container">
+                <h1 class="neo-hero-title neo-text-brutal" data-text="NEOBRUTALIST">
+                    NEOBRUTALIST<br>CSS SYSTEM
+                </h1>
+                <p class="neo-hero-subtitle">
+                    A comprehensive design system featuring brutal shadows, neon accents, 
+                    monospace typography, and dramatic interactions. Built for modern web experiences.
+                </p>
+                <div class="neo-hero-actions">
+                    <button class="neo-btn neo-btn-primary neo-btn-lg neo-animate-scale-glow">
+                        GET STARTED
+                    </button>
+                    <button class="neo-btn neo-btn-ghost neo-btn-lg">
+                        VIEW DOCS
+                    </button>
+                    <button class="neo-btn neo-btn-neon neo-btn-lg neo-hover-animate-pulse">
+                        ✨ EXPERIENCE
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <div class="neo-container">
+            <!-- Alert Examples -->
+            <section class="neo-section">
+                <h2 class="neo-h2 neo-text-center">Alert System</h2>
+                <div class="neo-stack-lg">
+                    <div class="neo-alert neo-alert-info">
+                        <div class="neo-alert-title">Info Alert</div>
+                        This is an informational alert with brutal styling and high contrast.
+                    </div>
+                    <div class="neo-alert neo-alert-success">
+                        <div class="neo-alert-title">Success Alert</div>
+                        Operation completed successfully with neobrutalist flair!
+                    </div>
+                    <div class="neo-alert neo-alert-warning">
+                        <div class="neo-alert-title">Warning Alert</div>
+                        Be careful! This warning has that distinctive brutal aesthetic.
+                    </div>
+                    <div class="neo-alert neo-alert-error">
+                        <div class="neo-alert-title">Error Alert</div>
+                        Something went wrong, but at least it looks brutally awesome.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Button Showcase -->
+            <section id="components" class="neo-section">
+                <h2 class="neo-h2 neo-text-center">Button Components</h2>
+                
+                <!-- Primary Buttons -->
+                <div class="neo-card neo-mb-8">
+                    <div class="neo-card-header">
+                        <h3 class="neo-card-title">Primary Buttons</h3>
+                        <p class="neo-card-subtitle">High-impact action buttons</p>
+                    </div>
+                    <div class="neo-card-body">
+                        <div class="neo-flex neo-flex-wrap neo-gap-4">
+                            <button class="neo-btn neo-btn-primary neo-btn-xs">Extra Small</button>
+                            <button class="neo-btn neo-btn-primary neo-btn-sm">Small</button>
+                            <button class="neo-btn neo-btn-primary">Default</button>
+                            <button class="neo-btn neo-btn-primary neo-btn-lg">Large</button>
+                            <button class="neo-btn neo-btn-primary neo-btn-xl">Extra Large</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button Variants -->
+                <div class="neo-card neo-mb-8">
+                    <div class="neo-card-header">
+                        <h3 class="neo-card-title">Button Variants</h3>
+                        <p class="neo-card-subtitle">Different styles for different contexts</p>
+                    </div>
+                    <div class="neo-card-body">
+                        <div class="neo-flex neo-flex-wrap neo-gap-4 neo-mb-4">
+                            <button class="neo-btn neo-btn-primary">Primary</button>
+                            <button class="neo-btn neo-btn-secondary">Secondary</button>
+                            <button class="neo-btn neo-btn-success">Success</button>
+                            <button class="neo-btn neo-btn-warning">Warning</button>
+                            <button class="neo-btn neo-btn-danger">Danger</button>
+                            <button class="neo-btn neo-btn-ghost">Ghost</button>
+                        </div>
+                        <div class="neo-flex neo-flex-wrap neo-gap-4">
+                            <button class="neo-btn neo-btn-neon">Neon</button>
+                            <button class="neo-btn neo-btn-gradient">Gradient</button>
+                            <button class="neo-btn neo-btn-brutal">Brutal</button>
+                            <button class="neo-btn neo-btn-glitch">Glitch</button>
+                            <button class="neo-btn neo-btn-loading">Loading</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Effects -->
+                <div class="neo-card neo-mb-8">
+                    <div class="neo-card-header">
+                        <h3 class="neo-card-title">Special Effects</h3>
+                        <p class="neo-card-subtitle">Buttons with animations and hover effects</p>
+                    </div>
+                    <div class="neo-card-body">
+                        <div class="neo-flex neo-flex-wrap neo-gap-4">
+                            <button class="neo-btn neo-btn-primary neo-hover-animate-shake">Shake on Hover</button>
+                            <button class="neo-btn neo-btn-neon neo-hover-animate-bounce">Bounce on Hover</button>
+                            <button class="neo-btn neo-btn-ghost neo-hover-animate-pulse">Pulse on Hover</button>
+                            <button class="neo-btn neo-btn-gradient neo-hover-animate-glow">Glow on Hover</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Card Components -->
+            <section class="neo-section">
+                <h2 class="neo-h2 neo-text-center">Card Components</h2>
+                
+                <div class="neo-card-grid">
+                    <!-- Basic Card -->
+                    <div class="neo-card">
+                        <div class="neo-card-header">
+                            <h3 class="neo-card-title">Basic Card</h3>
+                            <p class="neo-card-subtitle">Simple content card</p>
+                        </div>
+                        <div class="neo-card-body">
+                            <p class="neo-card-content">
+                                This is a basic card component with header, body, and footer sections. 
+                                It features the signature brutal shadow and border styling.
+                            </p>
+                        </div>
+                        <div class="neo-card-footer">
+                            <div class="neo-card-actions">
+                                <button class="neo-btn neo-btn-primary neo-btn-sm">Action</button>
+                                <button class="neo-btn neo-btn-ghost neo-btn-sm">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brutal Card -->
+                    <div class="neo-card neo-card-brutal">
+                        <div class="neo-card-badge neo-card-badge-neon">NEW</div>
+                        <div class="neo-card-header">
+                            <h3 class="neo-card-title">Brutal Card</h3>
+                            <p class="neo-card-subtitle">Maximum impact styling</p>
+                        </div>
+                        <div class="neo-card-body">
+                            <p class="neo-card-content">
+                                The brutal variant features thicker borders, larger shadows, 
+                                and more dramatic hover effects for maximum visual impact.
+                            </p>
+                        </div>
+                        <div class="neo-card-footer">
+                            <span class="neo-badge neo-badge-primary">Brutal</span>
+                            <span class="neo-badge neo-badge-success">Active</span>
+                        </div>
+                    </div>
+
+                    <!-- Neon Card -->
+                    <div class="neo-card neo-card-neon">
+                        <div class="neo-card-header">
+                            <h3 class="neo-card-title neo-text-neon">Neon Card</h3>
+                            <p class="neo-card-subtitle">Cyberpunk aesthetics</p>
+                        </div>
+                        <div class="neo-card-body">
+                            <p class="neo-card-content">
+                                Features neon borders and glowing effects that activate on hover. 
+                                Perfect for highlighting important content or call-to-actions.
+                            </p>
+                        </div>
+                        <div class="neo-card-footer">
+                            <div class="neo-loading neo-loading-sm"></div>
+                            <span class="neo-tiny">Processing...</span>
+                        </div>
+                    </div>
+
+                    <!-- Stats Card -->
+                    <div class="neo-stats-card neo-card">
+                        <div class="neo-card-body">
+                            <div class="neo-stats-value">94.7%</div>
+                            <div class="neo-stats-label">Brutal Factor</div>
+                            <div class="neo-stats-change neo-stats-change-positive">+12.3% this month</div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Card -->
+                    <div class="neo-profile-card neo-card">
+                        <div class="neo-card-body">
+                            <img class="neo-profile-avatar" src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><rect width='120' height='120' fill='%2300ffff'/><rect x='30' y='30' width='60' height='60' fill='%23000'/><rect x='40' y='45' width='15' height='15' fill='%2300ffff'/><rect x='65' y='45' width='15' height='15' fill='%2300ffff'/><rect x='45' y='70' width='30' height='5' fill='%2300ffff'/></svg>" alt="Profile">
+                            <h4 class="neo-profile-name">Neo User</h4>
+                            <p class="neo-profile-role">Brutalist Designer</p>
+                            <p class="neo-profile-bio">
+                                Creating digital experiences with maximum visual impact and minimal compromises.
+                            </p>
+                            <div class="neo-card-actions">
+                                <button class="neo-btn neo-btn-primary neo-btn-sm">Follow</button>
+                                <button class="neo-btn neo-btn-ghost neo-btn-sm">Message</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature Box -->
+                    <div class="neo-feature-box">
+                        <div class="neo-feature-icon">⚡</div>
+                        <h4 class="neo-feature-title">Lightning Fast</h4>
+                        <p class="neo-feature-description">
+                            Optimized CSS with minimal overhead. Built for performance 
+                            without sacrificing the brutal aesthetic.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Form Components -->
+            <section id="forms" class="neo-section">
+                <h2 class="neo-h2 neo-text-center">Form Components</h2>
+                
+                <div class="neo-row">
+                    <div class="neo-col-md-6">
+                        <div class="neo-card">
+                            <div class="neo-card-header">
+                                <h3 class="neo-card-title">Contact Form</h3>
+                                <p class="neo-card-subtitle">Brutalist form styling</p>
+                            </div>
+                            <div class="neo-card-body">
+                                <form class="neo-form">
+                                    <div class="neo-form-group">
+                                        <label class="neo-label neo-label-required" for="name">Name</label>
+                                        <input type="text" id="name" class="neo-input" placeholder="Enter your name" required>
+                                    </div>
+                                    
+                                    <div class="neo-form-group">
+                                        <label class="neo-label neo-label-required" for="email">Email</label>
+                                        <input type="email" id="email" class="neo-input" placeholder="your@email.com" required>
+                                    </div>
+                                    
+                                    <div class="neo-form-group">
+                                        <label class="neo-label" for="subject">Subject</label>
+                                        <select id="subject" class="neo-select">
+                                            <option>General Inquiry</option>
+                                            <option>Support Request</option>
+                                            <option>Feature Request</option>
+                                            <option>Bug Report</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="neo-form-group">
+                                        <label class="neo-label" for="message">Message</label>
+                                        <textarea id="message" class="neo-textarea" placeholder="Your message here..." rows="4"></textarea>
+                                        <div class="neo-help-text">Tell us what's on your mind</div>
+                                    </div>
+                                    
+                                    <div class="neo-form-group">
+                                        <label class="neo-checkbox">
+                                            <input type="checkbox" required>
+                                            <span class="neo-checkbox-mark"></span>
+                                            I agree to the terms and conditions
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="neo-form-group">
+                                        <button type="submit" class="neo-btn neo-btn-primary neo-btn-lg" style="width: 100%;">
+                                            SEND MESSAGE
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="neo-col-md-6">
+                        <div class="neo-card">
+                            <div class="neo-card-header">
+                                <h3 class="neo-card-title">Form Controls</h3>
+                                <p class="neo-card-subtitle">All available form elements</p>
+                            </div>
+                            <div class="neo-card-body">
+                                <div class="neo-form-group">
+                                    <label class="neo-label">Input Sizes</label>
+                                    <div class="neo-stack">
+                                        <input class="neo-input neo-input-sm" placeholder="Small input">
+                                        <input class="neo-input" placeholder="Default input">
+                                        <input class="neo-input neo-input-lg" placeholder="Large input">
+                                    </div>
+                                </div>
+                                
+                                <div class="neo-form-group">
+                                    <label class="neo-label">Radio Buttons</label>
+                                    <div class="neo-stack">
+                                        <label class="neo-radio">
+                                            <input type="radio" name="choice" value="1" checked>
+                                            <span class="neo-radio-mark"></span>
+                                            Option One
+                                        </label>
+                                        <label class="neo-radio">
+                                            <input type="radio" name="choice" value="2">
+                                            <span class="neo-radio-mark"></span>
+                                            Option Two
+                                        </label>
+                                        <label class="neo-radio">
+                                            <input type="radio" name="choice" value="3">
+                                            <span class="neo-radio-mark"></span>
+                                            Option Three
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="neo-form-group">
+                                    <label class="neo-label">Switch Toggle</label>
+                                    <label class="neo-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="neo-switch-track">
+                                            <span class="neo-switch-thumb"></span>
+                                        </span>
+                                        Enable notifications
+                                    </label>
+                                </div>
+                                
+                                <div class="neo-form-group">
+                                    <label class="neo-label">Range Slider</label>
+                                    <input type="range" class="neo-range" min="0" max="100" value="75">
+                                </div>
+                                
+                                <div class="neo-form-group">
+                                    <label class="neo-label">File Upload</label>
+                                    <div class="neo-file">
+                                        <input type="file" id="file-upload" multiple>
+                                        <label for="file-upload" class="neo-file-label">
+                                            📁 Choose Files
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Typography Section -->
+            <section class="neo-section">
+                <h2 class="neo-h2 neo-text-center">Typography System</h2>
+                
+                <div class="neo-card neo-mb-8">
+                    <div class="neo-card-header">
+                        <h3 class="neo-card-title">Heading Hierarchy</h3>
+                        <p class="neo-card-subtitle">Monospace and display fonts</p>
+                    </div>
+                    <div class="neo-card-body">
+                        <div class="neo-stack-lg">
+                            <h1 class="neo-h1">H1 HEADING - MAIN TITLE</h1>
+                            <h2 class="neo-h2">H2 HEADING - SECTION TITLE</h2>
+                            <h3 class="neo-h3">H3 HEADING - SUBSECTION</h3>
+                            <h4 class="neo-h4">H4 HEADING - COMPONENT</h4>
+                            <h5 class="neo-h5">H5 HEADING - ELEMENT</h5>
+                            <h6 class="neo-h6">H6 HEADING - LABEL</h6>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="neo-card neo-mb-8">
+                    <div class="neo-card-header">
+                        <h3 class="neo-card-title">Special Text Effects</h3>
+                        <p class="neo-card-subtitle">Neon, brutal, and glitch styles</p>
+                    </div>
+                    <div class="neo-card-body">
+                        <div class="neo-stack-lg">
+                            <p class="neo-text-neon neo-text-2xl">NEON CYAN TEXT</p>
+                            <p class="neo-text-neon-magenta neo-text-2xl">NEON MAGENTA TEXT</p>
+                            <p class="neo-text-neon-yellow neo-text-2xl">NEON YELLOW TEXT</p>
+                            <p class="neo-text-brutal neo-text-2xl">BRUTAL SHADOW TEXT</p>
+                            <p class="neo-text-glitch neo-text-2xl" data-text="GLITCH EFFECT">GLITCH EFFECT</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Utility Showcase -->
+            <section id="utilities" class="neo-section">
+                <h2 class="neo-h2 neo-text-center">Utility Classes</h2>
+                
+                <div class="neo-row">
+                    <div class="neo-col-md-4">
+                        <div class="neo-card neo-mb-6">
+                            <div class="neo-card-header">
+                                <h4 class="neo-card-title">Shadows</h4>
+                            </div>
+                            <div class="neo-card-body">
+                                <div class="neo-stack">
+                                    <div class="neo-p-4 neo-bg-secondary neo-shadow-brutal-sm">Brutal Small</div>
+                                    <div class="neo-p-4 neo-bg-secondary neo-shadow-brutal">Brutal Default</div>
+                                    <div class="neo-p-4 neo-bg-secondary neo-shadow-brutal-lg">Brutal Large</div>
+                                    <div class="neo-p-4 neo-bg-secondary neo-shadow-neon-cyan">Neon Cyan</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="neo-col-md-4">
+                        <div class="neo-card neo-mb-6">
+                            <div class="neo-card-header">
+                                <h4 class="neo-card-title">Borders</h4>
+                            </div>
+                            <div class="neo-card-body">
+                                <div class="neo-stack">
+                                    <div class="neo-p-4 neo-bg-secondary neo-border-2 neo-border-neon-cyan">Neon Border</div>
+                                    <div class="neo-p-4 neo-bg-secondary neo-border-4 neo-border-black">Brutal Border</div>
+                                    <div class="neo-p-4 neo-bg-secondary neo-border-2 neo-border-dashed">Dashed Border</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="neo-col-md-4">
+                        <div class="neo-card neo-mb-6">
+                            <div class="neo-card-header">
+                                <h4 class="neo-card-title">Animations</h4>
+                            </div>
+                            <div class="neo-card-body">
+                                <div class="neo-stack">
+                                    <div class="neo-p-4 neo-bg-neon-cyan neo-animate-pulse">Pulse</div>
+                                    <div class="neo-p-4 neo-bg-neon-magenta neo-animate-bounce">Bounce</div>
+                                    <div class="neo-p-4 neo-bg-neon-yellow neo-hover-animate-shake neo-cursor-pointer">Shake on Hover</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading States -->
+            <section class="neo-section">
+                <h2 class="neo-h2 neo-text-center">Loading States</h2>
+                
+                <div class="neo-flex neo-justify-center neo-gap-8 neo-items-center">
+                    <div class="neo-text-center">
+                        <div class="neo-loading neo-loading-sm neo-mb-2"></div>
+                        <div class="neo-tiny">Small</div>
+                    </div>
+                    <div class="neo-text-center">
+                        <div class="neo-loading neo-mb-2"></div>
+                        <div class="neo-tiny">Default</div>
+                    </div>
+                    <div class="neo-text-center">
+                        <div class="neo-loading neo-loading-lg neo-mb-2"></div>
+                        <div class="neo-tiny">Large</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dividers -->
+            <hr class="neo-divider">
+            <hr class="neo-divider neo-divider-neon">
+
+            <!-- Badge Showcase -->
+            <section class="neo-section">
+                <h2 class="neo-h2 neo-text-center">Badge Components</h2>
+                
+                <div class="neo-text-center">
+                    <div class="neo-flex neo-justify-center neo-flex-wrap neo-gap-3 neo-mb-4">
+                        <span class="neo-badge neo-badge-primary">Primary</span>
+                        <span class="neo-badge neo-badge-secondary">Secondary</span>
+                        <span class="neo-badge neo-badge-success">Success</span>
+                        <span class="neo-badge neo-badge-warning">Warning</span>
+                        <span class="neo-badge neo-badge-error">Error</span>
+                    </div>
+                    
+                    <div class="neo-flex neo-justify-center neo-flex-wrap neo-gap-3">
+                        <span class="neo-badge neo-badge-primary">🚀 Launched</span>
+                        <span class="neo-badge neo-badge-success">✅ Verified</span>
+                        <span class="neo-badge neo-badge-warning">⚠️ Beta</span>
+                        <span class="neo-badge neo-badge-error">🔥 Hot</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="neo-footer">
+        <div class="neo-container">
+            <div class="neo-text-center">
+                <h3 class="neo-h3 neo-text-neon neo-mb-4">NEOBRUTALIST CSS</h3>
+                <p class="neo-text-secondary neo-mb-6">
+                    A comprehensive design system for the modern web. Built with brutalist principles and cyberpunk aesthetics.
+                </p>
+                <div class="neo-flex neo-justify-center neo-gap-4 neo-mb-6">
+                    <button class="neo-btn neo-btn-ghost">Documentation</button>
+                    <button class="neo-btn neo-btn-ghost">GitHub</button>
+                    <button class="neo-btn neo-btn-ghost">NPM</button>
+                </div>
+                <div class="neo-divider neo-mb-4"></div>
+                <p class="neo-tiny">
+                    © 2024 Neobrutalist CSS System. Made with ⚡ and 🖤
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Theme switcher functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('neo-theme', newTheme);
+        }
+
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('neo-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Dynamic button interactions
+        document.querySelectorAll('.neo-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Add pressed animation
+                this.style.transform = 'translate(2px, 2px)';
+                this.style.boxShadow = 'var(--neo-shadow-brutal-sm)';
+                
+                setTimeout(() => {
+                    this.style.transform = '';
+                    this.style.boxShadow = '';
+                }, 100);
+            });
+        });
+
+        // Add subtle parallax effect to hero
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.neo-hero');
+            if (parallax) {
+                const speed = scrolled * 0.5;
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+
+        // Animate elements on scroll (simplified intersection observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.neo-card, .neo-section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Easter egg: Konami code for extra brutal mode
+        let konamiCode = '';
+        const konamiSequence = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightKeyBKeyA';
+        
+        document.addEventListener('keydown', function(e) {
+            konamiCode += e.code;
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode = konamiCode.slice(1);
+            }
+            if (konamiCode === konamiSequence) {
+                document.body.classList.toggle('neo-easter-egg-brutal');
+                alert('🎉 ULTRA BRUTAL MODE ACTIVATED!');
+            }
+        });
+
+        // Console easter egg
+        console.log('%c NEOBRUTALIST CSS SYSTEM ', 'background: #00ffff; color: #000; font-weight: bold; font-size: 20px; padding: 10px; border: 4px solid #000; font-family: monospace;');
+        console.log('%c Brutal by design, built for developers 🖤⚡', 'color: #00ffff; font-family: monospace; font-size: 14px;');
+    </script>
+
+    <style>
+        /* Additional demo-specific styles */
+        .neo-easter-egg-brutal * {
+            animation: shake 0.1s infinite !important;
+            filter: hue-rotate(45deg) saturate(2);
+        }
+        
+        /* Improve initial loading appearance */
+        .neo-card, .neo-section {
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        /* Enhanced hero parallax */
+        .neo-hero {
+            will-change: transform;
+        }
+        
+        /* Smooth theme transitions */
+        * {
+            transition-property: background-color, border-color, color, box-shadow, text-shadow;
+            transition-duration: 0.3s;
+            transition-timing-function: ease;
+        }
+    </style>
+</body>
+</html>

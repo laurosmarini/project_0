@@ -1,0 +1,126 @@
+/* ===== NEOBRUTALIST CSS SYSTEM - RESET & BASE ===== */
+
+/* Modern CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default styling */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: var(--neo-leading-normal);
+  text-rendering: optimizeSpeed;
+  font-family: var(--neo-font-mono);
+  font-size: var(--neo-text-base);
+  font-weight: var(--neo-weight-normal);
+  color: var(--neo-text-primary);
+  background-color: var(--neo-bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Remove button styling */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Ensure focus is visible for keyboard users */
+:focus-visible {
+  outline: var(--neo-border-thick) solid var(--neo-neon-cyan);
+  outline-offset: var(--neo-space-1);
+}
+
+/* Remove animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --neo-border-thin: 3px;
+    --neo-border-thick: 5px;
+    --neo-border-brutal: 7px;
+    --neo-border-mega: 9px;
+  }
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--neo-neon-cyan);
+  color: var(--neo-black);
+}
+
+::-moz-selection {
+  background-color: var(--neo-neon-cyan);
+  color: var(--neo-black);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: var(--neo-space-3);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neo-bg-secondary);
+  border: var(--neo-border-thin) solid var(--neo-border-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neo-text-primary);
+  border: var(--neo-border-thin) solid var(--neo-border-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neo-neon-cyan);
+  box-shadow: var(--neo-shadow-neon-cyan);
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--neo-text-primary) var(--neo-bg-secondary);
+}

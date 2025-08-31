@@ -1,0 +1,433 @@
+/* ===== NEOBRUTALIST CSS SYSTEM - BUTTONS ===== */
+
+/* === BASE BUTTON STYLES === */
+.neo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--neo-space-2);
+  font-family: var(--neo-font-mono);
+  font-size: var(--neo-text-base);
+  font-weight: var(--neo-weight-bold);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--neo-text-primary);
+  background-color: var(--neo-bg-primary);
+  border: var(--neo-border-thick) solid var(--neo-border-primary);
+  border-radius: var(--neo-radius-base);
+  padding: var(--neo-space-3) var(--neo-space-6);
+  cursor: pointer;
+  transition: all var(--neo-transition-brutal);
+  box-shadow: var(--neo-shadow-brutal-base);
+  position: relative;
+  user-select: none;
+  outline: none;
+}
+
+/* === BUTTON STATES === */
+.neo-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--neo-shadow-brutal-lg);
+}
+
+.neo-btn:active,
+.neo-btn.neo-btn-pressed {
+  transform: translate(2px, 2px);
+  box-shadow: var(--neo-shadow-brutal-sm);
+}
+
+.neo-btn:focus-visible {
+  outline: var(--neo-border-thick) solid var(--neo-neon-cyan);
+  outline-offset: var(--neo-space-1);
+}
+
+.neo-btn:disabled,
+.neo-btn.neo-btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--neo-shadow-brutal-sm);
+}
+
+.neo-btn:disabled:hover,
+.neo-btn.neo-btn-disabled:hover {
+  transform: none;
+  box-shadow: var(--neo-shadow-brutal-sm);
+}
+
+/* === BUTTON SIZES === */
+.neo-btn-xs {
+  font-size: var(--neo-text-xs);
+  padding: var(--neo-space-1) var(--neo-space-3);
+  border-width: var(--neo-border-thin);
+}
+
+.neo-btn-sm {
+  font-size: var(--neo-text-sm);
+  padding: var(--neo-space-2) var(--neo-space-4);
+  border-width: var(--neo-border-thin);
+}
+
+.neo-btn-base {
+  font-size: var(--neo-text-base);
+  padding: var(--neo-space-3) var(--neo-space-6);
+}
+
+.neo-btn-lg {
+  font-size: var(--neo-text-lg);
+  padding: var(--neo-space-4) var(--neo-space-8);
+  border-width: var(--neo-border-brutal);
+}
+
+.neo-btn-xl {
+  font-size: var(--neo-text-xl);
+  padding: var(--neo-space-5) var(--neo-space-10);
+  border-width: var(--neo-border-brutal);
+  box-shadow: var(--neo-shadow-brutal-xl);
+}
+
+.neo-btn-xl:hover {
+  box-shadow: var(--neo-shadow-brutal-2xl);
+}
+
+/* === BUTTON VARIANTS === */
+
+/* Primary Button */
+.neo-btn-primary {
+  color: var(--neo-black);
+  background-color: var(--neo-neon-cyan);
+  border-color: var(--neo-black);
+}
+
+.neo-btn-primary:hover {
+  background-color: var(--neo-white);
+  box-shadow: 
+    var(--neo-shadow-brutal-lg),
+    var(--neo-shadow-neon-cyan);
+}
+
+/* Secondary Button */
+.neo-btn-secondary {
+  color: var(--neo-white);
+  background-color: var(--neo-black);
+  border-color: var(--neo-white);
+}
+
+.neo-btn-secondary:hover {
+  background-color: var(--neo-gray-800);
+  color: var(--neo-neon-cyan);
+  border-color: var(--neo-neon-cyan);
+}
+
+/* Danger Button */
+.neo-btn-danger {
+  color: var(--neo-white);
+  background-color: var(--neo-error);
+  border-color: var(--neo-black);
+}
+
+.neo-btn-danger:hover {
+  background-color: var(--neo-black);
+  border-color: var(--neo-error);
+  box-shadow: 
+    var(--neo-shadow-brutal-lg),
+    0 0 20px var(--neo-error);
+}
+
+/* Success Button */
+.neo-btn-success {
+  color: var(--neo-black);
+  background-color: var(--neo-success);
+  border-color: var(--neo-black);
+}
+
+.neo-btn-success:hover {
+  background-color: var(--neo-black);
+  color: var(--neo-success);
+  border-color: var(--neo-success);
+  box-shadow: 
+    var(--neo-shadow-brutal-lg),
+    0 0 20px var(--neo-success);
+}
+
+/* Warning Button */
+.neo-btn-warning {
+  color: var(--neo-black);
+  background-color: var(--neo-warning);
+  border-color: var(--neo-black);
+}
+
+.neo-btn-warning:hover {
+  background-color: var(--neo-black);
+  color: var(--neo-warning);
+  border-color: var(--neo-warning);
+  box-shadow: 
+    var(--neo-shadow-brutal-lg),
+    0 0 20px var(--neo-warning);
+}
+
+/* Ghost Button */
+.neo-btn-ghost {
+  color: var(--neo-text-primary);
+  background-color: transparent;
+  border-color: var(--neo-border-primary);
+}
+
+.neo-btn-ghost:hover {
+  background-color: var(--neo-text-primary);
+  color: var(--neo-bg-primary);
+}
+
+/* Neon Button */
+.neo-btn-neon {
+  color: var(--neo-neon-magenta);
+  background-color: transparent;
+  border-color: var(--neo-neon-magenta);
+  text-shadow: var(--neo-shadow-neon-magenta);
+  box-shadow: 
+    var(--neo-shadow-brutal-base),
+    inset 0 0 10px rgba(255, 0, 255, 0.1);
+}
+
+.neo-btn-neon:hover {
+  background-color: var(--neo-neon-magenta);
+  color: var(--neo-black);
+  text-shadow: none;
+  box-shadow: 
+    var(--neo-shadow-brutal-lg),
+    var(--neo-shadow-neon-magenta);
+}
+
+/* === SPECIAL BUTTON EFFECTS === */
+
+/* Glitch Button */
+.neo-btn-glitch {
+  position: relative;
+  overflow: hidden;
+}
+
+.neo-btn-glitch::before,
+.neo-btn-glitch::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, var(--neo-neon-cyan) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform var(--neo-transition-base);
+}
+
+.neo-btn-glitch::after {
+  background: linear-gradient(45deg, transparent 30%, var(--neo-neon-magenta) 50%, transparent 70%);
+  transform: translateX(-100%) translateY(-100%);
+}
+
+.neo-btn-glitch:hover::before {
+  transform: translateX(100%);
+}
+
+.neo-btn-glitch:hover::after {
+  transform: translateX(100%) translateY(100%);
+  transition-delay: 0.1s;
+}
+
+/* Gradient Button */
+.neo-btn-gradient {
+  background: linear-gradient(45deg, var(--neo-neon-cyan), var(--neo-neon-magenta));
+  color: var(--neo-black);
+  border-color: var(--neo-black);
+  position: relative;
+  overflow: hidden;
+}
+
+.neo-btn-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, var(--neo-neon-magenta), var(--neo-neon-cyan));
+  opacity: 0;
+  transition: opacity var(--neo-transition-base);
+}
+
+.neo-btn-gradient:hover::before {
+  opacity: 1;
+}
+
+/* Brutal Shadow Button */
+.neo-btn-brutal {
+  border-width: var(--neo-border-mega);
+  box-shadow: var(--neo-shadow-brutal-2xl);
+  font-weight: var(--neo-weight-black);
+  letter-spacing: 0.1em;
+}
+
+.neo-btn-brutal:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--neo-shadow-brutal-3xl);
+}
+
+.neo-btn-brutal:active {
+  transform: translate(4px, 4px);
+  box-shadow: var(--neo-shadow-brutal-base);
+}
+
+/* === BUTTON GROUPS === */
+.neo-btn-group {
+  display: inline-flex;
+  border-radius: var(--neo-radius-base);
+  overflow: hidden;
+  box-shadow: var(--neo-shadow-brutal-base);
+}
+
+.neo-btn-group .neo-btn {
+  border-radius: 0;
+  border-right-width: 0;
+  box-shadow: none;
+}
+
+.neo-btn-group .neo-btn:last-child {
+  border-right-width: var(--neo-border-thick);
+}
+
+.neo-btn-group .neo-btn:hover {
+  transform: none;
+  z-index: 1;
+  position: relative;
+}
+
+.neo-btn-group .neo-btn:focus-visible {
+  z-index: 2;
+  position: relative;
+}
+
+/* Vertical Button Group */
+.neo-btn-group-vertical {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.neo-btn-group-vertical .neo-btn {
+  border-bottom-width: 0;
+  border-right-width: var(--neo-border-thick);
+}
+
+.neo-btn-group-vertical .neo-btn:last-child {
+  border-bottom-width: var(--neo-border-thick);
+}
+
+/* === ICON BUTTONS === */
+.neo-btn-icon {
+  padding: var(--neo-space-3);
+  aspect-ratio: 1;
+  min-width: auto;
+}
+
+.neo-btn-icon-sm {
+  padding: var(--neo-space-2);
+}
+
+.neo-btn-icon-lg {
+  padding: var(--neo-space-4);
+}
+
+.neo-btn-icon-xl {
+  padding: var(--neo-space-5);
+}
+
+/* === FAB (Floating Action Button) === */
+.neo-btn-fab {
+  position: fixed;
+  bottom: var(--neo-space-6);
+  right: var(--neo-space-6);
+  border-radius: 50%;
+  padding: var(--neo-space-4);
+  aspect-ratio: 1;
+  font-size: var(--neo-text-xl);
+  box-shadow: var(--neo-shadow-brutal-xl);
+  z-index: var(--neo-z-fixed);
+}
+
+.neo-btn-fab:hover {
+  transform: translate(-3px, -3px) scale(1.1);
+  box-shadow: var(--neo-shadow-brutal-2xl);
+}
+
+/* === LOADING STATE === */
+.neo-btn-loading {
+  position: relative;
+  color: transparent;
+}
+
+.neo-btn-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1em;
+  height: 1em;
+  margin: -0.5em 0 0 -0.5em;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: var(--neo-animation-spin);
+  color: var(--neo-text-primary);
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 640px) {
+  .neo-btn {
+    padding: var(--neo-space-2-5) var(--neo-space-4);
+    font-size: var(--neo-text-sm);
+  }
+  
+  .neo-btn-lg {
+    padding: var(--neo-space-3) var(--neo-space-6);
+    font-size: var(--neo-text-base);
+  }
+  
+  .neo-btn-xl {
+    padding: var(--neo-space-4) var(--neo-space-8);
+    font-size: var(--neo-text-lg);
+  }
+  
+  .neo-btn-fab {
+    bottom: var(--neo-space-4);
+    right: var(--neo-space-4);
+    padding: var(--neo-space-3);
+    font-size: var(--neo-text-lg);
+  }
+}
+
+/* === ACCESSIBILITY IMPROVEMENTS === */
+@media (prefers-reduced-motion: reduce) {
+  .neo-btn,
+  .neo-btn::before,
+  .neo-btn::after {
+    transition: none;
+    animation: none;
+  }
+  
+  .neo-btn:hover {
+    transform: none;
+  }
+  
+  .neo-btn:active {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .neo-btn {
+    border-width: var(--neo-border-brutal);
+  }
+  
+  .neo-btn-ghost {
+    background-color: var(--neo-bg-secondary);
+  }
+}

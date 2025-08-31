@@ -1,0 +1,424 @@
+/* Neobrutalist Progress Tracking Components */
+
+/* Overall Progress Dashboard */
+.neo-progress-dashboard {
+  background-color: var(--neo-white);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  box-shadow: var(--neo-shadow-medium);
+  padding: var(--neo-space-8);
+  margin-bottom: var(--neo-space-8);
+}
+
+.neo-progress-dashboard__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--neo-space-6);
+  padding-bottom: var(--neo-space-4);
+  border-bottom: var(--neo-border-thin) solid var(--neo-black);
+}
+
+.neo-progress-dashboard__title {
+  font-family: var(--neo-font-display);
+  font-size: var(--neo-text-3xl);
+  font-weight: var(--neo-weight-black);
+  color: var(--neo-black);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.neo-progress-dashboard__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--neo-space-4);
+  margin-bottom: var(--neo-space-6);
+}
+
+/* Individual Progress Stat Cards */
+.neo-progress-stat {
+  background-color: var(--neo-gray-light);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  padding: var(--neo-space-4);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.neo-progress-stat__value {
+  font-family: var(--neo-font-display);
+  font-size: var(--neo-text-4xl);
+  font-weight: var(--neo-weight-black);
+  color: var(--neo-black);
+  display: block;
+  margin-bottom: var(--neo-space-2);
+}
+
+.neo-progress-stat__label {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-sm);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--neo-tracking-wide);
+}
+
+.neo-progress-stat--completed {
+  background-color: var(--neo-success);
+  color: var(--neo-black);
+}
+
+.neo-progress-stat--completed .neo-progress-stat__value {
+  color: var(--neo-black);
+}
+
+.neo-progress-stat--in-progress {
+  background-color: var(--neo-warning);
+  color: var(--neo-black);
+}
+
+.neo-progress-stat--in-progress .neo-progress-stat__value {
+  color: var(--neo-black);
+}
+
+.neo-progress-stat--total {
+  background-color: var(--neo-electric-blue);
+  color: var(--neo-white);
+}
+
+.neo-progress-stat--total .neo-progress-stat__value,
+.neo-progress-stat--total .neo-progress-stat__label {
+  color: var(--neo-white);
+}
+
+/* Circular Progress Indicators */
+.neo-progress-circle {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto var(--neo-space-4);
+}
+
+.neo-progress-circle__svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.neo-progress-circle__bg {
+  fill: none;
+  stroke: var(--neo-gray-light);
+  stroke-width: 8;
+  stroke-linecap: square;
+}
+
+.neo-progress-circle__fill {
+  fill: none;
+  stroke: var(--neo-electric-blue);
+  stroke-width: 8;
+  stroke-linecap: square;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.neo-progress-circle__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--neo-font-display);
+  font-size: var(--neo-text-xl);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-black);
+  text-align: center;
+}
+
+/* Linear Progress Bars */
+.neo-progress-bar {
+  margin-bottom: var(--neo-space-4);
+}
+
+.neo-progress-bar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--neo-space-2);
+}
+
+.neo-progress-bar__label {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-sm);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-black);
+  text-transform: uppercase;
+}
+
+.neo-progress-bar__value {
+  font-family: var(--neo-font-display);
+  font-size: var(--neo-text-sm);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-electric-blue);
+}
+
+.neo-progress-bar__track {
+  width: 100%;
+  height: 16px;
+  background-color: var(--neo-gray-light);
+  border: var(--neo-border-thin) solid var(--neo-black);
+  position: relative;
+  overflow: hidden;
+}
+
+.neo-progress-bar__fill {
+  height: 100%;
+  background-color: var(--neo-electric-blue);
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.neo-progress-bar__fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.3) 3px,
+    rgba(255, 255, 255, 0.3) 6px
+  );
+}
+
+/* Difficulty-based Progress Bars */
+.neo-progress-bar--easy .neo-progress-bar__fill {
+  background-color: var(--neo-easy);
+}
+
+.neo-progress-bar--medium .neo-progress-bar__fill {
+  background-color: var(--neo-medium);
+}
+
+.neo-progress-bar--hard .neo-progress-bar__fill {
+  background-color: var(--neo-hard);
+}
+
+.neo-progress-bar--expert .neo-progress-bar__fill {
+  background-color: var(--neo-expert);
+}
+
+/* Segmented Progress Indicator */
+.neo-progress-segments {
+  display: flex;
+  gap: var(--neo-space-1);
+  margin-bottom: var(--neo-space-4);
+}
+
+.neo-progress-segment {
+  flex: 1;
+  height: 20px;
+  border: var(--neo-border-thin) solid var(--neo-black);
+  background-color: var(--neo-gray-light);
+  transition: background-color 0.3s ease;
+}
+
+.neo-progress-segment--completed {
+  background-color: var(--neo-success);
+}
+
+.neo-progress-segment--current {
+  background-color: var(--neo-warning);
+  animation: pulse-progress 2s infinite;
+}
+
+@keyframes pulse-progress {
+  0%, 100% {
+    background-color: var(--neo-warning);
+  }
+  50% {
+    background-color: var(--neo-error);
+  }
+}
+
+/* Achievement Badges */
+.neo-progress-achievements {
+  margin-top: var(--neo-space-6);
+}
+
+.neo-progress-achievements__title {
+  font-family: var(--neo-font-display);
+  font-size: var(--neo-text-xl);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-black);
+  text-transform: uppercase;
+  margin-bottom: var(--neo-space-4);
+  padding-bottom: var(--neo-space-2);
+  border-bottom: var(--neo-border-thin) solid var(--neo-black);
+}
+
+.neo-progress-achievements__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--neo-space-3);
+}
+
+.neo-achievement-badge {
+  background-color: var(--neo-white);
+  border: var(--neo-border-thin) solid var(--neo-black);
+  padding: var(--neo-space-3);
+  text-align: center;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.neo-achievement-badge:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0 var(--neo-electric-blue);
+}
+
+.neo-achievement-badge--unlocked {
+  background-color: var(--neo-neon-yellow);
+  border-color: var(--neo-black);
+}
+
+.neo-achievement-badge--locked {
+  background-color: var(--neo-gray-light);
+  opacity: 0.6;
+}
+
+.neo-achievement-badge__icon {
+  font-size: var(--neo-text-2xl);
+  margin-bottom: var(--neo-space-2);
+  display: block;
+}
+
+.neo-achievement-badge__title {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-xs);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-black);
+  text-transform: uppercase;
+  letter-spacing: var(--neo-tracking-wide);
+}
+
+/* Progress Timeline */
+.neo-progress-timeline {
+  margin-top: var(--neo-space-8);
+}
+
+.neo-progress-timeline__title {
+  font-family: var(--neo-font-display);
+  font-size: var(--neo-text-xl);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-black);
+  text-transform: uppercase;
+  margin-bottom: var(--neo-space-4);
+}
+
+.neo-progress-timeline__list {
+  position: relative;
+  padding-left: var(--neo-space-8);
+}
+
+.neo-progress-timeline__list::before {
+  content: '';
+  position: absolute;
+  left: var(--neo-space-4);
+  top: 0;
+  bottom: 0;
+  width: var(--neo-border-thin);
+  background-color: var(--neo-black);
+}
+
+.neo-progress-timeline__item {
+  position: relative;
+  padding: var(--neo-space-4);
+  background-color: var(--neo-white);
+  border: var(--neo-border-thin) solid var(--neo-black);
+  margin-bottom: var(--neo-space-4);
+  margin-left: var(--neo-space-4);
+}
+
+.neo-progress-timeline__item::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--neo-space-8) - var(--neo-border-thin));
+  top: var(--neo-space-4);
+  width: 12px;
+  height: 12px;
+  background-color: var(--neo-white);
+  border: var(--neo-border-thin) solid var(--neo-black);
+}
+
+.neo-progress-timeline__item--completed::before {
+  background-color: var(--neo-success);
+}
+
+.neo-progress-timeline__item--current::before {
+  background-color: var(--neo-warning);
+  animation: pulse-timeline 2s infinite;
+}
+
+@keyframes pulse-timeline {
+  0%, 100% {
+    background-color: var(--neo-warning);
+  }
+  50% {
+    background-color: var(--neo-error);
+  }
+}
+
+.neo-progress-timeline__date {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-xs);
+  color: var(--neo-text-muted);
+  text-transform: uppercase;
+  margin-bottom: var(--neo-space-1);
+}
+
+.neo-progress-timeline__title-item {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-sm);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-black);
+  margin-bottom: var(--neo-space-1);
+}
+
+.neo-progress-timeline__description {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-sm);
+  color: var(--neo-text-muted);
+  line-height: var(--neo-leading-normal);
+}
+
+/* Responsive Progress Components */
+@media (max-width: 768px) {
+  .neo-progress-dashboard {
+    padding: var(--neo-space-4);
+  }
+  
+  .neo-progress-dashboard__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--neo-space-2);
+  }
+  
+  .neo-progress-dashboard__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .neo-progress-circle {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .neo-progress-achievements__grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+  
+  .neo-progress-timeline__list {
+    padding-left: var(--neo-space-6);
+  }
+}

@@ -1,0 +1,559 @@
+/* Neobrutalist Interactive Elements - Buttons, Forms, and Controls */
+
+/* Button System */
+.neo-btn {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-sm);
+  font-weight: var(--neo-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--neo-tracking-wide);
+  padding: var(--neo-space-3) var(--neo-space-6);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  background-color: var(--neo-white);
+  color: var(--neo-black);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.neo-btn:hover {
+  background-color: var(--neo-black);
+  color: var(--neo-white);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--neo-electric-blue);
+}
+
+.neo-btn:active {
+  transform: translate(0, 0);
+  box-shadow: none;
+}
+
+.neo-btn:focus {
+  outline: var(--neo-border-thin) solid var(--neo-electric-blue);
+  outline-offset: 2px;
+}
+
+/* Button Variants */
+.neo-btn--primary {
+  background-color: var(--neo-electric-blue);
+  color: var(--neo-white);
+  border-color: var(--neo-black);
+}
+
+.neo-btn--primary:hover {
+  background-color: var(--neo-hot-pink);
+  color: var(--neo-white);
+}
+
+.neo-btn--success {
+  background-color: var(--neo-success);
+  color: var(--neo-black);
+  border-color: var(--neo-black);
+}
+
+.neo-btn--success:hover {
+  background-color: var(--neo-black);
+  color: var(--neo-success);
+}
+
+.neo-btn--warning {
+  background-color: var(--neo-warning);
+  color: var(--neo-black);
+  border-color: var(--neo-black);
+}
+
+.neo-btn--warning:hover {
+  background-color: var(--neo-black);
+  color: var(--neo-warning);
+}
+
+.neo-btn--error {
+  background-color: var(--neo-error);
+  color: var(--neo-white);
+  border-color: var(--neo-black);
+}
+
+.neo-btn--error:hover {
+  background-color: var(--neo-black);
+  color: var(--neo-error);
+}
+
+.neo-btn--ghost {
+  background-color: transparent;
+  color: var(--neo-black);
+  border: var(--neo-border-thick) solid var(--neo-black);
+}
+
+.neo-btn--ghost:hover {
+  background-color: var(--neo-black);
+  color: var(--neo-white);
+}
+
+/* Button Sizes */
+.neo-btn--small {
+  font-size: var(--neo-text-xs);
+  padding: var(--neo-space-2) var(--neo-space-4);
+  border-width: var(--neo-border-thin);
+}
+
+.neo-btn--large {
+  font-size: var(--neo-text-lg);
+  padding: var(--neo-space-4) var(--neo-space-8);
+  border-width: var(--neo-border-ultra);
+}
+
+.neo-btn--xl {
+  font-size: var(--neo-text-xl);
+  padding: var(--neo-space-6) var(--neo-space-12);
+  border-width: var(--neo-border-ultra);
+}
+
+.neo-btn--full {
+  width: 100%;
+}
+
+/* Button States */
+.neo-btn:disabled,
+.neo-btn--disabled {
+  background-color: var(--neo-gray-light);
+  color: var(--neo-disabled);
+  border-color: var(--neo-disabled);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.neo-btn:disabled:hover,
+.neo-btn--disabled:hover {
+  transform: none;
+  box-shadow: none;
+  background-color: var(--neo-gray-light);
+  color: var(--neo-disabled);
+}
+
+.neo-btn--loading {
+  position: relative;
+  color: transparent;
+}
+
+.neo-btn--loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--neo-black);
+  border-top-color: transparent;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: neo-spin 1s linear infinite;
+}
+
+@keyframes neo-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Form Elements */
+.neo-form-group {
+  margin-bottom: var(--neo-space-4);
+}
+
+.neo-label {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-sm);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-black);
+  text-transform: uppercase;
+  letter-spacing: var(--neo-tracking-wide);
+  display: block;
+  margin-bottom: var(--neo-space-2);
+}
+
+.neo-input {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-base);
+  padding: var(--neo-space-3) var(--neo-space-4);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  background-color: var(--neo-white);
+  color: var(--neo-black);
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.neo-input:focus {
+  outline: none;
+  border-color: var(--neo-electric-blue);
+  box-shadow: 4px 4px 0 var(--neo-electric-blue);
+  transform: translate(-1px, -1px);
+}
+
+.neo-input:hover {
+  border-color: var(--neo-electric-blue);
+}
+
+.neo-input::placeholder {
+  color: var(--neo-text-muted);
+  font-style: italic;
+}
+
+/* Input Variants */
+.neo-input--error {
+  border-color: var(--neo-error);
+}
+
+.neo-input--error:focus {
+  border-color: var(--neo-error);
+  box-shadow: 4px 4px 0 var(--neo-error);
+}
+
+.neo-input--success {
+  border-color: var(--neo-success);
+}
+
+.neo-input--success:focus {
+  border-color: var(--neo-success);
+  box-shadow: 4px 4px 0 var(--neo-success);
+}
+
+/* Textarea */
+.neo-textarea {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-base);
+  padding: var(--neo-space-3) var(--neo-space-4);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  background-color: var(--neo-white);
+  color: var(--neo-black);
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  transition: all 0.2s ease;
+}
+
+.neo-textarea:focus {
+  outline: none;
+  border-color: var(--neo-electric-blue);
+  box-shadow: 4px 4px 0 var(--neo-electric-blue);
+  transform: translate(-1px, -1px);
+}
+
+/* Select Dropdown */
+.neo-select {
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-base);
+  font-weight: var(--neo-weight-bold);
+  padding: var(--neo-space-3) var(--neo-space-4);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  background-color: var(--neo-white);
+  color: var(--neo-black);
+  width: 100%;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right var(--neo-space-3) center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+
+.neo-select:focus {
+  outline: none;
+  border-color: var(--neo-electric-blue);
+  box-shadow: 4px 4px 0 var(--neo-electric-blue);
+  transform: translate(-1px, -1px);
+}
+
+/* Checkbox */
+.neo-checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-3);
+  cursor: pointer;
+}
+
+.neo-checkbox {
+  width: 20px;
+  height: 20px;
+  border: var(--neo-border-thick) solid var(--neo-black);
+  background-color: var(--neo-white);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.neo-checkbox input {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.neo-checkbox input:checked + .neo-checkbox::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 6px;
+  height: 10px;
+  border: solid var(--neo-black);
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.neo-checkbox input:checked {
+  background-color: var(--neo-electric-blue);
+}
+
+.neo-checkbox:hover {
+  border-color: var(--neo-electric-blue);
+}
+
+/* Radio Button */
+.neo-radio-group {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-3);
+  cursor: pointer;
+}
+
+.neo-radio {
+  width: 20px;
+  height: 20px;
+  border: var(--neo-border-thick) solid var(--neo-black);
+  background-color: var(--neo-white);
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.neo-radio input {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.neo-radio input:checked + .neo-radio::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--neo-black);
+  border-radius: 50%;
+}
+
+.neo-radio:hover {
+  border-color: var(--neo-electric-blue);
+}
+
+/* Toggle Switch */
+.neo-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--neo-space-3);
+  cursor: pointer;
+}
+
+.neo-toggle-switch {
+  width: 50px;
+  height: 24px;
+  background-color: var(--neo-gray-light);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.neo-toggle input {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.neo-toggle-slider {
+  width: 16px;
+  height: 16px;
+  background-color: var(--neo-black);
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: all 0.2s ease;
+}
+
+.neo-toggle input:checked + .neo-toggle-switch {
+  background-color: var(--neo-electric-blue);
+}
+
+.neo-toggle input:checked + .neo-toggle-switch .neo-toggle-slider {
+  left: 30px;
+  background-color: var(--neo-white);
+}
+
+/* Range Slider */
+.neo-range {
+  width: 100%;
+  height: 20px;
+  background-color: var(--neo-gray-light);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+}
+
+.neo-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background-color: var(--neo-electric-blue);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  cursor: pointer;
+}
+
+.neo-range::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background-color: var(--neo-electric-blue);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  cursor: pointer;
+}
+
+/* Modal/Dialog */
+.neo-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--neo-space-4);
+}
+
+.neo-modal {
+  background-color: var(--neo-white);
+  border: var(--neo-border-ultra) solid var(--neo-black);
+  box-shadow: var(--neo-shadow-xl);
+  padding: var(--neo-space-8);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.neo-modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--neo-space-6);
+  padding-bottom: var(--neo-space-4);
+  border-bottom: var(--neo-border-thin) solid var(--neo-black);
+}
+
+.neo-modal__title {
+  font-family: var(--neo-font-display);
+  font-size: var(--neo-text-2xl);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-black);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.neo-modal__close {
+  background: none;
+  border: var(--neo-border-thin) solid var(--neo-black);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: var(--neo-text-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.neo-modal__close:hover {
+  background-color: var(--neo-black);
+  color: var(--neo-white);
+}
+
+/* Tooltip */
+.neo-tooltip {
+  position: relative;
+  cursor: pointer;
+}
+
+.neo-tooltip__content {
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--neo-black);
+  color: var(--neo-white);
+  padding: var(--neo-space-2) var(--neo-space-3);
+  font-family: var(--neo-font-primary);
+  font-size: var(--neo-text-xs);
+  font-weight: var(--neo-weight-bold);
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 100;
+  border: var(--neo-border-thin) solid var(--neo-black);
+}
+
+.neo-tooltip:hover .neo-tooltip__content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.neo-tooltip__content::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--neo-black) transparent transparent transparent;
+}
+
+/* Responsive Interactive Elements */
+@media (max-width: 768px) {
+  .neo-btn {
+    padding: var(--neo-space-3) var(--neo-space-4);
+    font-size: var(--neo-text-sm);
+  }
+  
+  .neo-btn--large {
+    padding: var(--neo-space-4) var(--neo-space-6);
+    font-size: var(--neo-text-base);
+  }
+  
+  .neo-modal {
+    padding: var(--neo-space-4);
+    margin: var(--neo-space-4);
+  }
+  
+  .neo-modal__title {
+    font-size: var(--neo-text-xl);
+  }
+}

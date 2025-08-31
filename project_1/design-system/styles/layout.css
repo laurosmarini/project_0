@@ -1,0 +1,304 @@
+/* Neobrutalist Layout System - Geometric & Harsh */
+
+:root {
+  /* Spacing Scale */
+  --neo-space-1: 0.25rem;   /* 4px */
+  --neo-space-2: 0.5rem;    /* 8px */
+  --neo-space-3: 0.75rem;   /* 12px */
+  --neo-space-4: 1rem;      /* 16px */
+  --neo-space-6: 1.5rem;    /* 24px */
+  --neo-space-8: 2rem;      /* 32px */
+  --neo-space-12: 3rem;     /* 48px */
+  --neo-space-16: 4rem;     /* 64px */
+  --neo-space-20: 5rem;     /* 80px */
+  --neo-space-24: 6rem;     /* 96px */
+  
+  /* Border Weights */
+  --neo-border-thin: 2px;
+  --neo-border-thick: 4px;
+  --neo-border-ultra: 6px;
+  --neo-border-massive: 8px;
+  
+  /* Shadow Values */
+  --neo-shadow-small: 4px 4px 0 var(--neo-shadow-harsh);
+  --neo-shadow-medium: 8px 8px 0 var(--neo-shadow-harsh);
+  --neo-shadow-large: 12px 12px 0 var(--neo-shadow-harsh);
+  --neo-shadow-xl: 16px 16px 0 var(--neo-shadow-harsh);
+  --neo-shadow-colored-sm: 4px 4px 0 var(--neo-shadow-colored);
+  --neo-shadow-colored-md: 8px 8px 0 var(--neo-shadow-colored);
+  
+  /* Container Sizes */
+  --neo-container-sm: 640px;
+  --neo-container-md: 768px;
+  --neo-container-lg: 1024px;
+  --neo-container-xl: 1280px;
+  --neo-container-2xl: 1536px;
+}
+
+/* Base Layout Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--neo-bg-primary);
+  overflow-x: hidden;
+}
+
+/* Container System */
+.neo-container {
+  width: 100%;
+  max-width: var(--neo-container-xl);
+  margin: 0 auto;
+  padding: 0 var(--neo-space-4);
+}
+
+.neo-container-sm { max-width: var(--neo-container-sm); }
+.neo-container-md { max-width: var(--neo-container-md); }
+.neo-container-lg { max-width: var(--neo-container-lg); }
+.neo-container-xl { max-width: var(--neo-container-xl); }
+.neo-container-2xl { max-width: var(--neo-container-2xl); }
+
+/* Grid System - Harsh and Geometric */
+.neo-grid {
+  display: grid;
+  gap: var(--neo-space-4);
+}
+
+.neo-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.neo-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.neo-grid-4 { grid-template-columns: repeat(4, 1fr); }
+.neo-grid-6 { grid-template-columns: repeat(6, 1fr); }
+.neo-grid-12 { grid-template-columns: repeat(12, 1fr); }
+
+/* Responsive Grid */
+.neo-grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--neo-space-6);
+}
+
+.neo-grid-benchmark {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--neo-space-6);
+  padding: var(--neo-space-8);
+}
+
+/* Flexbox Layouts */
+.neo-flex {
+  display: flex;
+}
+
+.neo-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.neo-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.neo-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.neo-flex-around {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.neo-flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Spacing Utilities */
+.neo-m-0 { margin: 0; }
+.neo-m-1 { margin: var(--neo-space-1); }
+.neo-m-2 { margin: var(--neo-space-2); }
+.neo-m-4 { margin: var(--neo-space-4); }
+.neo-m-6 { margin: var(--neo-space-6); }
+.neo-m-8 { margin: var(--neo-space-8); }
+
+.neo-p-0 { padding: 0; }
+.neo-p-1 { padding: var(--neo-space-1); }
+.neo-p-2 { padding: var(--neo-space-2); }
+.neo-p-4 { padding: var(--neo-space-4); }
+.neo-p-6 { padding: var(--neo-space-6); }
+.neo-p-8 { padding: var(--neo-space-8); }
+
+.neo-mt-4 { margin-top: var(--neo-space-4); }
+.neo-mb-4 { margin-bottom: var(--neo-space-4); }
+.neo-ml-4 { margin-left: var(--neo-space-4); }
+.neo-mr-4 { margin-right: var(--neo-space-4); }
+
+.neo-pt-4 { padding-top: var(--neo-space-4); }
+.neo-pb-4 { padding-bottom: var(--neo-space-4); }
+.neo-pl-4 { padding-left: var(--neo-space-4); }
+.neo-pr-4 { padding-right: var(--neo-space-4); }
+
+/* Harsh Border System */
+.neo-border {
+  border: var(--neo-border-thin) solid var(--neo-border-primary);
+}
+
+.neo-border-thick {
+  border: var(--neo-border-thick) solid var(--neo-border-primary);
+}
+
+.neo-border-ultra {
+  border: var(--neo-border-ultra) solid var(--neo-border-primary);
+}
+
+.neo-border-massive {
+  border: var(--neo-border-massive) solid var(--neo-border-primary);
+}
+
+.neo-border-accent {
+  border: var(--neo-border-thick) solid var(--neo-border-accent);
+}
+
+/* Shadow System */
+.neo-shadow {
+  box-shadow: var(--neo-shadow-medium);
+}
+
+.neo-shadow-sm {
+  box-shadow: var(--neo-shadow-small);
+}
+
+.neo-shadow-lg {
+  box-shadow: var(--neo-shadow-large);
+}
+
+.neo-shadow-xl {
+  box-shadow: var(--neo-shadow-xl);
+}
+
+.neo-shadow-colored {
+  box-shadow: var(--neo-shadow-colored-md);
+}
+
+.neo-shadow-colored-sm {
+  box-shadow: var(--neo-shadow-colored-sm);
+}
+
+/* Layout Components */
+.neo-card {
+  background-color: var(--neo-bg-primary);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  box-shadow: var(--neo-shadow-medium);
+  padding: var(--neo-space-6);
+}
+
+.neo-card-accent {
+  background-color: var(--neo-bg-accent);
+  color: var(--neo-text-inverse);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  box-shadow: var(--neo-shadow-medium);
+  padding: var(--neo-space-6);
+}
+
+.neo-section {
+  padding: var(--neo-space-16) 0;
+}
+
+.neo-section-compact {
+  padding: var(--neo-space-8) 0;
+}
+
+/* Header Layout */
+.neo-header {
+  background-color: var(--neo-black);
+  color: var(--neo-white);
+  border-bottom: var(--neo-border-ultra) solid var(--neo-electric-blue);
+  padding: var(--neo-space-4) 0;
+  box-shadow: 0 var(--neo-border-thick) 0 var(--neo-electric-blue);
+}
+
+.neo-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--neo-space-8);
+}
+
+/* Main Content Areas */
+.neo-main {
+  min-height: calc(100vh - 200px);
+  padding: var(--neo-space-8) 0;
+}
+
+.neo-sidebar {
+  background-color: var(--neo-gray-light);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  padding: var(--neo-space-6);
+  box-shadow: var(--neo-shadow-medium);
+}
+
+/* Footer Layout */
+.neo-footer {
+  background-color: var(--neo-black);
+  color: var(--neo-white);
+  border-top: var(--neo-border-ultra) solid var(--neo-electric-blue);
+  padding: var(--neo-space-8) 0;
+  margin-top: var(--neo-space-16);
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .neo-container {
+    padding: 0 var(--neo-space-2);
+  }
+  
+  .neo-grid-2,
+  .neo-grid-3,
+  .neo-grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .neo-grid-benchmark {
+    grid-template-columns: 1fr;
+    padding: var(--neo-space-4);
+    gap: var(--neo-space-4);
+  }
+  
+  .neo-flex-between {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--neo-space-4);
+  }
+  
+  .neo-nav {
+    flex-direction: column;
+    gap: var(--neo-space-4);
+  }
+  
+  .neo-section {
+    padding: var(--neo-space-8) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .neo-card,
+  .neo-card-accent {
+    padding: var(--neo-space-4);
+  }
+  
+  .neo-shadow,
+  .neo-shadow-sm,
+  .neo-shadow-lg {
+    box-shadow: var(--neo-shadow-small);
+  }
+}

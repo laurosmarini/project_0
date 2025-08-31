@@ -1,0 +1,189 @@
+/* ===== NEOBRUTALIST CSS SYSTEM - VARIABLES ===== */
+
+:root {
+  /* === COLORS === */
+  /* Primary Palette */
+  --neo-black: #0a0a0a;
+  --neo-white: #fafafa;
+  --neo-gray-100: #f5f5f5;
+  --neo-gray-200: #e5e5e5;
+  --neo-gray-300: #d4d4d4;
+  --neo-gray-400: #a3a3a3;
+  --neo-gray-500: #737373;
+  --neo-gray-600: #525252;
+  --neo-gray-700: #404040;
+  --neo-gray-800: #262626;
+  --neo-gray-900: #171717;
+
+  /* Neon Accents */
+  --neo-neon-cyan: #00ffff;
+  --neo-neon-magenta: #ff00ff;
+  --neo-neon-yellow: #ffff00;
+  --neo-neon-green: #00ff00;
+  --neo-neon-orange: #ff8000;
+  --neo-neon-purple: #8000ff;
+
+  /* Status Colors */
+  --neo-success: #22c55e;
+  --neo-warning: #eab308;
+  --neo-error: #ef4444;
+  --neo-info: #3b82f6;
+
+  /* === TYPOGRAPHY === */
+  /* Font Families */
+  --neo-font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  --neo-font-display: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Font Sizes */
+  --neo-text-xs: 0.75rem;    /* 12px */
+  --neo-text-sm: 0.875rem;   /* 14px */
+  --neo-text-base: 1rem;     /* 16px */
+  --neo-text-lg: 1.125rem;   /* 18px */
+  --neo-text-xl: 1.25rem;    /* 20px */
+  --neo-text-2xl: 1.5rem;    /* 24px */
+  --neo-text-3xl: 1.875rem;  /* 30px */
+  --neo-text-4xl: 2.25rem;   /* 36px */
+  --neo-text-5xl: 3rem;      /* 48px */
+  --neo-text-6xl: 3.75rem;   /* 60px */
+  --neo-text-7xl: 4.5rem;    /* 72px */
+
+  /* Font Weights */
+  --neo-weight-normal: 400;
+  --neo-weight-medium: 500;
+  --neo-weight-semibold: 600;
+  --neo-weight-bold: 700;
+  --neo-weight-black: 900;
+
+  /* Line Heights */
+  --neo-leading-tight: 1.25;
+  --neo-leading-snug: 1.375;
+  --neo-leading-normal: 1.5;
+  --neo-leading-relaxed: 1.625;
+  --neo-leading-loose: 2;
+
+  /* === SPACING === */
+  --neo-space-0: 0;
+  --neo-space-px: 1px;
+  --neo-space-0-5: 0.125rem; /* 2px */
+  --neo-space-1: 0.25rem;    /* 4px */
+  --neo-space-1-5: 0.375rem; /* 6px */
+  --neo-space-2: 0.5rem;     /* 8px */
+  --neo-space-2-5: 0.625rem; /* 10px */
+  --neo-space-3: 0.75rem;    /* 12px */
+  --neo-space-3-5: 0.875rem; /* 14px */
+  --neo-space-4: 1rem;       /* 16px */
+  --neo-space-5: 1.25rem;    /* 20px */
+  --neo-space-6: 1.5rem;     /* 24px */
+  --neo-space-8: 2rem;       /* 32px */
+  --neo-space-10: 2.5rem;    /* 40px */
+  --neo-space-12: 3rem;      /* 48px */
+  --neo-space-16: 4rem;      /* 64px */
+  --neo-space-20: 5rem;      /* 80px */
+  --neo-space-24: 6rem;      /* 96px */
+  --neo-space-32: 8rem;      /* 128px */
+
+  /* === BORDERS === */
+  --neo-border-thin: 2px;
+  --neo-border-thick: 4px;
+  --neo-border-brutal: 6px;
+  --neo-border-mega: 8px;
+
+  /* Border Radius */
+  --neo-radius-none: 0;
+  --neo-radius-sm: 0.125rem;
+  --neo-radius-base: 0.25rem;
+  --neo-radius-md: 0.375rem;
+  --neo-radius-lg: 0.5rem;
+  --neo-radius-xl: 0.75rem;
+
+  /* === SHADOWS === */
+  /* Brutal Shadows */
+  --neo-shadow-brutal-sm: 4px 4px 0px var(--neo-black);
+  --neo-shadow-brutal-base: 6px 6px 0px var(--neo-black);
+  --neo-shadow-brutal-lg: 8px 8px 0px var(--neo-black);
+  --neo-shadow-brutal-xl: 12px 12px 0px var(--neo-black);
+  --neo-shadow-brutal-2xl: 16px 16px 0px var(--neo-black);
+  --neo-shadow-brutal-3xl: 24px 24px 0px var(--neo-black);
+
+  /* Neon Shadows */
+  --neo-shadow-neon-cyan: 0 0 20px var(--neo-neon-cyan), 0 0 40px var(--neo-neon-cyan);
+  --neo-shadow-neon-magenta: 0 0 20px var(--neo-neon-magenta), 0 0 40px var(--neo-neon-magenta);
+  --neo-shadow-neon-yellow: 0 0 20px var(--neo-neon-yellow), 0 0 40px var(--neo-neon-yellow);
+  --neo-shadow-neon-green: 0 0 20px var(--neo-neon-green), 0 0 40px var(--neo-neon-green);
+
+  /* === BREAKPOINTS === */
+  --neo-breakpoint-sm: 640px;
+  --neo-breakpoint-md: 768px;
+  --neo-breakpoint-lg: 1024px;
+  --neo-breakpoint-xl: 1280px;
+  --neo-breakpoint-2xl: 1536px;
+
+  /* === Z-INDEX === */
+  --neo-z-auto: auto;
+  --neo-z-0: 0;
+  --neo-z-10: 10;
+  --neo-z-20: 20;
+  --neo-z-30: 30;
+  --neo-z-40: 40;
+  --neo-z-50: 50;
+  --neo-z-dropdown: 1000;
+  --neo-z-sticky: 1020;
+  --neo-z-fixed: 1030;
+  --neo-z-modal: 1040;
+  --neo-z-popover: 1050;
+  --neo-z-tooltip: 1060;
+  --neo-z-toast: 1070;
+
+  /* === TRANSITIONS === */
+  --neo-transition-fast: 150ms ease;
+  --neo-transition-base: 250ms ease;
+  --neo-transition-slow: 350ms ease;
+  --neo-transition-bounce: 250ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --neo-transition-brutal: 100ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* === ANIMATIONS === */
+  --neo-animation-spin: spin 1s linear infinite;
+  --neo-animation-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --neo-animation-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --neo-animation-bounce: bounce 1s infinite;
+  --neo-animation-glitch: glitch 0.3s ease-in-out;
+  --neo-animation-shake: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+/* === DARK THEME OVERRIDES === */
+[data-theme="dark"] {
+  /* Swap primary colors */
+  --neo-bg-primary: var(--neo-black);
+  --neo-bg-secondary: var(--neo-gray-900);
+  --neo-bg-tertiary: var(--neo-gray-800);
+  
+  --neo-text-primary: var(--neo-white);
+  --neo-text-secondary: var(--neo-gray-200);
+  --neo-text-tertiary: var(--neo-gray-400);
+  
+  --neo-border-primary: var(--neo-white);
+  --neo-border-secondary: var(--neo-gray-300);
+  
+  /* Dark theme shadows */
+  --neo-shadow-brutal-sm: 4px 4px 0px var(--neo-white);
+  --neo-shadow-brutal-base: 6px 6px 0px var(--neo-white);
+  --neo-shadow-brutal-lg: 8px 8px 0px var(--neo-white);
+  --neo-shadow-brutal-xl: 12px 12px 0px var(--neo-white);
+  --neo-shadow-brutal-2xl: 16px 16px 0px var(--neo-white);
+  --neo-shadow-brutal-3xl: 24px 24px 0px var(--neo-white);
+}
+
+/* === LIGHT THEME (DEFAULT) === */
+:root,
+[data-theme="light"] {
+  --neo-bg-primary: var(--neo-white);
+  --neo-bg-secondary: var(--neo-gray-100);
+  --neo-bg-tertiary: var(--neo-gray-200);
+  
+  --neo-text-primary: var(--neo-black);
+  --neo-text-secondary: var(--neo-gray-700);
+  --neo-text-tertiary: var(--neo-gray-500);
+  
+  --neo-border-primary: var(--neo-black);
+  --neo-border-secondary: var(--neo-gray-600);
+}

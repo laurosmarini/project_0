@@ -1,0 +1,551 @@
+/* ===== NEOBRUTALIST CSS SYSTEM - FORMS ===== */
+
+/* === BASE FORM STYLES === */
+.neo-form {
+  font-family: var(--neo-font-mono);
+}
+
+.neo-form-group {
+  margin-bottom: var(--neo-space-6);
+}
+
+.neo-label {
+  display: block;
+  font-family: var(--neo-font-mono);
+  font-size: var(--neo-text-sm);
+  font-weight: var(--neo-weight-bold);
+  text-transform: uppercase;
+  color: var(--neo-text-primary);
+  margin-bottom: var(--neo-space-2);
+  letter-spacing: 0.05em;
+}
+
+.neo-label-required::after {
+  content: '*';
+  color: var(--neo-error);
+  margin-left: var(--neo-space-1);
+}
+
+/* === INPUT FIELDS === */
+.neo-input,
+.neo-textarea,
+.neo-select {
+  width: 100%;
+  font-family: var(--neo-font-mono);
+  font-size: var(--neo-text-base);
+  font-weight: var(--neo-weight-medium);
+  color: var(--neo-text-primary);
+  background-color: var(--neo-bg-primary);
+  border: var(--neo-border-thick) solid var(--neo-border-primary);
+  border-radius: var(--neo-radius-base);
+  padding: var(--neo-space-3) var(--neo-space-4);
+  transition: all var(--neo-transition-brutal);
+  box-shadow: var(--neo-shadow-brutal-sm);
+  outline: none;
+}
+
+.neo-input:focus,
+.neo-textarea:focus,
+.neo-select:focus {
+  border-color: var(--neo-neon-cyan);
+  box-shadow: 
+    var(--neo-shadow-brutal-base),
+    var(--neo-shadow-neon-cyan);
+  transform: translate(-2px, -2px);
+}
+
+.neo-input:hover,
+.neo-textarea:hover,
+.neo-select:hover {
+  border-color: var(--neo-text-secondary);
+  transform: translate(-1px, -1px);
+  box-shadow: var(--neo-shadow-brutal-base);
+}
+
+/* Input States */
+.neo-input:invalid,
+.neo-textarea:invalid,
+.neo-select:invalid,
+.neo-input.neo-error,
+.neo-textarea.neo-error,
+.neo-select.neo-error {
+  border-color: var(--neo-error);
+  box-shadow: 
+    var(--neo-shadow-brutal-sm),
+    0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.neo-input:invalid:focus,
+.neo-textarea:invalid:focus,
+.neo-select:invalid:focus,
+.neo-input.neo-error:focus,
+.neo-textarea.neo-error:focus,
+.neo-select.neo-error:focus {
+  box-shadow: 
+    var(--neo-shadow-brutal-base),
+    0 0 20px var(--neo-error);
+}
+
+.neo-input:disabled,
+.neo-textarea:disabled,
+.neo-select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  background-color: var(--neo-bg-tertiary);
+}
+
+.neo-input:disabled:hover,
+.neo-textarea:disabled:hover,
+.neo-select:disabled:hover {
+  transform: none;
+  box-shadow: var(--neo-shadow-brutal-sm);
+  border-color: var(--neo-border-primary);
+}
+
+/* === INPUT SIZES === */
+.neo-input-sm,
+.neo-textarea-sm,
+.neo-select-sm {
+  font-size: var(--neo-text-sm);
+  padding: var(--neo-space-2) var(--neo-space-3);
+  border-width: var(--neo-border-thin);
+}
+
+.neo-input-lg,
+.neo-textarea-lg,
+.neo-select-lg {
+  font-size: var(--neo-text-lg);
+  padding: var(--neo-space-4) var(--neo-space-5);
+  border-width: var(--neo-border-brutal);
+}
+
+.neo-input-xl,
+.neo-textarea-xl,
+.neo-select-xl {
+  font-size: var(--neo-text-xl);
+  padding: var(--neo-space-5) var(--neo-space-6);
+  border-width: var(--neo-border-brutal);
+  box-shadow: var(--neo-shadow-brutal-lg);
+}
+
+/* === TEXTAREA === */
+.neo-textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: var(--neo-leading-relaxed);
+}
+
+.neo-textarea-sm { min-height: 80px; }
+.neo-textarea-lg { min-height: 160px; }
+.neo-textarea-xl { min-height: 200px; }
+
+/* === SELECT === */
+.neo-select {
+  cursor: pointer;
+  background-image: 
+    linear-gradient(45deg, transparent 50%, var(--neo-text-primary) 50%),
+    linear-gradient(135deg, var(--neo-text-primary) 50%, transparent 50%);
+  background-position: 
+    calc(100% - var(--neo-space-4)) calc(1em + 2px),
+    calc(100% - var(--neo-space-3)) calc(1em + 2px);
+  background-size: 
+    var(--neo-space-1) var(--neo-space-1),
+    var(--neo-space-1) var(--neo-space-1);
+  background-repeat: no-repeat;
+  padding-right: var(--neo-space-8);
+  appearance: none;
+}
+
+.neo-select:focus {
+  background-image: 
+    linear-gradient(45deg, transparent 50%, var(--neo-neon-cyan) 50%),
+    linear-gradient(135deg, var(--neo-neon-cyan) 50%, transparent 50%);
+}
+
+/* === INPUT GROUPS === */
+.neo-input-group {
+  display: flex;
+  align-items: stretch;
+}
+
+.neo-input-group .neo-input {
+  border-radius: 0;
+  border-right-width: 0;
+  flex: 1;
+}
+
+.neo-input-group .neo-input:first-child {
+  border-top-left-radius: var(--neo-radius-base);
+  border-bottom-left-radius: var(--neo-radius-base);
+}
+
+.neo-input-group .neo-input:last-child {
+  border-top-right-radius: var(--neo-radius-base);
+  border-bottom-right-radius: var(--neo-radius-base);
+  border-right-width: var(--neo-border-thick);
+}
+
+.neo-input-group .neo-input:focus {
+  z-index: 1;
+  position: relative;
+}
+
+/* Input Group Addons */
+.neo-input-addon {
+  display: flex;
+  align-items: center;
+  padding: var(--neo-space-3) var(--neo-space-4);
+  font-family: var(--neo-font-mono);
+  font-size: var(--neo-text-base);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-text-secondary);
+  background-color: var(--neo-bg-tertiary);
+  border: var(--neo-border-thick) solid var(--neo-border-primary);
+  border-right: none;
+  white-space: nowrap;
+}
+
+.neo-input-addon:last-child {
+  border-right: var(--neo-border-thick) solid var(--neo-border-primary);
+  border-left: none;
+}
+
+.neo-input-group .neo-input-addon:first-child {
+  border-top-left-radius: var(--neo-radius-base);
+  border-bottom-left-radius: var(--neo-radius-base);
+}
+
+.neo-input-group .neo-input-addon:last-child {
+  border-top-right-radius: var(--neo-radius-base);
+  border-bottom-right-radius: var(--neo-radius-base);
+}
+
+/* === CHECKBOXES & RADIO BUTTONS === */
+.neo-checkbox,
+.neo-radio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--neo-space-3);
+  cursor: pointer;
+  font-family: var(--neo-font-mono);
+  font-size: var(--neo-text-base);
+  font-weight: var(--neo-weight-medium);
+  color: var(--neo-text-primary);
+  user-select: none;
+}
+
+.neo-checkbox input,
+.neo-radio input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.neo-checkbox-mark,
+.neo-radio-mark {
+  position: relative;
+  width: var(--neo-space-5);
+  height: var(--neo-space-5);
+  background-color: var(--neo-bg-primary);
+  border: var(--neo-border-thick) solid var(--neo-border-primary);
+  border-radius: var(--neo-radius-sm);
+  transition: all var(--neo-transition-brutal);
+  box-shadow: var(--neo-shadow-brutal-sm);
+}
+
+.neo-radio-mark {
+  border-radius: 50%;
+}
+
+.neo-checkbox:hover .neo-checkbox-mark,
+.neo-radio:hover .neo-radio-mark {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--neo-shadow-brutal-base);
+}
+
+.neo-checkbox input:checked + .neo-checkbox-mark,
+.neo-radio input:checked + .neo-radio-mark {
+  background-color: var(--neo-neon-cyan);
+  border-color: var(--neo-black);
+  transform: translate(-2px, -2px);
+  box-shadow: 
+    var(--neo-shadow-brutal-base),
+    var(--neo-shadow-neon-cyan);
+}
+
+/* Checkbox Check Mark */
+.neo-checkbox-mark::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 10px;
+  border: var(--neo-border-thin) solid var(--neo-black);
+  border-top: none;
+  border-left: none;
+  transform: translate(-50%, -60%) rotate(45deg) scale(0);
+  transition: transform var(--neo-transition-base);
+}
+
+.neo-checkbox input:checked + .neo-checkbox-mark::after {
+  transform: translate(-50%, -60%) rotate(45deg) scale(1);
+}
+
+/* Radio Button Dot */
+.neo-radio-mark::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: var(--neo-black);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--neo-transition-base);
+}
+
+.neo-radio input:checked + .neo-radio-mark::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* === SWITCH === */
+.neo-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--neo-space-3);
+  cursor: pointer;
+  font-family: var(--neo-font-mono);
+  font-size: var(--neo-text-base);
+  font-weight: var(--neo-weight-medium);
+  color: var(--neo-text-primary);
+  user-select: none;
+}
+
+.neo-switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.neo-switch-track {
+  position: relative;
+  width: var(--neo-space-12);
+  height: var(--neo-space-6);
+  background-color: var(--neo-bg-tertiary);
+  border: var(--neo-border-thick) solid var(--neo-border-primary);
+  border-radius: var(--neo-space-6);
+  transition: all var(--neo-transition-base);
+  box-shadow: 
+    inset 2px 2px 0 var(--neo-gray-400),
+    var(--neo-shadow-brutal-sm);
+}
+
+.neo-switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(var(--neo-space-5) - 2px);
+  height: calc(var(--neo-space-5) - 2px);
+  background-color: var(--neo-text-primary);
+  border-radius: 50%;
+  transition: all var(--neo-transition-base);
+  box-shadow: var(--neo-shadow-brutal-sm);
+}
+
+.neo-switch input:checked + .neo-switch-track {
+  background-color: var(--neo-neon-cyan);
+  border-color: var(--neo-black);
+  box-shadow: 
+    inset 2px 2px 0 rgba(0, 0, 0, 0.1),
+    var(--neo-shadow-brutal-base),
+    var(--neo-shadow-neon-cyan);
+}
+
+.neo-switch input:checked + .neo-switch-track .neo-switch-thumb {
+  left: calc(100% - var(--neo-space-5) + 2px);
+  background-color: var(--neo-black);
+}
+
+/* === RANGE SLIDER === */
+.neo-range {
+  width: 100%;
+  height: var(--neo-space-2);
+  background: transparent;
+  outline: none;
+  margin: var(--neo-space-4) 0;
+  cursor: pointer;
+}
+
+.neo-range::-webkit-slider-track {
+  width: 100%;
+  height: var(--neo-space-2);
+  background-color: var(--neo-bg-tertiary);
+  border: var(--neo-border-thin) solid var(--neo-border-primary);
+  border-radius: 0;
+  box-shadow: inset 2px 2px 0 var(--neo-gray-400);
+}
+
+.neo-range::-webkit-slider-thumb {
+  appearance: none;
+  height: var(--neo-space-6);
+  width: var(--neo-space-6);
+  background-color: var(--neo-neon-cyan);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  border-radius: 0;
+  cursor: pointer;
+  box-shadow: var(--neo-shadow-brutal-base);
+  transition: all var(--neo-transition-brutal);
+  margin-top: -8px;
+}
+
+.neo-range::-webkit-slider-thumb:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--neo-shadow-brutal-lg);
+}
+
+.neo-range::-webkit-slider-thumb:active {
+  transform: translate(1px, 1px);
+  box-shadow: var(--neo-shadow-brutal-sm);
+}
+
+.neo-range::-moz-range-track {
+  width: 100%;
+  height: var(--neo-space-2);
+  background-color: var(--neo-bg-tertiary);
+  border: var(--neo-border-thin) solid var(--neo-border-primary);
+  border-radius: 0;
+}
+
+.neo-range::-moz-range-thumb {
+  height: var(--neo-space-6);
+  width: var(--neo-space-6);
+  background-color: var(--neo-neon-cyan);
+  border: var(--neo-border-thick) solid var(--neo-black);
+  border-radius: 0;
+  cursor: pointer;
+  box-shadow: var(--neo-shadow-brutal-base);
+}
+
+/* === FILE INPUT === */
+.neo-file {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.neo-file input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.neo-file-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--neo-space-3);
+  font-family: var(--neo-font-mono);
+  font-size: var(--neo-text-base);
+  font-weight: var(--neo-weight-bold);
+  text-transform: uppercase;
+  color: var(--neo-text-primary);
+  background-color: var(--neo-bg-secondary);
+  border: var(--neo-border-thick) solid var(--neo-border-primary);
+  border-radius: var(--neo-radius-base);
+  padding: var(--neo-space-3) var(--neo-space-6);
+  transition: all var(--neo-transition-brutal);
+  box-shadow: var(--neo-shadow-brutal-base);
+}
+
+.neo-file:hover .neo-file-label {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--neo-shadow-brutal-lg);
+}
+
+.neo-file:active .neo-file-label {
+  transform: translate(2px, 2px);
+  box-shadow: var(--neo-shadow-brutal-sm);
+}
+
+/* === FORM VALIDATION === */
+.neo-help-text {
+  font-family: var(--neo-font-mono);
+  font-size: var(--neo-text-xs);
+  font-weight: var(--neo-weight-medium);
+  color: var(--neo-text-tertiary);
+  margin-top: var(--neo-space-1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.neo-error-message {
+  font-family: var(--neo-font-mono);
+  font-size: var(--neo-text-xs);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-error);
+  margin-top: var(--neo-space-1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.neo-success-message {
+  font-family: var(--neo-font-mono);
+  font-size: var(--neo-text-xs);
+  font-weight: var(--neo-weight-bold);
+  color: var(--neo-success);
+  margin-top: var(--neo-space-1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* === FIELDSET === */
+.neo-fieldset {
+  border: var(--neo-border-thick) solid var(--neo-border-primary);
+  border-radius: var(--neo-radius-base);
+  padding: var(--neo-space-6);
+  margin-bottom: var(--neo-space-6);
+  box-shadow: var(--neo-shadow-brutal-base);
+}
+
+.neo-legend {
+  font-family: var(--neo-font-mono);
+  font-size: var(--neo-text-lg);
+  font-weight: var(--neo-weight-bold);
+  text-transform: uppercase;
+  color: var(--neo-text-primary);
+  background-color: var(--neo-bg-primary);
+  padding: 0 var(--neo-space-3);
+  margin-left: var(--neo-space-3);
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 640px) {
+  .neo-input,
+  .neo-textarea,
+  .neo-select {
+    font-size: var(--neo-text-sm);
+    padding: var(--neo-space-2-5) var(--neo-space-3);
+  }
+  
+  .neo-input-lg,
+  .neo-textarea-lg,
+  .neo-select-lg {
+    font-size: var(--neo-text-base);
+    padding: var(--neo-space-3) var(--neo-space-4);
+  }
+  
+  .neo-input-xl,
+  .neo-textarea-xl,
+  .neo-select-xl {
+    font-size: var(--neo-text-lg);
+    padding: var(--neo-space-4) var(--neo-space-5);
+  }
+}

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI/ML Benchmark - Neobrutalist UI</title>
+  
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="../styles/colors.css">
+  <link rel="stylesheet" href="../styles/typography.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../components/benchmark-cards.css">
+  <link rel="stylesheet" href="../components/navigation.css">
+  <link rel="stylesheet" href="../components/progress-tracking.css">
+  <link rel="stylesheet" href="../components/interactive-elements.css">
+</head>
+<body>
+  <!-- Main Navigation -->
+  <header class="neo-header">
+    <div class="neo-container">
+      <nav class="neo-nav">
+        <a href="#" class="neo-nav-brand">AI/ML BENCHMARK</a>
+        <div class="neo-flex" style="gap: var(--neo-space-4);">
+          <a href="#" class="neo-btn neo-btn--ghost">DASHBOARD</a>
+          <a href="#" class="neo-btn neo-btn--ghost">PROFILE</a>
+          <a href="#" class="neo-btn neo-btn--primary">START TEST</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Category Navigation -->
+  <section class="neo-nav-categories">
+    <div class="neo-container">
+      <div class="neo-nav-categories__container">
+        <a href="#" class="neo-nav-categories__item neo-nav-categories__item--active">
+          <div class="neo-nav-categories__item-content">
+            ALL
+            <span class="neo-nav-categories__count">24</span>
+          </div>
+        </a>
+        <a href="#" class="neo-nav-categories__item">
+          <div class="neo-nav-categories__item-content">
+            COMPUTER VISION
+            <span class="neo-nav-categories__count">8</span>
+          </div>
+        </a>
+        <a href="#" class="neo-nav-categories__item">
+          <div class="neo-nav-categories__item-content">
+            NLP
+            <span class="neo-nav-categories__count">6</span>
+          </div>
+        </a>
+        <a href="#" class="neo-nav-categories__item">
+          <div class="neo-nav-categories__item-content">
+            DEEP LEARNING
+            <span class="neo-nav-categories__count">5</span>
+          </div>
+        </a>
+        <a href="#" class="neo-nav-categories__item">
+          <div class="neo-nav-categories__item-content">
+            REINFORCEMENT
+            <span class="neo-nav-categories__count">3</span>
+          </div>
+        </a>
+        <a href="#" class="neo-nav-categories__item">
+          <div class="neo-nav-categories__item-content">
+            DATA SCIENCE
+            <span class="neo-nav-categories__count">4</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Difficulty Filter -->
+  <section class="neo-nav-difficulty">
+    <div class="neo-container">
+      <div class="neo-nav-difficulty__container">
+        <span class="neo-nav-difficulty__label">DIFFICULTY:</span>
+        <div class="neo-nav-difficulty__filters">
+          <button class="neo-nav-difficulty__filter neo-nav-difficulty__filter--easy active">EASY</button>
+          <button class="neo-nav-difficulty__filter neo-nav-difficulty__filter--medium">MEDIUM</button>
+          <button class="neo-nav-difficulty__filter neo-nav-difficulty__filter--hard">HARD</button>
+          <button class="neo-nav-difficulty__filter neo-nav-difficulty__filter--expert">EXPERT</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="neo-main">
+    <div class="neo-container">
+      
+      <!-- Progress Dashboard -->
+      <div class="neo-progress-dashboard">
+        <div class="neo-progress-dashboard__header">
+          <h1 class="neo-progress-dashboard__title">YOUR PROGRESS</h1>
+          <div class="neo-progress-circle">
+            <svg class="neo-progress-circle__svg" viewBox="0 0 100 100">
+              <circle class="neo-progress-circle__bg" cx="50" cy="50" r="45"></circle>
+              <circle class="neo-progress-circle__fill" cx="50" cy="50" r="45" style="stroke-dashoffset: 141.5;"></circle>
+            </svg>
+            <div class="neo-progress-circle__text">
+              <div>68%</div>
+              <small>COMPLETE</small>
+            </div>
+          </div>
+        </div>
+        
+        <div class="neo-progress-dashboard__stats">
+          <div class="neo-progress-stat neo-progress-stat--completed">
+            <span class="neo-progress-stat__value">16</span>
+            <span class="neo-progress-stat__label">Completed</span>
+          </div>
+          <div class="neo-progress-stat neo-progress-stat--in-progress">
+            <span class="neo-progress-stat__value">3</span>
+            <span class="neo-progress-stat__label">In Progress</span>
+          </div>
+          <div class="neo-progress-stat neo-progress-stat--total">
+            <span class="neo-progress-stat__value">24</span>
+            <span class="neo-progress-stat__label">Total Tests</span>
+          </div>
+          <div class="neo-progress-stat">
+            <span class="neo-progress-stat__value">92.4</span>
+            <span class="neo-progress-stat__label">Avg Score</span>
+          </div>
+        </div>
+
+        <!-- Progress by Difficulty -->
+        <div class="neo-progress-bar neo-progress-bar--easy">
+          <div class="neo-progress-bar__header">
+            <span class="neo-progress-bar__label">Easy Benchmarks</span>
+            <span class="neo-progress-bar__value">8/8 (100%)</span>
+          </div>
+          <div class="neo-progress-bar__track">
+            <div class="neo-progress-bar__fill" style="width: 100%;"></div>
+          </div>
+        </div>
+
+        <div class="neo-progress-bar neo-progress-bar--medium">
+          <div class="neo-progress-bar__header">
+            <span class="neo-progress-bar__label">Medium Benchmarks</span>
+            <span class="neo-progress-bar__value">6/8 (75%)</span>
+          </div>
+          <div class="neo-progress-bar__track">
+            <div class="neo-progress-bar__fill" style="width: 75%;"></div>
+          </div>
+        </div>
+
+        <div class="neo-progress-bar neo-progress-bar--hard">
+          <div class="neo-progress-bar__header">
+            <span class="neo-progress-bar__label">Hard Benchmarks</span>
+            <span class="neo-progress-bar__value">2/5 (40%)</span>
+          </div>
+          <div class="neo-progress-bar__track">
+            <div class="neo-progress-bar__fill" style="width: 40%;"></div>
+          </div>
+        </div>
+
+        <div class="neo-progress-bar neo-progress-bar--expert">
+          <div class="neo-progress-bar__header">
+            <span class="neo-progress-bar__label">Expert Benchmarks</span>
+            <span class="neo-progress-bar__value">0/3 (0%)</span>
+          </div>
+          <div class="neo-progress-bar__track">
+            <div class="neo-progress-bar__fill" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benchmark Grid -->
+      <div class="neo-grid-benchmark">
+        
+        <!-- Easy Benchmark Card -->
+        <div class="neo-benchmark-card neo-benchmark-card--easy">
+          <div class="neo-benchmark-card__status neo-benchmark-card__status--completed"></div>
+          <div class="neo-benchmark-card__header">
+            <h3 class="neo-benchmark-card__title">Image Classification</h3>
+            <span class="neo-benchmark-card__difficulty neo-benchmark-card__difficulty--easy">EASY</span>
+          </div>
+          <div class="neo-benchmark-card__body">
+            <p class="neo-benchmark-card__description">
+              Basic image classification using CIFAR-10 dataset. Implement a CNN to classify 10 different object categories.
+            </p>
+            <div class="neo-benchmark-card__tags">
+              <span class="neo-benchmark-card__tag">Computer Vision</span>
+              <span class="neo-benchmark-card__tag">CNN</span>
+              <span class="neo-benchmark-card__tag">Classification</span>
+            </div>
+            <div class="neo-benchmark-card__stats">
+              <div class="neo-benchmark-card__stat">
+                <span class="neo-benchmark-card__stat-value">94.2%</span>
+                <span class="neo-benchmark-card__stat-label">Accuracy</span>
+              </div>
+              <div class="neo-benchmark-card__stat">
+                <span class="neo-benchmark-card__stat-value">15min</span>
+                <span class="neo-benchmark-card__stat-label">Duration</span>
+              </div>
+              <div class="neo-benchmark-card__stat">
+                <span class="neo-benchmark-card__stat-value">156</span>
+                <span class="neo-benchmark-card__stat-label">Attempts</span>
+              </div>
+            </div>
+            <div class="neo-benchmark-card__progress">
+              <div class="neo-progress-bar__track">
+                <div class="neo-progress-bar__fill" style="width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="neo-benchmark-card__footer">
+            <a href="#" class="neo-benchmark-card__action">VIEW RESULTS</a>
+            <a href="#" class="neo-benchmark-card__action neo-benchmark-card__action--primary">RETAKE</a>
+          </div>
+        </div>
+
+        <!-- Medium Benchmark Card -->
+        <div class="neo-benchmark-card neo-benchmark-card--medium">
+          <div class="neo-benchmark-card__status neo-benchmark-card__status--in-progress"></div>
+          <div class="neo-benchmark-card__header">
+            <h3 class="neo-benchmark-card__title">Sentiment Analysis</h3>
+            <span class="neo-benchmark-card__difficulty neo-benchmark-card__difficulty--medium">MEDIUM</span>
+          </div>
+          <div class="neo-benchmark-card__body">
+            <p class="neo-benchmark-card__description">
+              Build a sentiment analysis model using transformer architecture for movie review classification.
+            </p>
+            <div class="neo-benchmark-card__tags">
+              <span class="neo-benchmark-card__tag">NLP</span>
+              <span class="neo-benchmark-card__tag">Transformers</span>
+              <span class="neo-benchmark-card__tag">Sentiment</span>
+            </div>
+            <div class="neo-benchmark-card__stats">
+              <div class="neo-benchmark-card__stat">
+                <span class="neo-benchmark-card__stat-value">--</span>
+                <span class="neo-benchmark-card__stat-label">Accuracy</span>
+              </div>
+              <div class="neo-benchmark-card__stat">
+                <span class="neo-benchmark-card__stat-value">30min</span>
+                <span class="neo-benchmark-card__stat-label">Est. Time</span>
+              </div>
+              <div class="neo-benchmark-card__stat">
+                <span class="neo-benchmark-card__stat-value">1</span>
+                <span class="neo-benchmark-card__stat-label">Attempt</span>
+              </div>
+            </div>
+            <div class="neo-benchmark-card__progress">
+              <div class="neo-benchmark-card__progress-label">
+                <span class="neo-benchmark-card__progress-text">Progress</span>
+                <span class="neo-benchmark-card__progress-percentage">65%</span>
+              </div>
+              <div class="neo-progress-bar__track">
+                <div class="neo-progress-bar__fill" style="width: 65%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="neo-benchmark-card__footer">
+            <a href="#" class="neo-benchmark-card__action neo-benchmark-card__action--primary">CONTINUE</a>
+          </div>
+        </div>
+
+        <!-- Hard Benchmark Card -->
+        <div class="neo-benchmark-card neo-benchmark-card--hard">
+          <div class="neo-benchmark-card__status neo-benchmark-card__status--not-started"></div>
+          <div class="neo-benchmark-card__header">
+            <h3 class="neo-benchmark-card__title">Object Detection</h3>
+            <span class="neo-benchmark-card__difficulty neo-benchmark-card__difficulty--hard">HARD</span>
+          </div>
+          <div class="neo-benchmark-card__body">
+            <p class="neo-benchmark-card__description">
+              Implement YOLO v5 for real-time object detection with multiple classes and bounding box regression.
+            </p>
+            <div class="neo-benchmark-card__tags">
+              <span class="neo-benchmark-card__tag">Computer Vision</span>
+              <span class="neo-benchmark-card__tag">YOLO</span>
+              <span class="neo-benchmark-card__tag">Detection</span>
+            </div>
+            <div class="neo-benchmark-card__stats">
+              <div class="neo-benchmark-card__stat">
+                <span class="neo-benchmark-card__stat-value">--</span>
+                <span class="neo-benchmark-card__stat-label">mAP</span>
+              </div>
+              <div class="neo-benchmark-card__stat">
+                <span class="neo-benchmark-card__stat-value">45min</span>
+                <span class="neo-benchmark-card__stat-label">Est. Time</span>
+              </div>
+              <div class="neo-benchmark-card__stat">
+                <span class="neo-benchmark-card__stat-value">0</span>
+                <span class="neo-benchmark-card__stat-label">Attempts</span>
+              </div>
+            </div>
+            <div class="neo-benchmark-card__progress">
+              <div class="neo-progress-bar__track">
+                <div class="neo-progress-bar__fill" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="neo-benchmark-card__footer">
+            <a href="#" class="neo-benchmark-card__action">PREVIEW</a>
+            <a href="#" class="neo-benchmark-card__action neo-benchmark-card__action--primary">START TEST</a>
+          </div>
+        </div>
+
+        <!-- Expert Benchmark Card -->
+        <div class="neo-benchmark-card neo-benchmark-card--expert">
+          <div class="neo-benchmark-card__status neo-benchmark-card__status--not-started"></div>
+          <div class="neo-benchmark-card__header">
+            <h3 class="neo-benchmark-card__title">GANs Implementation</h3>
+            <span class="neo-benchmark-card__difficulty neo-benchmark-card__difficulty--expert">EXPERT</span>
+          </div>
+          <div class="neo-benchmark-card__body">
+            <p class="neo-benchmark-card__description">
+              Build and train a StyleGAN2 from scratch for high-resolution image generation with style mixing.
+            </p>
+            <div class="neo-benchmark-card__tags">
+              <span class="neo-benchmark-card__tag">Deep Learning</span>
+              <span class="neo-benchmark-card__tag">GANs</span>
+              <span class="neo-benchmark-card__tag">Generation</span>
+            </div>
+            <div class="neo-benchmark-card__stats">
+              <div class="neo-benchmark-card__stat">
+                <span class="neo-benchmark-card__stat-value">--</span>
+                <span class="neo-benchmark-card__stat-label">FID</span>
+              </div>
+              <div class="neo-benchmark-card__stat">
+                <span class="neo-benchmark-card__stat-value">2hr</span>
+                <span class="neo-benchmark-card__stat-label">Est. Time</span>
+              </div>
+              <div class="neo-benchmark-card__stat">
+                <span class="neo-benchmark-card__stat-value">0</span>
+                <span class="neo-benchmark-card__stat-label">Attempts</span>
+              </div>
+            </div>
+            <div class="neo-benchmark-card__progress">
+              <div class="neo-progress-bar__track">
+                <div class="neo-progress-bar__fill" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="neo-benchmark-card__footer">
+            <a href="#" class="neo-benchmark-card__action">REQUIREMENTS</a>
+            <a href="#" class="neo-benchmark-card__action neo-benchmark-card__action--primary">UNLOCK</a>
+          </div>
+        </div>
+
+        <!-- Additional cards would go here... -->
+        
+      </div>
+
+      <!-- Achievements Section -->
+      <div class="neo-progress-achievements">
+        <h2 class="neo-progress-achievements__title">ACHIEVEMENTS</h2>
+        <div class="neo-progress-achievements__grid">
+          <div class="neo-achievement-badge neo-achievement-badge--unlocked">
+            <span class="neo-achievement-badge__icon">🏆</span>
+            <span class="neo-achievement-badge__title">First Win</span>
+          </div>
+          <div class="neo-achievement-badge neo-achievement-badge--unlocked">
+            <span class="neo-achievement-badge__icon">⚡</span>
+            <span class="neo-achievement-badge__title">Speed Demon</span>
+          </div>
+          <div class="neo-achievement-badge neo-achievement-badge--unlocked">
+            <span class="neo-achievement-badge__icon">🎯</span>
+            <span class="neo-achievement-badge__title">Perfect Score</span>
+          </div>
+          <div class="neo-achievement-badge neo-achievement-badge--locked">
+            <span class="neo-achievement-badge__icon">🔥</span>
+            <span class="neo-achievement-badge__title">Hot Streak</span>
+          </div>
+          <div class="neo-achievement-badge neo-achievement-badge--locked">
+            <span class="neo-achievement-badge__icon">🧠</span>
+            <span class="neo-achievement-badge__title">Expert Level</span>
+          </div>
+          <div class="neo-achievement-badge neo-achievement-badge--locked">
+            <span class="neo-achievement-badge__icon">👑</span>
+            <span class="neo-achievement-badge__title">Champion</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="neo-footer">
+    <div class="neo-container">
+      <div class="neo-flex-between">
+        <div class="neo-text-display" style="font-size: var(--neo-text-lg);">
+          AI/ML BENCHMARK
+        </div>
+        <div class="neo-flex" style="gap: var(--neo-space-6);">
+          <a href="#" class="neo-text-link">ABOUT</a>
+          <a href="#" class="neo-text-link">HELP</a>
+          <a href="#" class="neo-text-link">GITHUB</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Basic interactivity for demo
+    document.querySelectorAll('.neo-nav-difficulty__filter').forEach(filter => {
+      filter.addEventListener('click', function() {
+        document.querySelectorAll('.neo-nav-difficulty__filter').forEach(f => f.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Progress circle animation
+    window.addEventListener('load', function() {
+      const circles = document.querySelectorAll('.neo-progress-circle__fill');
+      circles.forEach(circle => {
+        const percent = 68; // This would be dynamic
+        const offset = 283 - (283 * percent) / 100;
+        circle.style.strokeDashoffset = offset;
+      });
+    });
+  </script>
+</body>
+</html>

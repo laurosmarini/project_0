@@ -1,0 +1,100 @@
+/* Neobrutalist Color Palette for AI/ML Benchmark Webapp */
+
+:root {
+  /* Primary Colors - High Contrast Base */
+  --neo-black: #000000;
+  --neo-white: #ffffff;
+  --neo-gray-dark: #1a1a1a;
+  --neo-gray-light: #f5f5f5;
+
+  /* Accent Colors - Bold and Saturated */
+  --neo-electric-blue: #0066ff;
+  --neo-cyber-green: #00ff66;
+  --neo-warning-orange: #ff6600;
+  --neo-error-red: #ff0066;
+  --neo-neon-yellow: #ffff00;
+  --neo-acid-purple: #9900ff;
+  --neo-hot-pink: #ff0099;
+  --neo-lime-green: #66ff00;
+
+  /* Background Variations */
+  --neo-bg-primary: var(--neo-white);
+  --neo-bg-secondary: var(--neo-gray-light);
+  --neo-bg-dark: var(--neo-black);
+  --neo-bg-accent: var(--neo-electric-blue);
+
+  /* Text Colors */
+  --neo-text-primary: var(--neo-black);
+  --neo-text-inverse: var(--neo-white);
+  --neo-text-muted: #333333;
+  --neo-text-accent: var(--neo-electric-blue);
+
+  /* Border and Shadow Colors */
+  --neo-border-primary: var(--neo-black);
+  --neo-border-accent: var(--neo-electric-blue);
+  --neo-shadow-harsh: rgba(0, 0, 0, 1);
+  --neo-shadow-colored: rgba(0, 102, 255, 0.8);
+
+  /* State Colors */
+  --neo-success: var(--neo-cyber-green);
+  --neo-warning: var(--neo-warning-orange);
+  --neo-error: var(--neo-error-red);
+  --neo-info: var(--neo-electric-blue);
+  --neo-disabled: #666666;
+
+  /* Benchmark Specific Colors */
+  --neo-easy: var(--neo-cyber-green);
+  --neo-medium: var(--neo-warning-orange);
+  --neo-hard: var(--neo-error-red);
+  --neo-expert: var(--neo-acid-purple);
+  --neo-progress: var(--neo-electric-blue);
+  --neo-complete: var(--neo-cyber-green);
+}
+
+/* Color Combinations for High Contrast */
+.neo-contrast-primary {
+  background-color: var(--neo-black);
+  color: var(--neo-white);
+}
+
+.neo-contrast-secondary {
+  background-color: var(--neo-white);
+  color: var(--neo-black);
+}
+
+.neo-contrast-accent {
+  background-color: var(--neo-electric-blue);
+  color: var(--neo-white);
+}
+
+.neo-contrast-warning {
+  background-color: var(--neo-warning-orange);
+  color: var(--neo-black);
+}
+
+.neo-contrast-success {
+  background-color: var(--neo-cyber-green);
+  color: var(--neo-black);
+}
+
+.neo-contrast-error {
+  background-color: var(--neo-error-red);
+  color: var(--neo-white);
+}
+
+/* Gradient Combinations */
+.neo-gradient-electric {
+  background: linear-gradient(45deg, var(--neo-electric-blue), var(--neo-cyber-green));
+}
+
+.neo-gradient-fire {
+  background: linear-gradient(45deg, var(--neo-error-red), var(--neo-warning-orange));
+}
+
+.neo-gradient-cyber {
+  background: linear-gradient(45deg, var(--neo-acid-purple), var(--neo-hot-pink));
+}
+
+.neo-gradient-neon {
+  background: linear-gradient(45deg, var(--neo-neon-yellow), var(--neo-lime-green));
+}

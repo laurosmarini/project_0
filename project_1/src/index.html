@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI/ML Benchmark Testing Platform - Comprehensive performance evaluation for artificial intelligence and machine learning models">
+    <meta name="keywords" content="AI, ML, benchmark, testing, performance, evaluation, artificial intelligence, machine learning">
+    <title>AI/ML Benchmark Platform</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/fonts/main.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/css/styles.css" as="style">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+
+<body>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header Section -->
+    <header class="header" role="banner">
+        <div class="header__container">
+            <!-- Logo and Branding -->
+            <div class="header__brand">
+                <h1 class="header__title">
+                    <span class="header__icon" aria-hidden="true">🧠</span>
+                    AI/ML Benchmark Platform
+                </h1>
+                <p class="header__tagline">Performance Evaluation Suite</p>
+            </div>
+            
+            <!-- Primary Navigation -->
+            <nav class="nav" role="navigation" aria-label="Main navigation">
+                <ul class="nav__list" role="tablist">
+                    <li class="nav__item" role="presentation">
+                        <button 
+                            class="nav__link nav__link--active" 
+                            role="tab" 
+                            aria-selected="true"
+                            aria-controls="easy-panel"
+                            id="easy-tab"
+                            data-category="easy"
+                        >
+                            <span class="nav__icon" aria-hidden="true">🟢</span>
+                            Easy
+                            <span class="nav__count" aria-label="12 benchmarks">12</span>
+                        </button>
+                    </li>
+                    <li class="nav__item" role="presentation">
+                        <button 
+                            class="nav__link" 
+                            role="tab" 
+                            aria-selected="false"
+                            aria-controls="medium-panel"
+                            id="medium-tab"
+                            data-category="medium"
+                        >
+                            <span class="nav__icon" aria-hidden="true">🟡</span>
+                            Medium
+                            <span class="nav__count" aria-label="8 benchmarks">8</span>
+                        </button>
+                    </li>
+                    <li class="nav__item" role="presentation">
+                        <button 
+                            class="nav__link" 
+                            role="tab" 
+                            aria-selected="false"
+                            aria-controls="hard-panel"
+                            id="hard-tab"
+                            data-category="hard"
+                        >
+                            <span class="nav__icon" aria-hidden="true">🔴</span>
+                            Hard
+                            <span class="nav__count" aria-label="5 benchmarks">5</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- Header Actions -->
+            <div class="header__actions">
+                <!-- Search -->
+                <div class="search" role="search">
+                    <label for="benchmark-search" class="search__label">Search benchmarks</label>
+                    <input 
+                        type="search" 
+                        id="benchmark-search" 
+                        class="search__input"
+                        placeholder="Search benchmarks..."
+                        aria-describedby="search-help"
+                        autocomplete="off"
+                    >
+                    <button class="search__button" type="button" aria-label="Search">
+                        <span class="search__icon" aria-hidden="true">🔍</span>
+                    </button>
+                    <div id="search-help" class="search__help">
+                        Search by name, category, or description
+                    </div>
+                </div>
+                
+                <!-- Filters -->
+                <button class="filter-toggle" type="button" aria-expanded="false" aria-controls="filter-panel">
+                    <span class="filter-toggle__icon" aria-hidden="true">⚙️</span>
+                    Filters
+                </button>
+            </div>
+        </div>
+        
+        <!-- Filter Panel -->
+        <div class="filter-panel" id="filter-panel" aria-hidden="true">
+            <div class="filter-panel__content">
+                <h2 class="filter-panel__title">Filter Benchmarks</h2>
+                
+                <fieldset class="filter-group">
+                    <legend class="filter-group__legend">Status</legend>
+                    <div class="filter-group__options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="status" value="completed" checked>
+                            <span class="filter-option__label">Completed</span>
+                            <span class="filter-option__count">(15)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="status" value="running" checked>
+                            <span class="filter-option__label">Running</span>
+                            <span class="filter-option__count">(3)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="status" value="pending" checked>
+                            <span class="filter-option__label">Pending</span>
+                            <span class="filter-option__count">(7)</span>
+                        </label>
+                    </div>
+                </fieldset>
+                
+                <fieldset class="filter-group">
+                    <legend class="filter-group__legend">Type</legend>
+                    <div class="filter-group__options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="type" value="performance" checked>
+                            <span class="filter-option__label">Performance</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="type" value="accuracy" checked>
+                            <span class="filter-option__label">Accuracy</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="type" value="memory" checked>
+                            <span class="filter-option__label">Memory Usage</span>
+                        </label>
+                    </div>
+                </fieldset>
+                
+                <div class="filter-actions">
+                    <button type="button" class="filter-clear">Clear All</button>
+                    <button type="button" class="filter-apply">Apply Filters</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content Area -->
+    <main id="main-content" class="main" role="main">
+        <!-- Overall Progress Section -->
+        <section class="progress-overview" aria-labelledby="progress-title">
+            <h2 id="progress-title" class="progress-overview__title">Overall Progress</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card__header">
+                        <h3 class="stat-card__title">Total Benchmarks</h3>
+                        <span class="stat-card__icon" aria-hidden="true">📊</span>
+                    </div>
+                    <div class="stat-card__value" aria-label="25 total benchmarks">25</div>
+                    <div class="stat-card__meta">Across all categories</div>
+                </div>
+                
+                <div class="stat-card stat-card--success">
+                    <div class="stat-card__header">
+                        <h3 class="stat-card__title">Completed</h3>
+                        <span class="stat-card__icon" aria-hidden="true">✅</span>
+                    </div>
+                    <div class="stat-card__value" aria-label="15 completed benchmarks">15</div>
+                    <div class="stat-card__meta">60% success rate</div>
+                </div>
+                
+                <div class="stat-card stat-card--warning">
+                    <div class="stat-card__header">
+                        <h3 class="stat-card__title">In Progress</h3>
+                        <span class="stat-card__icon" aria-hidden="true">⏳</span>
+                    </div>
+                    <div class="stat-card__value" aria-label="3 benchmarks in progress">3</div>
+                    <div class="stat-card__meta">Estimated 2h remaining</div>
+                </div>
+                
+                <div class="stat-card stat-card--neutral">
+                    <div class="stat-card__header">
+                        <h3 class="stat-card__title">Pending</h3>
+                        <span class="stat-card__icon" aria-hidden="true">⏸️</span>
+                    </div>
+                    <div class="stat-card__value" aria-label="7 pending benchmarks">7</div>
+                    <div class="stat-card__meta">Waiting to start</div>
+                </div>
+            </div>
+            
+            <!-- Global Progress Bar -->
+            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Overall progress: 60% complete">
+                <div class="progress-bar__track">
+                    <div class="progress-bar__fill" style="width: 60%"></div>
+                </div>
+                <div class="progress-bar__label">60% Complete (15/25)</div>
+            </div>
+        </section>
+        
+        <!-- Category Panels -->
+        <div class="category-panels">
+            
+            <!-- Easy Category Panel -->
+            <div 
+                class="category-panel category-panel--active" 
+                id="easy-panel" 
+                role="tabpanel" 
+                aria-labelledby="easy-tab"
+                aria-hidden="false"
+            >
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <span class="category-icon" aria-hidden="true">🟢</span>
+                        Easy Benchmarks
+                    </h2>
+                    <p class="category-description">
+                        Fundamental AI/ML performance tests suitable for basic model evaluation
+                    </p>
+                    <div class="category-stats">
+                        <span class="category-stat">12 benchmarks</span>
+                        <span class="category-stat">10 completed</span>
+                        <span class="category-stat">83% success rate</span>
+                    </div>
+                </div>
+                
+                <!-- Benchmark Section: Basic Algorithms -->
+                <section class="benchmark-section" aria-labelledby="basic-algorithms-title">
+                    <header class="section-header">
+                        <button 
+                            class="section-toggle" 
+                            type="button" 
+                            aria-expanded="true" 
+                            aria-controls="basic-algorithms-content"
+                            id="basic-algorithms-toggle"
+                        >
+                            <span class="section-toggle__icon" aria-hidden="true">▼</span>
+                            <h3 id="basic-algorithms-title" class="section-title">Basic Algorithms</h3>
+                            <span class="section-badge">4 tests</span>
+                        </button>
+                        <div class="section-progress">
+                            <div class="progress-mini" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="Basic algorithms progress: 75%">
+                                <div class="progress-mini__fill" style="width: 75%"></div>
+                            </div>
+                            <span class="progress-mini__text">3/4 complete</span>
+                        </div>
+                    </header>
+                    
+                    <div class="section-content" id="basic-algorithms-content" aria-hidden="false">
+                        <!-- Benchmark Card: Linear Regression -->
+                        <article class="benchmark-card benchmark-card--completed">
+                            <header class="benchmark-card__header">
+                                <div class="benchmark-card__title-group">
+                                    <h4 class="benchmark-card__title">Linear Regression</h4>
+                                    <div class="benchmark-card__status">
+                                        <span class="status-badge status-badge--success" aria-label="Status: Completed">
+                                            <span class="status-badge__icon" aria-hidden="true">✅</span>
+                                            Completed
+                                        </span>
+                                        <time class="benchmark-card__time" datetime="2024-01-15T10:30:00Z">
+                                            2 hours ago
+                                        </time>
+                                    </div>
+                                </div>
+                                <button class="benchmark-card__expand" type="button" aria-expanded="false" aria-controls="linear-regression-details" aria-label="Show details for Linear Regression">
+                                    <span class="expand-icon" aria-hidden="true">⬇️</span>
+                                </button>
+                            </header>
+                            
+                            <div class="benchmark-card__summary">
+                                <p class="benchmark-card__description">
+                                    Basic linear regression implementation with gradient descent optimization
+                                </p>
+                                
+                                <div class="benchmark-metrics">
+                                    <div class="metric">
+                                        <span class="metric__label">Accuracy</span>
+                                        <span class="metric__value metric__value--good">94.2%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric__label">Runtime</span>
+                                        <span class="metric__value">1.2s</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric__label">Memory</span>
+                                        <span class="metric__value">45MB</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="benchmark-card__details" id="linear-regression-details" aria-hidden="true">
+                                <div class="details-grid">
+                                    <div class="detail-section">
+                                        <h5 class="detail-section__title">Performance Metrics</h5>
+                                        <dl class="metric-list">
+                                            <div class="metric-item">
+                                                <dt>Mean Squared Error</dt>
+                                                <dd>0.0234</dd>
+                                            </div>
+                                            <div class="metric-item">
+                                                <dt>R² Score</dt>
+                                                <dd>0.942</dd>
+                                            </div>
+                                            <div class="metric-item">
+                                                <dt>Training Time</dt>
+                                                <dd>0.8s</dd>
+                                            </div>
+                                            <div class="metric-item">
+                                                <dt>Inference Time</dt>
+                                                <dd>0.4s</dd>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                    
+                                    <div class="detail-section">
+                                        <h5 class="detail-section__title">Dataset Information</h5>
+                                        <dl class="metric-list">
+                                            <div class="metric-item">
+                                                <dt>Training Samples</dt>
+                                                <dd>1,000</dd>
+                                            </div>
+                                            <div class="metric-item">
+                                                <dt>Test Samples</dt>
+                                                <dd>200</dd>
+                                            </div>
+                                            <div class="metric-item">
+                                                <dt>Features</dt>
+                                                <dd>5</dd>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div>
+                                
+                                <div class="detail-actions">
+                                    <button type="button" class="action-button">View Logs</button>
+                                    <button type="button" class="action-button">Re-run Test</button>
+                                    <button type="button" class="action-button">Export Results</button>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <!-- Benchmark Card: K-Means Clustering (Running) -->
+                        <article class="benchmark-card benchmark-card--running">
+                            <header class="benchmark-card__header">
+                                <div class="benchmark-card__title-group">
+                                    <h4 class="benchmark-card__title">K-Means Clustering</h4>
+                                    <div class="benchmark-card__status">
+                                        <span class="status-badge status-badge--running" aria-label="Status: Running">
+                                            <span class="status-badge__icon status-badge__icon--spinning" aria-hidden="true">⏳</span>
+                                            Running
+                                        </span>
+                                        <time class="benchmark-card__time" datetime="2024-01-15T12:15:00Z">
+                                            Started 15 min ago
+                                        </time>
+                                    </div>
+                                </div>
+                                <button class="benchmark-card__expand" type="button" aria-expanded="false" aria-controls="kmeans-details" aria-label="Show details for K-Means Clustering">
+                                    <span class="expand-icon" aria-hidden="true">⬇️</span>
+                                </button>
+                            </header>
+                            
+                            <div class="benchmark-card__summary">
+                                <p class="benchmark-card__description">
+                                    Unsupervised clustering algorithm with multiple initialization methods
+                                </p>
+                                
+                                <div class="benchmark-progress">
+                                    <div class="progress-bar progress-bar--small" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="K-Means clustering progress: 65%">
+                                        <div class="progress-bar__track">
+                                            <div class="progress-bar__fill" style="width: 65%"></div>
+                                        </div>
+                                        <div class="progress-bar__label">65% - Iteration 130/200</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="benchmark-metrics">
+                                    <div class="metric">
+                                        <span class="metric__label">Current Inertia</span>
+                                        <span class="metric__value">247.3</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric__label">Runtime</span>
+                                        <span class="metric__value">15m 23s</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric__label">Memory</span>
+                                        <span class="metric__value">67MB</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <!-- Additional benchmark cards would continue here... -->
+                        <!-- For brevity, showing structure with placeholder cards -->
+                        <article class="benchmark-card benchmark-card--completed">
+                            <header class="benchmark-card__header">
+                                <div class="benchmark-card__title-group">
+                                    <h4 class="benchmark-card__title">Decision Tree</h4>
+                                    <div class="benchmark-card__status">
+                                        <span class="status-badge status-badge--success">
+                                            <span class="status-badge__icon" aria-hidden="true">✅</span>
+                                            Completed
+                                        </span>
+                                    </div>
+                                </div>
+                            </header>
+                            <div class="benchmark-card__summary">
+                                <p class="benchmark-card__description">Classification tree with entropy-based splitting</p>
+                                <div class="benchmark-metrics">
+                                    <div class="metric">
+                                        <span class="metric__label">Accuracy</span>
+                                        <span class="metric__value metric__value--good">91.7%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric__label">Runtime</span>
+                                        <span class="metric__value">2.1s</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="benchmark-card benchmark-card--pending">
+                            <header class="benchmark-card__header">
+                                <div class="benchmark-card__title-group">
+                                    <h4 class="benchmark-card__title">Naive Bayes</h4>
+                                    <div class="benchmark-card__status">
+                                        <span class="status-badge status-badge--pending">
+                                            <span class="status-badge__icon" aria-hidden="true">⏸️</span>
+                                            Pending
+                                        </span>
+                                    </div>
+                                </div>
+                            </header>
+                            <div class="benchmark-card__summary">
+                                <p class="benchmark-card__description">Probabilistic classifier for text and categorical data</p>
+                                <div class="benchmark-actions">
+                                    <button type="button" class="action-button action-button--primary">Start Test</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Medium Category Panel -->
+            <div 
+                class="category-panel" 
+                id="medium-panel" 
+                role="tabpanel" 
+                aria-labelledby="medium-tab"
+                aria-hidden="true"
+            >
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <span class="category-icon" aria-hidden="true">🟡</span>
+                        Medium Benchmarks
+                    </h2>
+                    <p class="category-description">
+                        Intermediate AI/ML tests requiring moderate computational resources and complexity
+                    </p>
+                    <div class="category-stats">
+                        <span class="category-stat">8 benchmarks</span>
+                        <span class="category-stat">4 completed</span>
+                        <span class="category-stat">50% success rate</span>
+                    </div>
+                </div>
+                
+                <!-- Medium benchmarks content would go here -->
+                <section class="benchmark-section" aria-labelledby="neural-networks-title">
+                    <header class="section-header">
+                        <button class="section-toggle" type="button" aria-expanded="true" aria-controls="neural-networks-content">
+                            <span class="section-toggle__icon" aria-hidden="true">▼</span>
+                            <h3 id="neural-networks-title" class="section-title">Neural Networks</h3>
+                            <span class="section-badge">4 tests</span>
+                        </button>
+                    </header>
+                    <div class="section-content" id="neural-networks-content">
+                        <!-- Medium benchmark cards would go here -->
+                        <div class="placeholder-content">
+                            <p>Medium difficulty benchmarks including neural networks, ensemble methods, and advanced preprocessing techniques.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Hard Category Panel -->
+            <div 
+                class="category-panel" 
+                id="hard-panel" 
+                role="tabpanel" 
+                aria-labelledby="hard-tab"
+                aria-hidden="true"
+            >
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <span class="category-icon" aria-hidden="true">🔴</span>
+                        Hard Benchmarks
+                    </h2>
+                    <p class="category-description">
+                        Advanced AI/ML tests requiring significant computational resources and expertise
+                    </p>
+                    <div class="category-stats">
+                        <span class="category-stat">5 benchmarks</span>
+                        <span class="category-stat">1 completed</span>
+                        <span class="category-stat">20% success rate</span>
+                    </div>
+                </div>
+                
+                <!-- Hard benchmarks content would go here -->
+                <section class="benchmark-section" aria-labelledby="deep-learning-title">
+                    <header class="section-header">
+                        <button class="section-toggle" type="button" aria-expanded="true" aria-controls="deep-learning-content">
+                            <span class="section-toggle__icon" aria-hidden="true">▼</span>
+                            <h3 id="deep-learning-title" class="section-title">Deep Learning</h3>
+                            <span class="section-badge">5 tests</span>
+                        </button>
+                    </header>
+                    <div class="section-content" id="deep-learning-content">
+                        <!-- Hard benchmark cards would go here -->
+                        <div class="placeholder-content">
+                            <p>Advanced benchmarks including transformer models, reinforcement learning, and large-scale distributed training.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer__container">
+            <div class="footer__section">
+                <h3 class="footer__title">AI/ML Benchmark Platform</h3>
+                <p class="footer__description">
+                    Comprehensive performance evaluation suite for artificial intelligence and machine learning models
+                </p>
+            </div>
+            
+            <div class="footer__section">
+                <h4 class="footer__heading">Quick Links</h4>
+                <nav class="footer__nav" aria-label="Footer navigation">
+                    <ul class="footer__list">
+                        <li><a href="/docs" class="footer__link">Documentation</a></li>
+                        <li><a href="/api" class="footer__link">API Reference</a></li>
+                        <li><a href="/support" class="footer__link">Support</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="footer__section">
+                <h4 class="footer__heading">System Status</h4>
+                <div class="system-status">
+                    <div class="status-item">
+                        <span class="status-indicator status-indicator--online" aria-label="Online"></span>
+                        <span>Benchmark Engine</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-indicator status-indicator--online" aria-label="Online"></span>
+                        <span>API Services</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer__bottom">
+            <p class="footer__copyright">
+                &copy; 2024 AI/ML Benchmark Platform. Built with accessibility and performance in mind.
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script type="module" src="/js/main.js"></script>
+    
+    <!-- No-JS Fallback -->
+    <noscript>
+        <div class="no-js-warning" role="alert">
+            <h2>JavaScript Required</h2>
+            <p>This application requires JavaScript to function properly. Please enable JavaScript in your browser settings.</p>
+        </div>
+    </noscript>
+</body>
+</html>
