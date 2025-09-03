@@ -1,0 +1,26 @@
+{
+  "name": "holographic-ecommerce-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@elastic/elasticsearch": "^9.1.1",
+    "@sentry/node": "^10.8.0",
+    "@sentry/tracing": "^7.120.4",
+    "cors": "^2.8.5",
+    "dd-trace": "^5.65.0",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.1",
+    "pg": "^8.16.3",
+    "redis": "^5.8.2",
+    "stripe": "^18.5.0"
+  }
+}

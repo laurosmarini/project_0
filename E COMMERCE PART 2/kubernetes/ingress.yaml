@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: holographic-ecommerce-ingress
+  annotations:
+    # Add your Ingress Controller specific annotations here
+    # For Nginx Ingress Controller:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    kubernetes.io/ingress.class: nginx
+spec:
+  ingressClassName: nginx # Requires Nginx Ingress Controller to be installed
+  rules:
+    - host: holographic-ecommerce.example.com # Replace with your actual frontend domain
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 80
+    - host: api.holographic-ecommerce.example.com # Replace with your actual API domain
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 5000
+  # Optional: TLS configuration
+  # tls:
+  #   - hosts:
+  #       - holographic-ecommerce.example.com
+  #       - api.holographic-ecommerce.example.com
+  #     secretName: your-tls-secret # Create a Kubernetes Secret with your TLS certificate and key

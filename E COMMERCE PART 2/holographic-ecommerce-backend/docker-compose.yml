@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  backend:
+    image: ghcr.io/${{ github.repository }}/holographic-ecommerce-backend:latest
+    container_name: holographic-ecommerce-backend
+    restart: always
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./.env
+    depends_on:
+      - postgres
+      - redis
+      - elasticsearch
+
+  frontend:
+    build:
+      context: ../holographic-ecommerce
+      dockerfile: Dockerfile.frontend
+    container_name: holographic-ecommerce-frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  postgres:
+    image: postgres:13
+    container_name: holographic-ecommerce-postgres
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:6-alpine
+    container_name: holographic-ecommerce-redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  elasticsearch:
+    image: elasticsearch:7.17.0
+    container_name: holographic-ecommerce-elasticsearch
+    restart: always
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+volumes:
+  postgres_data:
+  es_data:

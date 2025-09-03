@@ -1,0 +1,38 @@
+name: Frontend CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'holographic-ecommerce/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: 'holographic-ecommerce/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./holographic-ecommerce
+
+      - name: Build frontend
+        run: npm run build
+        working-directory: ./holographic-ecommerce
+
+      - name: Deploy to Kubernetes
+        uses: azure/k8s-set-context@v1
+        with:
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
+      - name: Apply Kubernetes Manifest
+        run: kubectl apply -f kubernetes/frontend-deployment.yaml
